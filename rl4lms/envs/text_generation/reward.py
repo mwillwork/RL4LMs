@@ -15,7 +15,10 @@ from rl4lms.envs.text_generation.metric import (
     TERMetric,
     chrFmetric,
     IntentAccuracyDailyDialog,
-)
+    IntentAccuracyDailyDialogNoisy,
+    IntentAccuracyDailyDialogConditional,
+    IntentAccuracyDailyDialogPlusDECODEMetric
+    )
 import numpy as np
 from typing import List, Dict, Any
 
@@ -606,13 +609,194 @@ class IntentAccuracy(BatchedRewardFunction):
         rewards[done_ixs] += self._intent_coeff * np.array(scores)
         return rewards.tolist()
 
+class IntentAccuracyNoisy(BatchedRewardFunction):
+    def __init__(
+            self, shape: bool = True, intent_coeff: float = 1.0, 
+            auto_coeff: float = 1.0, pct_noise: float=0.0, noise_factor: float=1.0
+    ) -> None:
+        super().__init__()
+        self._metric = None
+        self._shape = shape
+        self._intent_coeff = intent_coeff
+        self._auto_coeff = auto_coeff
+        self._shaping_metric = MeteorMetric()
+        self._pct_noise = pct_noise
+        self._noise_factor = noise_factor
+
+    def __call__(
+        self,
+        prompt_texts: List[str],
+        gen_texts: List[str],
+        ref_texts: List[List[str]],
+        dones: List[bool],
+        meta_infos: List[Dict[str, Any]] = None,
+    ) -> List[float]:
+
+        if self._metric is None:
+            self._metric = IntentAccuracyDailyDialogNoisy(pct_noise=self._pct_noise,
+                    noise_factor=self._noise_factor)
+
+        # compute rewards for finished episodes only
+        rewards = np.zeros(len(gen_texts))
+
+        done_prompt_texts = []
+        done_gen_texts = []
+        done_ref_texts = []
+        done_meta_infos = []
+        done_ixs = []
+        for ix, (prompt, gen, ref, meta_info, done) in enumerate(
+            zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
+        ):
+            if done:
+                done_prompt_texts.append(prompt)
+                done_gen_texts.append(gen)
+                done_ref_texts.append(ref)
+                done_meta_infos.append(meta_info)
+                done_ixs.append(ix)
+
+                if self._shape:
+                    score = self._shaping_metric.compute(
+                        done_prompt_texts, done_gen_texts, done_ref_texts
+                    )
+                    rewards[ix] = self._auto_coeff * score["lexical/meteor"][1]
+
+        scores = self._metric.compute(
+            done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
+        )["intent/noisy_accuracy"][0]
+        rewards[done_ixs] += self._intent_coeff * np.array(scores)
+        return rewards.tolist()
+
+class IntentAccuracyConditional(BatchedRewardFunction):
+    def __init__(
+            self, shape: bool = True, intent_coeff: float = 1.0,
+            auto_coeff: float = 1.0, min_reward: float=0.0, max_prob_threshold: float=0.
+    ) -> None:
+        super().__init__()
+        self._metric = None
+        self._shape = shape
+        self._intent_coeff = intent_coeff
+        self._auto_coeff = auto_coeff
+        self._shaping_metric = MeteorMetric()
+        self._min_reward = min_reward
+        self._max_prob_threshold = max_prob_threshold
+
+    def __call__(
+        self,
+        prompt_texts: List[str],
+        gen_texts: List[str],
+        ref_texts: List[List[str]],
+        dones: List[bool],
+        meta_infos: List[Dict[str, Any]] = None,
+    ) -> List[float]:
+
+        if self._metric is None:
+            self._metric = IntentAccuracyDailyDialogConditional(min_reward=self._min_reward,
+                    max_prob_threshold=self._max_prob_threshold)
+
+        # compute rewards for finished episodes only
+        rewards = np.zeros(len(gen_texts))
+
+        done_prompt_texts = []
+        done_gen_texts = []
+        done_ref_texts = []
+        done_meta_infos = []
+        done_ixs = []
+        for ix, (prompt, gen, ref, meta_info, done) in enumerate(
+            zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
+        ):
+            if done:
+                done_prompt_texts.append(prompt)
+                done_gen_texts.append(gen)
+                done_ref_texts.append(ref)
+                done_meta_infos.append(meta_info)
+                done_ixs.append(ix)
+
+                if self._shape:
+                    score = self._shaping_metric.compute(
+                        done_prompt_texts, done_gen_texts, done_ref_texts
+                    )
+                    rewards[ix] = self._auto_coeff * score["lexical/meteor"][1]
+
+        scores = self._metric.compute(
+            done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
+        )["intent/conditional_accuracy"][0]
+        rewards[done_ixs] += self._intent_coeff * np.array(scores)
+        return rewards.tolist()
+
+
+class IntentAccuracyPlusDECODEReward(BatchedRewardFunction):
+    def __init__(
+            self, shape: bool = True, intent_coeff: float = 1.0,
+            auto_coeff: float = 1.0, decode_weight: float = 0.0
+    ) -> None:
+        super().__init__()
+        self._metric = None
+        self._shape = shape
+        self._intent_coeff = intent_coeff
+        self._auto_coeff = auto_coeff
+        self._shaping_metric = MeteorMetric()
+        self._decode_weight = decode_weight
+
+    def __call__(
+        self,
+        prompt_texts: List[str],
+        gen_texts: List[str],
+        ref_texts: List[List[str]],
+        dones: List[bool],
+        meta_infos: List[Dict[str, Any]] = None,
+    ) -> List[float]:
+
+        if self._metric is None:
+            self._metric = IntentAccuracyDailyDialogPlusDECODEMetric(
+                    decode_weight=self._decode_weight)
+
+        # compute rewards for finished episodes only
+        rewards = np.zeros(len(gen_texts))
+
+        done_prompt_texts = []
+        done_gen_texts = []
+        done_ref_texts = []
+        done_meta_infos = []
+        done_ixs = []
+        for ix, (prompt, gen, ref, meta_info, done) in enumerate(
+            zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
+        ):
+            if done:
+                done_prompt_texts.append(prompt)
+                done_gen_texts.append(gen)
+                done_ref_texts.append(ref)
+                done_meta_infos.append(meta_info)
+                done_ixs.append(ix)
+
+                if self._shape:
+                    score = self._shaping_metric.compute(
+                        done_prompt_texts, done_gen_texts, done_ref_texts
+                    )
+                    rewards[ix] = self._auto_coeff * score["lexical/meteor"][1]
+
+        scores = self._metric.compute(
+            done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
+        )["intent/intent_plus_decode_metric"][0]
+        rewards[done_ixs] += self._intent_coeff * np.array(scores)
+        return rewards.tolist()
+
+
+
 
 if __name__ == "__main__":
-    predictions = "hello there general kenobi"
-    references = ["hello there general kenobi", "hello there!!"]
+    device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    predictions = ["hello there general kenobi"]
+    references = [["hello there general kenobi", "hello there!!"]]
     observation = Observation(
         None, None, None, None, None, predictions, references, None, None, None, None
     )
+
+    reward_fn = IntentAccuracyPlusDECODEReward(decode_weight=0.5)
+    prompt_text = ["kenobi star wars"]
+    meta_infos = [{"intent":[2]}]
+
+
+    print(reward_fn(prompt_text, predictions, references, [True], meta_infos))
 
     reward_fn = MeteorRewardFunction()
     print(reward_fn(None, None, observation, True))

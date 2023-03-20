@@ -44,7 +44,10 @@ from rl4lms.envs.text_generation.metric import (
     TERMetric,
     chrFmetric,
     IntentAccuracyDailyDialog,
-)
+    IntentAccuracyDailyDialogPlusDECODEMetric
+    )
+
+
 from rl4lms.envs.text_generation.policy.base_policy import LMActorCriticPolicy
 from rl4lms.envs.text_generation.policy.causal_policy import (
     CausalLMActorCriticPolicy,
@@ -73,7 +76,10 @@ from rl4lms.envs.text_generation.reward import (
     SpiderRewardFunction,
     chrF,
     IntentAccuracy,
-)
+    IntentAccuracyNoisy,
+    IntentAccuracyConditional,
+    IntentAccuracyPlusDECODEReward
+    )
 from rl4lms.envs.text_generation.preference_reward import CommonGenPrefRM
 from rl4lms.envs.text_generation.test_datapool import TestTextGenPool
 from rl4lms.envs.text_generation.test_metric import DateInText, IncreasingNumbersinText
@@ -131,8 +137,11 @@ class RewardFunctionRegistry:
         "ter": TER,
         "chrf": chrF,
         "intent_accuracy": IntentAccuracy,
+        "intent_accuracy_noisy": IntentAccuracyNoisy,
+        "intent_accuracy_conditional": IntentAccuracyConditional,
         "common_gen_preference_model": CommonGenPrefRM,
-    }
+        "intent_plus_decode_reward": IntentAccuracyPlusDECODEReward
+        }
 
     @classmethod
     def get(cls, reward_fn_id: str, kwargs: Dict[str, Any]) -> RewardFunction:
@@ -168,6 +177,7 @@ class MetricRegistry:
         "ter": TERMetric,
         "chrf": chrFmetric,
         "intent_accuracy": IntentAccuracyDailyDialog,
+        "intent_plus_decode_metric": IntentAccuracyDailyDialogPlusDECODEMetric
     }
 
     @classmethod

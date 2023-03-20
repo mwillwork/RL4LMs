@@ -1101,6 +1101,7 @@ class GenerationMixinWithRawScores:
 
         Multinomial Sampling:
 
+    - id: intent_plus_decode_metric
         ```python
         >>> from transformers import AutoTokenizer, AutoModelForCausalLM
         >>> import torch

@@ -719,6 +719,289 @@ class IntentAccuracyDailyDialog(BaseMetric):
         return metric_dict
 
 
+class IntentAccuracyDailyDialogNoisy(BaseMetric):
+    def __init__(self, pct_noise=0, noise_factor=1) -> None:
+        super().__init__()
+        self._tokenizer = AutoTokenizer.from_pretrained(
+            "rajkumarrrk/roberta-daily-dialog-intent-classifier"
+        )
+        self._model = AutoModelForSequenceClassification.from_pretrained(
+            "rajkumarrrk/roberta-daily-dialog-intent-classifier"
+        )
+        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self._device = f"cuda:{torch.cuda.device_count() - 1}"
+        self._model = self._model.to(self._device)
+        self._pct_noise = pct_noise
+        self._noise_factor = noise_factor
+        print(f"Setting pct noise to: {self._pct_noise}")
+        
+    def compute(
+        self,
+        prompt_texts: List[str],
+        generated_texts: List[str],
+        reference_texts: List[List[str]],
+        meta_infos: List[Dict[str, Any]] = None,
+        model: PreTrainedModel = None,
+        split_name: str = None,
+    ) -> Tuple[List[float], float]:
+        def get_input_for_classifier(prompt, generated_text):
+            history = prompt.split(DailyDialog.EOU_TOKEN)
+            history = [utt for utt in history if utt != ""]
+            last_utterance = history[-1]
+            input_text = last_utterance + generated_text
+            return input_text
+
+        # print(f"Metric compute prompt_texts: {prompt_texts}, generated_texts: {generated_texts}")
+
+        # we have to extract the history utterances
+        input_texts = [
+            get_input_for_classifier(prompt, gen)
+            for prompt, gen in zip(prompt_texts, generated_texts)
+        ]
+
+        # extract target intents
+        target_intents = [info["intent"][0] - 1 for info in meta_infos]
+
+        # tokenize
+        encoded = self._tokenizer(
+            input_texts, return_tensors="pt", truncation=True, padding=True
+        )
+
+        with torch.no_grad():
+            outputs = self._model(
+                input_ids=encoded.input_ids.to(self._device),
+                attention_mask=encoded.attention_mask.to(self._device),
+            )
+            
+            if np.random.sample() < self._pct_noise:
+                print(f"Noising reward scores - pct noise: {self._pct_noise}, noise_factor: {self._noise_factor}")
+                logits_std = torch.std(outputs.logits)
+                sz = outputs.logits.size()
+                d = outputs.logits.device
+                noise_tensor = torch.normal(torch.zeros(size=sz).to(d), logits_std*self._noise_factor).to(d)
+                new_logits = outputs.logits + noise_tensor
+                # print(f"old logits: {outputs.logits}, noise_tensor: {noise_tensor}, new_logits: {new_logits}")
+                outputs.logits = new_logits
+
+                # probs = torch.nn.functional.softmax(outputs.logits, dim=1)
+                # NOISE_MEAN = 0.1
+                # NOISE_STD = 0.1
+                # noise_tensor = torch.normal(NOISE_MEAN*torch.ones(probs.size()), 
+                #                            NOISE_STD*torch.ones(probs.size())).to(probs.device)
+                # Will no longer add up to one but we just want the argmax of the logits below
+                # new_probs = probs + noise_tensor
+                # new_probs =  torch.clamp(new_probs, 0.01, 0.99)
+                # new_logits = torch.log(new_probs)
+                # print(f"old logits: {outputs.logits}, old probs: {probs}, noise_tensor: {noise_tensor}, new probs: {new_probs}, new_logits: {new_logits}")
+                # outputs.logits = torch.log(new_probs)
+            pred_labels = torch.argmax(outputs.logits, dim=1).tolist()
+
+        matching_scores = (np.array(pred_labels) == np.array(target_intents)).astype(
+            np.int32
+        )
+        intent_accuracy = np.mean(matching_scores)
+
+        metric_dict = {"intent/noisy_accuracy": (matching_scores.tolist(), intent_accuracy)}
+        return metric_dict
+
+
+class IntentAccuracyDailyDialogConditional(BaseMetric):
+    def __init__(self, min_reward=0., max_prob_threshold=0.) -> None:
+        super().__init__()
+        self._tokenizer = AutoTokenizer.from_pretrained(
+            "rajkumarrrk/roberta-daily-dialog-intent-classifier"
+        )
+        self._model = AutoModelForSequenceClassification.from_pretrained(
+            "rajkumarrrk/roberta-daily-dialog-intent-classifier"
+        )
+        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self._device = f"cuda:{torch.cuda.device_count() - 1}"
+        self._model = self._model.to(self._device)
+        self._min_reward = min_reward
+        self._max_prob_threshold = max_prob_threshold
+        print(f"Setting min_reward to: {self._min_reward}, max_prob threshold: {max_prob_threshold}")
+
+    def compute(
+        self,
+        prompt_texts: List[str],
+        generated_texts: List[str],
+        reference_texts: List[List[str]],
+        meta_infos: List[Dict[str, Any]] = None,
+        model: PreTrainedModel = None,
+        split_name: str = None,
+    ) -> Tuple[List[float], float]:
+        def get_input_for_classifier(prompt, generated_text):
+            history = prompt.split(DailyDialog.EOU_TOKEN)
+            history = [utt for utt in history if utt != ""]
+            last_utterance = history[-1]
+            input_text = last_utterance + generated_text
+            return input_text
+
+        # print(f"Metric compute prompt_texts: {prompt_texts}, generated_texts: {generated_texts}")
+
+        # we have to extract the history utterances
+        input_texts = [
+            get_input_for_classifier(prompt, gen)
+            for prompt, gen in zip(prompt_texts, generated_texts)
+        ]
+
+        # extract target intents
+        target_intents = [info["intent"][0] - 1 for info in meta_infos]
+
+        # tokenize
+        encoded = self._tokenizer(
+            input_texts, return_tensors="pt", truncation=True, padding=True
+        )
+        max_prob = 0.
+        with torch.no_grad():
+            outputs = self._model(
+                input_ids=encoded.input_ids.to(self._device),
+                attention_mask=encoded.attention_mask.to(self._device),
+            )
+
+            print(f"Calculating max prob - min reward: { self._min_reward}, max_prob threshold: {self._max_prob_threshold}")
+            probs = torch.nn.functional.softmax(outputs.logits, dim=1)
+            max_prob = torch.max(probs, dim=1).values
+            pred_labels = torch.argmax(outputs.logits, dim=1).tolist()
+
+        # pred_labels are the classifier's predicted intents
+        # target_intents are the GPT2 model's generated intents?! NO.
+        matching_scores = (np.array(pred_labels) == np.array(target_intents)).astype(np.int32)
+
+        # Only give the reward when the classifier is certain
+        # Otherwise give a lower reward
+        matching_above_threshold = matching_scores * (max_prob.cpu().numpy() > self._max_prob_threshold)
+        matching_below_threshold = matching_scores * (max_prob.cpu().numpy() <= self._max_prob_threshold)
+        adjusted_below_threshold = matching_below_threshold * self._min_reward
+        matching_scores = matching_above_threshold + adjusted_below_threshold
+        
+        intent_accuracy = np.mean(matching_scores)
+
+        metric_dict = {"intent/conditional_accuracy": (matching_scores.tolist(), intent_accuracy)}
+        return metric_dict
+
+
+
+class IntentAccuracyDailyDialogPlusDECODEMetric(BaseMetric):
+    def __init__(self, decode_weight=0.) -> None:
+        super().__init__()
+        
+        # THIS CLASS SHOULD ONLY BE USED INSIDE A REWARD FN NOT AS A STANDALONE METRIC
+        print("DO NOT USE THIS AS A STANDALONE EVAL METRIC. IT IS JUST A REWARD FN METRIC.")
+
+
+        self._tokenizer = AutoTokenizer.from_pretrained(
+            "rajkumarrrk/roberta-daily-dialog-intent-classifier"
+        )
+
+        self._tokenizer_decode = AutoTokenizer.from_pretrained("roberta-large")
+
+        self._model = AutoModelForSequenceClassification.from_pretrained(
+            "rajkumarrrk/roberta-daily-dialog-intent-classifier"
+        )
+
+        self._decode_model = AutoModelForSequenceClassification.from_pretrained(
+                '/home/ubuntu/roberta_classifier/test_trainer_5e-06_continue/checkpoint-400/',
+                num_labels=2
+        )
+
+        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self._device = f"cuda:{torch.cuda.device_count() - 1}"
+        self._model = self._model.to(self._device)
+        self._decode_model = self._decode_model.to(self._device)
+
+        self._decode_weight = decode_weight
+        print(f"Setting decode_weight to: {self._decode_weight} in ensemble classifier")
+
+    def compute(
+        self,
+        prompt_texts: List[str],
+        generated_texts: List[str],
+        reference_texts: List[List[str]],
+        meta_infos: List[Dict[str, Any]] = None,
+        model: PreTrainedModel = None,
+        split_name: str = None,
+    ) -> Tuple[List[float], float]:
+        def get_input_for_classifier(prompt, generated_text, for_decode=False):
+            history = prompt.split(DailyDialog.EOU_TOKEN)
+            history = [utt for utt in history if utt != ""]
+            last_utterance = history[-1]
+            input_text = last_utterance + generated_text
+            if for_decode:
+                # decode input text does not expect all these <EOU> tokens
+                input_text = last_utterance + "\n" + generated_text
+                input_text = input_text.replace(DailyDialog.EOU_TOKEN, "\n")
+                input_text = input_text.replace("<EOU", "") # Weird character, seems to appear a lot
+                input_text = input_text.replace("<E", "")
+            return input_text
+
+        # print(f"Metric compute prompt_texts: {prompt_texts}, generated_texts: {generated_texts}")
+
+        # we have to extract the history utterances
+        input_texts = [
+            get_input_for_classifier(prompt, gen)
+            for prompt, gen in zip(prompt_texts, generated_texts)
+        ]
+        print(f"input_text normal: {input_texts[:200]}")
+
+        input_texts_decode = [
+            get_input_for_classifier(prompt, gen, for_decode=True)
+            for prompt, gen in zip(prompt_texts, generated_texts)
+        ]
+        print(f"input_texts_decode: {input_texts_decode[:200]}")
+
+        # extract target intents
+        target_intents = [info["intent"][0] - 1 for info in meta_infos]
+
+
+        # tokenize
+        encoded = self._tokenizer(
+            input_texts, return_tensors="pt", truncation=True, padding=True, max_length=128
+        )
+
+        encoded_decode = self._tokenizer_decode(
+            input_texts_decode, return_tensors="pt", truncation=True, padding=True, max_length=128
+        )
+
+        decode_non_contradiction_prob = 0.
+        with torch.no_grad():
+            outputs = self._model(
+                input_ids=encoded.input_ids.to(self._device),
+                attention_mask=encoded.attention_mask.to(self._device),
+            )
+            pred_labels = torch.argmax(outputs.logits, dim=1).tolist()
+
+            decode_outputs = self._decode_model(
+                input_ids=encoded_decode.input_ids.to(self._device),
+                attention_mask=encoded_decode.attention_mask.to(self._device),
+            )
+            decode_probs = torch.nn.functional.softmax(decode_outputs.logits, dim=1)
+            decode_non_contradiction_prob = torch.gather(decode_probs, dim=-1, index=torch.ones((decode_probs.shape[0], 1), dtype=torch.int64).to(self._device))
+
+        
+        decode_non_contradiction_prob =decode_non_contradiction_prob.cpu().numpy()
+        matching_scores = (np.array(pred_labels) == np.array(target_intents)).astype(np.int32)
+
+        # intent_accuracy = np.mean(matching_scores)
+
+        # TODO: issues 
+        # 1) what are these target intents?! should only use reward classifier predictions, 
+        # 2) tokenization/context of daily dialog: could DECODE classifier handle the format
+
+        # THIS SHOULD ONLY BE USED INSIDE A REWARD FN NOT AS A STANDALONE METRIC
+        scores_term_1 = self._decode_weight * decode_non_contradiction_prob
+        scores_term_2 =  (1 - self._decode_weight) * matching_scores
+        final_matching_scores = scores_term_1.flatten() + scores_term_2
+        final_metric = np.mean(decode_non_contradiction_prob)        
+       
+        print(f"Batch non-contradiction prob mean: {np.mean(decode_non_contradiction_prob)}")
+        # I end up with a list of lists, so squeeze it
+        # final_matching_scores = final_matching_scores.squeeze(-1)
+        metric_dict = {"intent/intent_plus_decode_metric": (final_matching_scores.tolist(), final_metric)}
+        return metric_dict
+
+
+
 if __name__ == "__main__":
     prompt_texts = [""]
     gen_texts = ["Hello there general kenobi", "foo bar foobar"]

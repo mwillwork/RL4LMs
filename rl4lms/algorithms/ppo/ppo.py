@@ -44,7 +44,7 @@ class PPO(OnPolicyAlgorithm):
         This is a parameter specific to the OpenAI implementation. If None is passed (default),
         no clipping will be done on the value function.
         IMPORTANT: this clipping depends on the reward scaling.
-    :param normalize_advantage: Whether to normalize or not the advantage
+    :earam normalize_advantage: Whether to normalize or not the advantage
     :param ent_coef: Entropy coefficient for the loss calculation
     :param vf_coef: Value function coefficient for the loss calculation
     :param max_grad_norm: The maximum value for the gradient clipping
