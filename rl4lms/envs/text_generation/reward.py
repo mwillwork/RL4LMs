@@ -558,11 +558,9 @@ class chrF(RewardFunction):
 
 
 class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
-    def __init__(
-        self, shape: bool = False) -> None:
+    def __init__(self, arg1: float = 0.0) -> None:
         super().__init__()
         self._metric = None
-        self._shape = shape
 
     def __call__(
         self,
