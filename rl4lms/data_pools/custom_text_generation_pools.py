@@ -581,10 +581,20 @@ class DailyDialog(TextGenPool):
         dp_instance = cls(samples)
         return dp_instance
 
+class DiffusionTextPrompts(TextGenPool):
+    @classmethod
+    def prepare(cls, split: str, arg1: int = 0.0):
+        split = CommonGen.gen_split_name(split)
+        dataset = load_dataset("daily_dialog", split=split)
+
 
 if __name__ == "__main__":
     from transformers import AutoTokenizer
     import numpy as np
     dp = DailyDialog.prepare("val", 5)
     print(dp[0])
+
+    d = DiffusionTextPrompts("val")
+    print(d[0])
+
     
