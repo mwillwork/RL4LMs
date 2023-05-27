@@ -142,8 +142,9 @@ class RewardFunctionRegistry:
         "intent_accuracy_noisy": IntentAccuracyNoisy,
         "intent_accuracy_conditional": IntentAccuracyConditional,
         "common_gen_preference_model": CommonGenPrefRM,
-        "intent_plus_decode_reward": IntentAccuracyPlusDECODEReward
-        }
+        "intent_plus_decode_reward": IntentAccuracyPlusDECODEReward,
+        "diffusion_image_similarity_reward": DiffusionImageGenerationSimilarityReward
+    }
 
     @classmethod
     def get(cls, reward_fn_id: str, kwargs: Dict[str, Any]) -> RewardFunction:
@@ -179,7 +180,8 @@ class MetricRegistry:
         "ter": TERMetric,
         "chrf": chrFmetric,
         "intent_accuracy": IntentAccuracyDailyDialog,
-        "intent_plus_decode_metric": IntentAccuracyDailyDialogPlusDECODEMetric
+        "intent_plus_decode_metric": IntentAccuracyDailyDialogPlusDECODEMetric,
+        "diffusion_image_similarity_score": DiffusionImageGenerationSimilarityMetric
     }
 
     @classmethod
