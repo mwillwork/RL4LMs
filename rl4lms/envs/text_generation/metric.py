@@ -1079,46 +1079,6 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         return metric_dict
 
 if __name__ == "__main__":
-    prompt_texts = [""]
-    gen_texts = ["Hello there general kenobi", "foo bar foobar"]
-    reference_texts = [["Hello there general kenobi"], ["foo bar foobar"]]
-    # metric = MeteorMetric()
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = RougeMetric()
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = SacreBLEUMetric(tokenize="intl")
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = TERMetric()
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = chrFmetric()
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = BERTScoreMetric(language="en")
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = BLEUMetric()
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = BLEURTMetric()
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # metric = DiversityMetrics()
-    # print(metric.compute(prompt_texts, gen_texts, reference_texts))
-
-    # document = """Jeff joined Microsoft in 1992 to lead corporate developer evangelism for Windows NT. He then served as a Group Program manager in Microsoft’s Internet Business Unit. In 1998, he led the creation of SharePoint Portal Server, which became one of Microsoft’s fastest-growing businesses, exceeding $2 billion in revenues. Jeff next served as Corporate Vice President for Program Management across Office 365 Services and Servers, which is the foundation of Microsoft’s enterprise cloud leadership. He then led Corporate Strategy supporting Satya Nadella and Amy Hood on Microsoft’s mobile-first/cloud-first transformation and acquisitions. Prior to joining Microsoft, Jeff was vice president for software development for an investment firm in New York. He leads Office shared experiences and core applications, as well as OneDrive and SharePoint consumer and business services in Office 365. Jeff holds a Master of Business Administration degree from Harvard Business School and a Bachelor of Science degree in information systems and finance from New York University."""
-    # summary = "Jeff joined Microsoft in 1992 to lead the company's corporate evangelism. He then served as a Group Manager in Microsoft's Internet Business Unit. In 1998, Jeff led Sharepoint Portal Server, which became the company's fastest-growing business, surpassing $3 million in revenue. Jeff next leads corporate strategy for SharePoint and Servers which is the basis of Microsoft's cloud-first strategy. He leads corporate strategy for Satya Nadella and Amy Hood on Microsoft's mobile-first."
-
-    # metric = SummaCZSMetric(granularity="sentence",
-    #                         use_ent=True,
-    #                         use_con=False)
-    # print(metric.compute([document], [summary], []))
-
-    # metric = SummaCConvMetric(granularity="sentence")
-    # print(metric.compute([document], [summary], []))
 
     prompt_texts = ["1", "2"]
     gen_texts = [
@@ -1126,10 +1086,13 @@ if __name__ == "__main__":
         "A boy is picking apples from trees and put them into bags.",
     ]
     reference_texts = [
-        ["The dog is the boy's cat.", "The dog eats the cat of the boy."],
-        ["A boy is picking apples from trees."],
+        ["NOT USED"], ["NOT USED"]
     ]
-    metric = CIDERMetric()
+    # reference_texts = [
+    #     ["The dog is the boy's cat.", "The dog eats the cat of the boy."],
+    #     ["A boy is picking apples from trees."],
+    # ]
+    metric = DiffusionImageGenerationSimilarityMetric()
     print(metric.compute(prompt_texts, gen_texts, reference_texts))
 
     metric = SpiceMetric()
