@@ -881,7 +881,6 @@ class IntentAccuracyDailyDialogConditional(BaseMetric):
         return metric_dict
 
 
-
 class IntentAccuracyDailyDialogPlusDECODEMetric(BaseMetric):
     def __init__(self, decode_weight=0.) -> None:
         super().__init__()
@@ -1000,7 +999,84 @@ class IntentAccuracyDailyDialogPlusDECODEMetric(BaseMetric):
         metric_dict = {"intent/intent_plus_decode_metric": (final_matching_scores.tolist(), final_metric)}
         return metric_dict
 
+class DiffusionImageGenerationSimilarity(BaseMetric):
+    def __init__(self) -> None:
+        super().__init__()
 
+        from diffusers import StableDiffusionPipeline
+        from transformers import CLIPProcessor, CLIPModel
+        from torchmetrics.multimodal import CLIPScore
+
+        self._clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
+        self._clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+        self._clip_scorer = CLIPScore(model_name_or_path="openai/clip-vit-base-patch16", kwargs={"truncation": True})
+
+
+        better_model_name = "stabilityai/stable-diffusion-2"
+        worse_model_name = "CompVis/stable-diffusion-v1-4"
+
+        self._better_diffusion_pipeline = StableDiffusionPipeline.from_pretrained(
+            better_model_name, torch_dtype=torch.float16)
+        self._worse_diffusion_pipeline = StableDiffusionPipeline.from_pretrained(
+            worse_model_name, torch_dtype=torch.float16)
+
+        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self._device = f"cuda:{torch.cuda.device_count() - 1}"
+
+        self._better_diffusion_pipeline.to(self._device)
+        self._worse_diffusion_pipeline.to(self._device)
+
+    def _clip_score_image_image(self,
+                                images1: Union[Tensor, List[Tensor]],
+                                images2: Union[Tensor, List[Tensor]],
+                                text: Union[str, List[str]],
+                                ) -> Tuple[Tensor, float]:
+        """
+        Doesn't do text-image similarity, does image-image similarity
+        :param images1:
+        :param images2:
+        :param text:
+        :return:
+        """
+
+        # TODO I think this is slow!
+        processed_input1 = self._clip_processor(
+            text="DUMMY TEXT NOT USED", images=[i.cpu() for i in images1], return_tensors="pt", padding=True
+        )
+
+        # TODO I think this is slow!
+        processed_input2 = self._clip_processor(
+            text="DUMMY TEXT NOT USED", images=[i.cpu() for i in images2], return_tensors="pt", padding=True
+        )
+        img_features1 = self._clip_model.get_image_features(processed_input1["pixel_values"].to(self._device))
+        img_features1 = img_features1 / img_features1.norm(p=2, dim=-1, keepdim=True)
+
+        img_features2 = self._clip_model.get_image_features(processed_input2["pixel_values"].to(self._device))
+        img_features2 = img_features1 / img_features2.norm(p=2, dim=-1, keepdim=True)
+        final_scores = torch.nn.cosine_similarity(img_features1, img_features2)
+
+        return final_scores
+
+    def compute(
+        self,
+        prompt_texts: List[str],
+        generated_texts: List[str],
+        reference_texts: List[List[str]],
+        meta_infos: List[Dict[str, Any]] = None,
+        model: PreTrainedModel = None,
+        split_name: str = None,
+    ) -> Tuple[List[float], float]:
+
+        with torch.no_grad():
+            better_generated_images = self._better_diffusion_pipeline(generated_texts)
+            worse_generated_images = self._worse_diffusion_pipeline(generated_texts)
+            image_similarity_scores = self._clip_score_image_image(better_generated_images, worse_generated_images)
+
+        image_similarity_scores = image_similarity_scores.numpy()
+        batch_mean_score = np.mean(image_similarity_scores)
+        metric_dict = {"diffusion_image_similarity_score": (image_similarity_scores.tolist(), batch_mean_score)}
+
+        return metric_dict
 
 if __name__ == "__main__":
     prompt_texts = [""]
