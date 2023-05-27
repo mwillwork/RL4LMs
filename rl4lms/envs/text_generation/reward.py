@@ -18,7 +18,7 @@ from rl4lms.envs.text_generation.metric import (
     IntentAccuracyDailyDialogNoisy,
     IntentAccuracyDailyDialogConditional,
     IntentAccuracyDailyDialogPlusDECODEMetric,
-    DiffusionImageGenerationSimilarity
+    DiffusionImageGenerationSimilarityMetric
     )
 import numpy as np
 from typing import List, Dict, Any
@@ -557,9 +557,9 @@ class chrF(RewardFunction):
         return 0
 
 
-class DiffusionSimilarity(BatchedRewardFunction):
+class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
     def __init__(
-        self, shape: bool = True) -> None:
+        self, shape: bool = False) -> None:
         super().__init__()
         self._metric = None
         self._shape = shape
@@ -574,7 +574,7 @@ class DiffusionSimilarity(BatchedRewardFunction):
     ) -> List[float]:
 
         if self._metric is None:
-            self._metric = IntentAccuracyDailyDialog()
+            self._metric = DiffusionImageGenerationSimilarityMetric()
 
         # compute rewards for finished episodes only
         rewards = np.zeros(len(gen_texts))
@@ -584,26 +584,26 @@ class DiffusionSimilarity(BatchedRewardFunction):
         done_ref_texts = []
         done_meta_infos = []
         done_ixs = []
-        for ix, (prompt, gen, ref, meta_info, done) in enumerate(
-            zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
-        ):
-            if done:
-                done_prompt_texts.append(prompt)
-                done_gen_texts.append(gen)
-                done_ref_texts.append(ref)
-                done_meta_infos.append(meta_info)
-                done_ixs.append(ix)
-
-                if self._shape:
-                    score = self._shaping_metric.compute(
-                        done_prompt_texts, done_gen_texts, done_ref_texts
-                    )
-                    rewards[ix] = self._auto_coeff * score["lexical/meteor"][1]
+        # for ix, (prompt, gen, ref, meta_info, done) in enumerate(
+        #     zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
+        # ):
+        #     if done:
+        #         done_prompt_texts.append(prompt)
+        #         done_gen_texts.append(gen)
+        #         done_ref_texts.append(ref)
+        #         done_meta_infos.append(meta_info)
+        #         done_ixs.append(ix)
+        #
+        #         if self._shape:
+        #             score = self._shaping_metric.compute(
+        #                 done_prompt_texts, done_gen_texts, done_ref_texts
+        #             )
+        #             rewards[ix] = self._auto_coeff * score["lexical/meteor"][1]
 
         scores = self._metric.compute(
             done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
-        )["intent/accuracy"][0]
-        rewards[done_ixs] += self._intent_coeff * np.array(scores)
+        )["diffusion_image_similarity_score"][0]
+        rewards[done_ixs] = np.array(scores)
         return rewards.tolist()
 
 

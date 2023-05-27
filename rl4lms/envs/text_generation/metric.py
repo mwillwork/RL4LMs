@@ -999,7 +999,7 @@ class IntentAccuracyDailyDialogPlusDECODEMetric(BaseMetric):
         metric_dict = {"intent/intent_plus_decode_metric": (final_matching_scores.tolist(), final_metric)}
         return metric_dict
 
-class DiffusionImageGenerationSimilarity(BaseMetric):
+class DiffusionImageGenerationSimilarityMetric(BaseMetric):
     def __init__(self) -> None:
         super().__init__()
 

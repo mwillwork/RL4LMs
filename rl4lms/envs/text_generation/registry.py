@@ -44,7 +44,8 @@ from rl4lms.envs.text_generation.metric import (
     TERMetric,
     chrFmetric,
     IntentAccuracyDailyDialog,
-    IntentAccuracyDailyDialogPlusDECODEMetric
+    IntentAccuracyDailyDialogPlusDECODEMetric,
+    DiffusionImageGenerationSimilarityMetric
     )
 
 
@@ -78,7 +79,8 @@ from rl4lms.envs.text_generation.reward import (
     IntentAccuracy,
     IntentAccuracyNoisy,
     IntentAccuracyConditional,
-    IntentAccuracyPlusDECODEReward
+    IntentAccuracyPlusDECODEReward,
+    DiffusionImageGenerationSimilarityReward
     )
 from rl4lms.envs.text_generation.preference_reward import CommonGenPrefRM
 from rl4lms.envs.text_generation.test_datapool import TestTextGenPool
