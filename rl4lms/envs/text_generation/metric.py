@@ -1,5 +1,6 @@
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from transformers import PreTrainedModel
+from transformers import AutoModelForCausalLM
 import torch
 from typing import List, Dict, Tuple, Any
 from abc import abstractmethod
@@ -999,6 +1000,7 @@ class IntentAccuracyDailyDialogPlusDECODEMetric(BaseMetric):
         metric_dict = {"intent/intent_plus_decode_metric": (final_matching_scores.tolist(), final_metric)}
         return metric_dict
 
+
 class DiffusionImageGenerationSimilarityMetric(BaseMetric):
     def __init__(self) -> None:
         super().__init__()
@@ -1077,6 +1079,56 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         metric_dict = {"diffusion_image_similarity_score": (image_similarity_scores.tolist(), batch_mean_score)}
 
         return metric_dict
+
+
+class GPT2Perplexity(BaseMetric):
+    def __init__(
+        self,
+        stride: int,
+    ) -> None:
+        super().__init__()
+        self._tokenizer = AutoTokenizer.from_pretrained("gpt2")
+
+        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self._device = f"cuda:{torch.cuda.device_count() - 1}"
+
+        self._gpt2_model = AutoModelForCausalLM.from_pretrained("gpt2")
+        self._gpt2_model.to(self._device)
+        self._stride = stride
+
+    def get_device(self, model: PreTrainedModel):
+        try:
+            return model.transformer.first_device
+        except:
+            return model.device
+
+    def compute(
+        self,
+        prompt_texts: List[str],
+        generated_texts: List[str],
+        reference_texts: List[List[str]],
+        meta_infos: List[Dict[str, Any]] = None,
+        model: PreTrainedModel = None,
+        split_name: str = None,
+    ) -> Tuple[List[float], float]:
+
+
+        input_texts = [p + " " + g.strip() for (p, g) in zip(prompt_texts, generated_texts)]
+        encodings = self._tokenizer(input_texts, return_tensors="pt", padding=True)
+
+        with torch.no_grad():
+            seq_lengths = float(encodings.shape[-1])
+            outputs = self._gpt2_model("", labels=input_texts.to(self._device))
+            neg_log_likelihood = outputs / seq_lengths
+            probs = torch.exp(neg_log_likelihood)
+
+        return {
+            "fluency_metrics/gpt2_ppl": (
+                probs,
+                np.mean(probs)
+            )
+        }
+
 
 if __name__ == "__main__":
 
