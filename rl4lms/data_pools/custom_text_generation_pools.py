@@ -585,7 +585,37 @@ class DiffusionTextPrompts(TextGenPool):
     @classmethod
     def prepare(cls, split: str, arg1: int = 0.0):
         split = CommonGen.gen_split_name(split)
-        dataset = load_dataset("daily_dialog", split=split)
+        PROMPT_FILE = "/home/ubuntu/RL4LMs/rl4lms/data_pools/captions_cs224r_exp_1.jsonl"
+        prompt_samples = []
+        with open(PROMPT_FILE) as f:
+            lines  = f.readlines()
+            for idx, ln in enumerate(lines):
+                json_data = json.loads(ln)
+                sm = Sample(id=f"prompt_{idx}",
+                            prompt_or_input_text=json_data["caption"],
+                            references=["NOT USED"],
+                            meta_data= {})
+                prompt_samples.append(sm)
+
+        # These splits are derived from the small test of 676 prompts
+        # TODO: put in a larger set of prompts!
+        if split == "train":
+            # all but the last 100
+            final_samples = prompt_samples[0:-100]
+        elif split == "validation":     # "val" turns into "validation"
+            # second to last set of 50
+            # TODO: put back to 50!
+            final_samples = prompt_samples[-100:-90]
+            # final_samples = prompt_samples[-100:-50]
+        elif split == "test":
+            # last set of 50
+            final_samples = prompt_samples[-50:]
+        else:
+            raise Exception(f"Unknown split {split}!")
+
+        print(f"Found {len(final_samples)} final sample prompts for {split} split.")
+        dp_instance = cls(final_samples)
+        return dp_instance
 
 
 if __name__ == "__main__":
@@ -594,7 +624,8 @@ if __name__ == "__main__":
     dp = DailyDialog.prepare("val", 5)
     print(dp[0])
 
-    d = DiffusionTextPrompts("val")
+    print("About to prepare DiffusionTextPrompts")
+    d = DiffusionTextPrompts.prepare("val")
     print(d[0])
 
     
