@@ -37,6 +37,7 @@ def evaluate_on_samples(
     all_prompt_texts = []
     all_meta_infos = []
     n_samples = len(samples)
+    print(f"In evaluation_utils - split: {split_name}, n_samples: {n_samples}, batch_size: {batch_size}")
     for batch in tqdm(list(get_batch(samples, batch_size)), desc="Evaluating"):
         batch_generated_texts = generate_text(
             policy, tokenizer, batch, max_prompt_length, dt_control_token, gen_kwargs
@@ -93,6 +94,7 @@ def evaluate_on_samples(
     if tracker is not None:
         # log the entire predictions
         tracker.log_predictions(epoch, split_name, sample_predictions_dict)
+        print(f"corpus_level_metrics: {corpus_level_metrics}")
         # log the corpus level scores
         tracker.log_metrics(epoch, split_name, corpus_level_metrics)
 

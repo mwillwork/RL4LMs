@@ -20,6 +20,7 @@ from rl4lms.data_pools.custom_text_generation_pools import (
     WMT14PreprocessedEnDe,
     WMT16NewsOnlyDatasetEnDe,
     DailyDialog,
+    DiffusionTextPrompts
 )
 from rl4lms.data_pools.text_generation_pool import TextGenPool
 from rl4lms.envs.text_generation.alg_wrappers import wrap_onpolicy_alg
@@ -106,7 +107,8 @@ class DataPoolRegistry:
         "iwslt2017en_de": IWSLT2017EnDe,
         "crd3": CRD3DialogueGeneration,
         "daily_dialog": DailyDialog,
-    }
+        "diffusion_text_prompts": DiffusionTextPrompts
+        }
 
     @classmethod
     def get(cls, datapool_id: str, kwargs: Dict[str, Any]) -> TextGenPool:
@@ -181,7 +183,7 @@ class MetricRegistry:
         "chrf": chrFmetric,
         "intent_accuracy": IntentAccuracyDailyDialog,
         "intent_plus_decode_metric": IntentAccuracyDailyDialogPlusDECODEMetric,
-        "diffusion_image_similarity_score": DiffusionImageGenerationSimilarityMetric
+        "diffusion_image_similarity_metric": DiffusionImageGenerationSimilarityMetric
     }
 
     @classmethod

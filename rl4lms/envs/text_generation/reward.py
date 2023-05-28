@@ -1,9 +1,11 @@
 from abc import ABC, abstractclassmethod
-
+from typing import List, Tuple, Union
+from torch import Tensor
 import torch
 from datasets import load_metric
 from rl4lms.envs.text_generation.observation import Observation
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from transformers import AutoModelForCausalLM
 from rl4lms.envs.text_generation.metric import (
     CIDERMetric,
     MeteorMetric,
@@ -14,6 +16,7 @@ from rl4lms.envs.text_generation.metric import (
     RougeLMax,
     TERMetric,
     chrFmetric,
+    Perplexity,
     IntentAccuracyDailyDialog,
     IntentAccuracyDailyDialogNoisy,
     IntentAccuracyDailyDialogConditional,
@@ -558,9 +561,13 @@ class chrF(RewardFunction):
 
 
 class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
-    def __init__(self, arg1: float = 0.0) -> None:
+    def __init__(self, shape: bool = True, arg1: float = 0.0) -> None:
         super().__init__()
         self._metric = None
+        self._shape = shape
+        self._ppl_coeff = 0.3
+        self._shaping_metric = Perplexity(stride=128, tokenizer_id="gpt2")
+        self._gpt2_model = AutoModelForCausalLM.from_pretrained("gpt2")
 
     def __call__(
         self,
@@ -582,26 +589,34 @@ class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
         done_ref_texts = []
         done_meta_infos = []
         done_ixs = []
-        # for ix, (prompt, gen, ref, meta_info, done) in enumerate(
-        #     zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
-        # ):
-        #     if done:
-        #         done_prompt_texts.append(prompt)
-        #         done_gen_texts.append(gen)
-        #         done_ref_texts.append(ref)
-        #         done_meta_infos.append(meta_info)
-        #         done_ixs.append(ix)
-        #
-        #         if self._shape:
-        #             score = self._shaping_metric.compute(
-        #                 done_prompt_texts, done_gen_texts, done_ref_texts
-        #             )
-        #             rewards[ix] = self._auto_coeff * score["lexical/meteor"][1]
+        for ix, (prompt, gen, ref, meta_info, done) in enumerate(
+             zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
+        ):
+             if done:
+                 done_prompt_texts.append(prompt)
+                 done_gen_texts.append(gen)
+                 done_ref_texts.append(ref)
+                 done_meta_infos.append(meta_info)
+                 done_ixs.append(ix)
+        
+                 if self._shape:
+                     score = self._shaping_metric.compute(
+                         done_prompt_texts, done_gen_texts, done_ref_texts,
+                         done_meta_infos, model=self._gpt2_model
+                     )
+                     ppl_score = torch.exp(-score["fluency_metrics/perplexity"][1])
+                     print(f"ppl_score: {ppl_score}")
+                     rewards[ix] = self._ppl_coeff * ppl_score
 
-        scores = self._metric.compute(
+        scores_dict = self._metric.compute(
             done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
-        )["diffusion_image_similarity_score"][0]
-        rewards[done_ixs] = np.array(scores)
+        )
+        done_scores = scores_dict["diffusion_image_similarity_score"]
+        try:
+            rewards[done_ixs] +=  (1 - self._ppl_coeff) * np.array(done_scores)
+        except:
+            import pdb;pdb.set_trace()
+        print(f"Got rewards: {rewards}, len(rewards): {len(rewards)}, mean: {np.mean(rewards)}")
         return rewards.tolist()
 
 
@@ -840,36 +855,38 @@ if __name__ == "__main__":
         None, None, None, None, None, predictions, references, None, None, None, None
     )
 
-    reward_fn = IntentAccuracyPlusDECODEReward(decode_weight=0.5)
+    reward_fn = DiffusionImageGenerationSimilarityReward()
+    # reward_fn = IntentAccuracyPlusDECODEReward(decode_weight=0.5)
     prompt_text = ["kenobi star wars"]
     meta_infos = [{"intent":[2]}]
 
 
-    print(reward_fn(prompt_text, predictions, references, [True], meta_infos))
+    outputs = reward_fn(prompt_text, predictions, references, [True], meta_infos)
+    print(f"Got output of reward function: {outputs}")
 
-    reward_fn = MeteorRewardFunction()
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = MeteorRewardFunction()
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = chrF()
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = chrF()
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = RougeCombined()
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = RougeCombined()
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = RougeRewardFunction(rouge_type="rouge1")
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = RougeRewardFunction(rouge_type="rouge1")
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = RougeRewardFunction(rouge_type="rouge2")
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = RougeRewardFunction(rouge_type="rouge2")
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = RougeRewardFunction(rouge_type="rougeL")
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = RougeRewardFunction(rouge_type="rougeL")
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = BERTScoreRewardFunction(language="en")
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = BERTScoreRewardFunction(language="en")
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = BLEURewardFunction()
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = BLEURewardFunction()
+    # print(reward_fn(None, None, observation, True))
 
-    reward_fn = BLEURTRewardFunction()
-    print(reward_fn(None, None, observation, True))
+    # reward_fn = BLEURTRewardFunction()
+    # print(reward_fn(None, None, observation, True))

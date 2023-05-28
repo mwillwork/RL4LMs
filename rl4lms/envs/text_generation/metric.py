@@ -1,6 +1,11 @@
+import os
+from datetime import datetime as dt
+from typing import List, Tuple, Union
+from torch import Tensor
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from transformers import PreTrainedModel
 import torch
+import torch.nn.functional as F
 from typing import List, Dict, Tuple, Any
 from abc import abstractmethod
 import numpy as np
@@ -1003,6 +1008,7 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
     def __init__(self) -> None:
         super().__init__()
 
+        print("Creating new DiffusionImageGenerationSimilarityMetric (and new diffusion models!)")
         from diffusers import StableDiffusionPipeline
         from transformers import CLIPProcessor, CLIPModel
         from torchmetrics.multimodal import CLIPScore
@@ -1010,8 +1016,7 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         self._clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
         self._clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
         self._clip_scorer = CLIPScore(model_name_or_path="openai/clip-vit-base-patch16", kwargs={"truncation": True})
-
-
+    
         better_model_name = "stabilityai/stable-diffusion-2"
         worse_model_name = "CompVis/stable-diffusion-v1-4"
 
@@ -1023,37 +1028,31 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         self._device = "cuda" if torch.cuda.is_available() else "cpu"
         self._device = f"cuda:{torch.cuda.device_count() - 1}"
 
+        self._clip_model.to(self._device)
+        
         self._better_diffusion_pipeline.to(self._device)
         self._worse_diffusion_pipeline.to(self._device)
 
     def _clip_score_image_image(self,
                                 images1: Union[Tensor, List[Tensor]],
                                 images2: Union[Tensor, List[Tensor]],
-                                text: Union[str, List[str]],
                                 ) -> Tuple[Tensor, float]:
         """
         Doesn't do text-image similarity, does image-image similarity
         :param images1:
         :param images2:
-        :param text:
         :return:
         """
+        
+        proc_images1 = self._clip_processor(text=None, images=images1, return_tensors="pt",  padding=True)
+        proc_images2 = self._clip_processor(text=None, images=images2, return_tensors="pt",  padding=True)
 
-        # TODO I think this is slow!
-        processed_input1 = self._clip_processor(
-            text="DUMMY TEXT NOT USED", images=[i.cpu() for i in images1], return_tensors="pt", padding=True
-        )
-
-        # TODO I think this is slow!
-        processed_input2 = self._clip_processor(
-            text="DUMMY TEXT NOT USED", images=[i.cpu() for i in images2], return_tensors="pt", padding=True
-        )
-        img_features1 = self._clip_model.get_image_features(processed_input1["pixel_values"].to(self._device))
+        img_features1 = self._clip_model.get_image_features(proc_images1["pixel_values"].to(self._device))
         img_features1 = img_features1 / img_features1.norm(p=2, dim=-1, keepdim=True)
 
-        img_features2 = self._clip_model.get_image_features(processed_input2["pixel_values"].to(self._device))
-        img_features2 = img_features1 / img_features2.norm(p=2, dim=-1, keepdim=True)
-        final_scores = torch.nn.cosine_similarity(img_features1, img_features2)
+        img_features2 = self._clip_model.get_image_features(proc_images2["pixel_values"].to(self._device))
+        img_features2 = img_features2 / img_features2.norm(p=2, dim=-1, keepdim=True)
+        final_scores = F.cosine_similarity(img_features1, img_features2)
 
         return final_scores
 
@@ -1067,13 +1066,37 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         split_name: str = None,
     ) -> Tuple[List[float], float]:
 
+        METRIC_BS = 8
         with torch.no_grad():
-            better_generated_images = self._better_diffusion_pipeline(generated_texts)
-            worse_generated_images = self._worse_diffusion_pipeline(generated_texts)
-            image_similarity_scores = self._clip_score_image_image(better_generated_images, worse_generated_images)
+            print(f"Diffusion[..]Metric About to generate: {len(generated_texts)} images in batches of {METRIC_BS}")
+            better_generated_images = []
+            worse_generated_images = []
+            assert len(prompt_texts) == len(generated_texts)
+            for i in range(0, len(generated_texts), METRIC_BS): 
+                prompt_texts_chunk = prompt_texts[i:i+METRIC_BS]
+                generated_texts_chunk = generated_texts[i:i+METRIC_BS]
+                gen_inputs = [ p + " "  + g.strip() for p, g in zip(
+                    prompt_texts_chunk, generated_texts_chunk)]
 
-        image_similarity_scores = image_similarity_scores.numpy()
-        batch_mean_score = np.mean(image_similarity_scores)
+                # goal is for the worst model + text generations to be similar to 
+                # the better model with the original prommpt
+                b = self._better_diffusion_pipeline(prompt_texts_chunk).images
+                better_generated_images.extend(b)
+                w = self._worse_diffusion_pipeline(gen_inputs).images
+                worse_generated_images.extend(w)
+            ts = dt.strftime(dt.now(), format="%y%m%d%H%M%S")
+            better_images_path = "rl4lm_exps/image_generations/better_images/"
+            for idx, img in enumerate(better_generated_images):
+                img.save(os.path.join(better_images_path, f"{ts}_{idx}.png"))
+
+            worse_images_path = "rl4lm_exps/image_generations/worse_images/"
+            for idx, img in enumerate(worse_generated_images):
+                img.save(os.path.join(worse_images_path, f"{ts}_{idx}.png"))
+
+            image_similarity_scores = self._clip_score_image_image(better_generated_images, worse_generated_images)
+            print(f"Saved images to {better_images_path}, {worse_images_path}, image_similarity_scores: {image_similarity_scores}, generated_texts: {generated_texts}") 
+        image_similarity_scores = image_similarity_scores.cpu().numpy()
+        batch_mean_score = float(np.mean(image_similarity_scores))
         metric_dict = {"diffusion_image_similarity_score": (image_similarity_scores.tolist(), batch_mean_score)}
 
         return metric_dict
