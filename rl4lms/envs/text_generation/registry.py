@@ -46,7 +46,8 @@ from rl4lms.envs.text_generation.metric import (
     chrFmetric,
     IntentAccuracyDailyDialog,
     IntentAccuracyDailyDialogPlusDECODEMetric,
-    DiffusionImageGenerationSimilarityMetric
+    DiffusionImageGenerationSimilarityMetric,
+    GPT2Perplexity
     )
 
 
@@ -184,6 +185,7 @@ class MetricRegistry:
         "intent_accuracy": IntentAccuracyDailyDialog,
         "intent_plus_decode_metric": IntentAccuracyDailyDialogPlusDECODEMetric,
         "diffusion_image_similarity_metric": DiffusionImageGenerationSimilarityMetric
+        "gpt2_ppl" : GPT2Perplexity
     }
 
     @classmethod
