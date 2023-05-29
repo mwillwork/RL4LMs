@@ -50,6 +50,7 @@ def main(
             env_config=config["env"],
             on_policy_alg_config=config["alg"],
             train_eval_config=config["train_evaluation"],
+            experiment_name=experiment_name,
             tracker=tracker,
         )
     trainer.train_and_eval()

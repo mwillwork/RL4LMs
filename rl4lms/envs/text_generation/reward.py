@@ -17,6 +17,7 @@ from rl4lms.envs.text_generation.metric import (
     TERMetric,
     chrFmetric,
     Perplexity,
+    GPT2Perplexity,
     IntentAccuracyDailyDialog,
     IntentAccuracyDailyDialogNoisy,
     IntentAccuracyDailyDialogConditional,
@@ -565,9 +566,9 @@ class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
         super().__init__()
         self._metric = None
         self._shape = shape
-        self._ppl_coeff = 0.3
-        self._shaping_metric = Perplexity(stride=128, tokenizer_id="gpt2")
-        self._gpt2_model = AutoModelForCausalLM.from_pretrained("gpt2")
+        self._ppl_coeff = 0.0
+        # self._ppl_coeff = 0.3
+        # self._shaping_metric = GPT2Perplexity(stride=128)
 
     def __call__(
         self,
@@ -581,42 +582,52 @@ class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
         if self._metric is None:
             self._metric = DiffusionImageGenerationSimilarityMetric()
 
-        # compute rewards for finished episodes only
+        # Example gen_texts (only last trajectory is finished): [' a', ' a small', ' a small courtyard', ' a small courtyard in', ' a small courtyard in the', ' a small courtyard in the center', ' a small courtyard in the center of', ' a small courtyard in the center of a', ' a small courtyard in the center of a house', ' a small courtyard in the center of a house.',
         rewards = np.zeros(len(gen_texts))
 
-        done_prompt_texts = []
-        done_gen_texts = []
-        done_ref_texts = []
-        done_meta_infos = []
-        done_ixs = []
-        for ix, (prompt, gen, ref, meta_info, done) in enumerate(
-             zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
-        ):
-             if done:
-                 done_prompt_texts.append(prompt)
-                 done_gen_texts.append(gen)
-                 done_ref_texts.append(ref)
-                 done_meta_infos.append(meta_info)
-                 done_ixs.append(ix)
+        # Commented out because we will not wait until done to give reward
+        # done_prompt_texts = []
+        # done_gen_texts = []
+        #done_ref_texts = []
+        # done_meta_infos = []
+        # done_ixs = []
+        # for ix, (prompt, gen, ref, meta_info, done) in enumerate(
+        #     zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
+        #):
+        #     if done:
+        #         done_prompt_texts.append(prompt)
+        #         done_gen_texts.append(gen)
+        #         done_ref_texts.append(ref)
+        #         done_meta_infos.append(meta_info)
+        #         done_ixs.append(ix)
         
-                 if self._shape:
-                     score = self._shaping_metric.compute(
-                         done_prompt_texts, done_gen_texts, done_ref_texts,
-                         done_meta_infos, model=self._gpt2_model
-                     )
-                     ppl_score = torch.exp(-score["fluency_metrics/perplexity"][1])
-                     print(f"ppl_score: {ppl_score}")
-                     rewards[ix] = self._ppl_coeff * ppl_score
+                 # This works but the the probability is very near 0, unclear how to map to 0 to 1
+                 # if self._shape:
+                 #    score = self._shaping_metric.compute(
+                 #        done_prompt_texts, done_gen_texts, done_ref_texts,
+                 #        done_meta_infos, model=None
+                 #    )
+                 #    ppl_score = torch.exp(-score["fluency_metrics/gpt2_ppl"][1])
+                 #    print(f"ppl_score: {ppl_score}")
+                 #    rewards[ix] = self._ppl_coeff * ppl_score
 
+        # scores_dict = self._metric.compute(
+        #   done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
+        #)
         scores_dict = self._metric.compute(
-            done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
+            prompt_texts, gen_texts, ref_texts, meta_infos
         )
-        done_scores = scores_dict["diffusion_image_similarity_score"]
+        scores = scores_dict["diffusion_image_similarity_score"]
+        batch_scores = torch.tensor(scores[0]).squeeze()      # for some reason, all metrics do .tolist()
+        mean_score = scores[1]
         try:
-            rewards[done_ixs] +=  (1 - self._ppl_coeff) * np.array(done_scores)
-        except:
+            # rewards[done_ixs] +=  (1 - self._ppl_coeff) * np.array(batch_scores)
+            # every "trajectory" adds 1 token per step; give rewards for all not just done ones
+            rewards +=  np.array(batch_scores)
+        except Exception as e: 
+            print(f"Had error in reward function! {e}")
             import pdb;pdb.set_trace()
-        print(f"Got rewards: {rewards}, len(rewards): {len(rewards)}, mean: {np.mean(rewards)}")
+        print(f"Got rewards: {rewards}, len(rewards): {len(rewards)}, mean: {mean_score}")
         return rewards.tolist()
 
 

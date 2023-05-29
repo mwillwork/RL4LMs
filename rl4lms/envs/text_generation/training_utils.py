@@ -60,6 +60,8 @@ def build_datapool(datapool_config: Dict[str, Any]):
     def _get_datapool_by_split(split: str):
         kwargs = datapool_config.get("args", {})
         kwargs["split"] = split
+        if "experiment_name" in datapool_config:
+            kwargs["experiment_name"] = datapool_config["experiment_name"]
         dp_split = DataPoolRegistry.get(datapool_config["id"], kwargs)
         return dp_split
 
@@ -157,6 +159,8 @@ class OnPolicyTrainer(TrainerWarmStartMixin):
         self._reward_fn = build_reward_fn(self._reward_config)
         self._metrics = build_metrics(
             self._train_eval_config.get("metrics", []))
+        # MW ADDED
+        self._datapool_config["experiment_name"] = self._experiment_name
         self._samples_by_split = build_datapool(
             self._datapool_config)
         self._env = build_env(self._env_config, self._reward_fn,
@@ -172,6 +176,7 @@ class OnPolicyTrainer(TrainerWarmStartMixin):
         self._eval_batch_size = self._train_eval_config["eval_batch_size"]
         self._n_iters = int(self._train_eval_config["n_iters"])
         self._n_steps_per_iter = self._env.num_envs * self._alg.n_steps
+        print(f"Got _n_steps_per_iter: {self._n_steps_per_iter}")
 
         # gen kwargs for evaluation (if it is different from rollout gen kwargs)
         self._eval_gen_kwargs = self._train_eval_config.get(

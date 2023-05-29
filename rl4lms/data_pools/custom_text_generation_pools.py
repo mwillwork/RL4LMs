@@ -583,7 +583,7 @@ class DailyDialog(TextGenPool):
 
 class DiffusionTextPrompts(TextGenPool):
     @classmethod
-    def prepare(cls, split: str, arg1: int = 0.0):
+    def prepare(cls, split: str, experiment_name: str, arg1: int = 0.0):
         split = CommonGen.gen_split_name(split)
         PROMPT_FILE = "/home/ubuntu/RL4LMs/rl4lms/data_pools/captions_cs224r_exp_1.jsonl"
         prompt_samples = []
@@ -605,13 +605,20 @@ class DiffusionTextPrompts(TextGenPool):
         elif split == "validation":     # "val" turns into "validation"
             # second to last set of 50
             # TODO: put back to 50!
-            final_samples = prompt_samples[-100:-90]
-            # final_samples = prompt_samples[-100:-50]
+            # final_samples = prompt_samples[-100:-90]
+            final_samples = prompt_samples[-100:-50]
         elif split == "test":
             # last set of 50
             final_samples = prompt_samples[-50:]
         else:
             raise Exception(f"Unknown split {split}!")
+
+        assert experiment_name != "" and experiment_name is not None
+        print(f"Got experiment_name: {experiment_name}")
+        for idx in range(len(final_samples)):
+            final_samples[idx].meta_data = {"split": split, 
+                                            "id": final_samples[idx].id,
+                                            "experiment_name": experiment_name}
 
         print(f"Found {len(final_samples)} final sample prompts for {split} split.")
         dp_instance = cls(final_samples)

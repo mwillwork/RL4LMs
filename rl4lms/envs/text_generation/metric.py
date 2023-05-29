@@ -1,4 +1,5 @@
 import os
+import json
 from datetime import datetime as dt
 from typing import List, Tuple, Union
 from torch import Tensor
@@ -1068,35 +1069,78 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         split_name: str = None,
     ) -> Tuple[List[float], float]:
 
-        METRIC_BS = 8
+        METRIC_BS = 12
         with torch.no_grad():
             print(f"Diffusion[..]Metric About to generate: {len(generated_texts)} images in batches of {METRIC_BS}")
-            better_generated_images = []
-            worse_generated_images = []
-            assert len(prompt_texts) == len(generated_texts)
-            for i in range(0, len(generated_texts), METRIC_BS): 
-                prompt_texts_chunk = prompt_texts[i:i+METRIC_BS]
-                generated_texts_chunk = generated_texts[i:i+METRIC_BS]
-                gen_inputs = [ p + " "  + g.strip() for p, g in zip(
-                    prompt_texts_chunk, generated_texts_chunk)]
+            image_similarity_scores = torch.zeros((len(generated_texts), )) 
+            HACK_SKIP_IMAGE_GENERATION = False  # HACK FOR TESTING ONLY! GIVES GARBAGE RESULTS!
+            if not HACK_SKIP_IMAGE_GENERATION:
+                save_data = []
+                exp_name = meta_infos[0]["experiment_name"] # MW hacked to add this
+                assert len(prompt_texts) == len(generated_texts)
 
-                # goal is for the worst model + text generations to be similar to 
-                # the better model with the original prommpt
-                b = self._better_diffusion_pipeline(prompt_texts_chunk).images
-                better_generated_images.extend(b)
-                w = self._worse_diffusion_pipeline(gen_inputs).images
-                worse_generated_images.extend(w)
-            ts = dt.strftime(dt.now(), format="%y%m%d%H%M%S")
-            better_images_path = "rl4lm_exps/image_generations/better_images/"
-            for idx, img in enumerate(better_generated_images):
-                img.save(os.path.join(better_images_path, f"{ts}_{idx}.png"))
+                ts = dt.strftime(dt.now(), format="%y%m%d%H%M%S")
+                path_stub = f"rl4lm_exps/{exp_name}/image_generations/{split_name}/{ts}"
+                
+                for i in range(0, len(generated_texts), METRIC_BS): 
+                    prompt_texts_chunk = prompt_texts[i:i+METRIC_BS]
+                    generated_texts_chunk = generated_texts[i:i+METRIC_BS]
+                    combined_texts_chunk = [ p + " "  + g.strip() for p, g in zip(
+                        prompt_texts_chunk, generated_texts_chunk)]
+                    meta_infos_chunk = meta_infos[i:i+METRIC_BS]
 
-            worse_images_path = "rl4lm_exps/image_generations/worse_images/"
-            for idx, img in enumerate(worse_generated_images):
-                img.save(os.path.join(worse_images_path, f"{ts}_{idx}.png"))
+                    # generate METRIC_BS group of images
+                    # goal is for the worst model + text generations to be similar to 
+                    # the better model with the original prommpt
+                    # Note: if you pass smaller width and height especially SD-v2.1 is terrible (not usable)
+                    better_generated_images = self._better_diffusion_pipeline(
+                            prompt_texts_chunk).images
+                    worse_generated_images = self._worse_diffusion_pipeline(
+                            combined_texts_chunk).images
+                    
+                    image_similarity_scores_chunk = self._clip_score_image_image(
+                        better_generated_images, worse_generated_images)
+                    image_similarity_scores[i:i+METRIC_BS] = image_similarity_scores_chunk
 
-            image_similarity_scores = self._clip_score_image_image(better_generated_images, worse_generated_images)
-            print(f"Saved images to {better_images_path}, {worse_images_path}, image_similarity_scores: {image_similarity_scores}, generated_texts: {generated_texts}") 
+                    if split_name == "val" or split_name == "test":
+                        better_images_path = f"{path_stub}/better_images/"
+                        worse_images_path = f"{path_stub}/worse_images/"
+                        if not os.path.exists(better_images_path):
+                            print(f"Had to create path {better_images_path}")
+                            os.makedirs(better_images_path)
+                        if not os.path.exists(worse_images_path):
+                            print(f"Had to create path: {worse_images_path}")
+                            os.makedirs(worse_images_path)
+
+                        chunk_size = min(METRIC_BS, len(prompt_texts_chunk))
+                        for i_chunk in range(chunk_size):
+                            image_id = meta_infos_chunk[i_chunk]["id"]
+                            better_path = os.path.join(better_images_path, f"{image_id}_better.png")
+                            worse_path = os.path.join(worse_images_path, f"{image_id}_worse.png")
+                            better_generated_images[i_chunk].save(better_path)
+                            worse_generated_images[i_chunk].save(worse_path)
+                        
+                            generation_data = {
+                                "split": split_name,
+                                "experiment_name": exp_name,
+                                "image_id": image_id,
+                                "better_image_path": better_path,
+                                "worse_image_path": worse_path,
+                                "text_prompt": prompt_texts_chunk[i_chunk],
+                                "text_generation": generated_texts_chunk[i_chunk],
+                                "text_combined": combined_texts_chunk[i_chunk],
+                                "image_similarity_score": image_similarity_scores_chunk[i_chunk].item()
+                            }
+                            generation_data_path = f"{path_stub}/generation_data.jsonl"
+                            with open(generation_data_path, "a") as f:
+                                f.write(json.dumps(generation_data) + '/n')
+
+                        print(f"Saved {METRIC_BS} each of {split_name} images to better: {better_images_path} and worse: {worse_images_path} and generation data to: {generation_data_path}")
+            else:
+                print("WARNING: SKIPPING IMAGE GENERATION!! RESULTS WILL BE GARBAGE!")
+                image_similarity_scores = torch.ones((len(generated_texts), 1))*0.01
+
+            print(f"Metric calculated image_similarity_scores: {image_similarity_scores}, generated_texts: {generated_texts}") 
         image_similarity_scores = image_similarity_scores.cpu().numpy()
         batch_mean_score = float(np.mean(image_similarity_scores))
         metric_dict = {"diffusion_image_similarity_score": (image_similarity_scores.tolist(), batch_mean_score)}
@@ -1137,13 +1181,16 @@ class GPT2Perplexity(BaseMetric):
 
 
         input_texts = [p + " " + g.strip() for (p, g) in zip(prompt_texts, generated_texts)]
-        encodings = self._tokenizer(input_texts, return_tensors="pt", padding=True)
+        encodings = self._tokenizer(input_texts, return_tensors="pt")
 
         with torch.no_grad():
-            seq_lengths = float(encodings.shape[-1])
-            outputs = self._gpt2_model("", labels=input_texts.to(self._device))
-            neg_log_likelihood = outputs / seq_lengths
-            probs = torch.exp(neg_log_likelihood)
+            # This could should run but the problem is that the probabilities are super small
+            # Maybe use the beam search length penalty, but unclear how to map it from 0 to 10  
+            outputs = self._gpt2_model(**encodings.to(self._device))
+            nll_probs = torch.gather(outputs["logits"], dim=-1, index=encodings["input_ids"].unsqueeze(1))
+            seq_lengths = float(encodings["input_ids"].shape[-1])
+            avg_nll_prob =   torch.sum(nll_probs) / seq_lengths
+            probs = torch.exp(avg_nll_prob)
 
         return {
             "fluency_metrics/gpt2_ppl": (

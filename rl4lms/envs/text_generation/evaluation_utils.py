@@ -38,7 +38,7 @@ def evaluate_on_samples(
     all_meta_infos = []
     n_samples = len(samples)
     print(f"In evaluation_utils - split: {split_name}, n_samples: {n_samples}, batch_size: {batch_size}")
-    for batch in tqdm(list(get_batch(samples, batch_size)), desc="Evaluating"):
+    for batch in tqdm(list(get_batch(samples, batch_size)), desc="Evaluating (Generating)"):
         batch_generated_texts = generate_text(
             policy, tokenizer, batch, max_prompt_length, dt_control_token, gen_kwargs
         )
@@ -49,6 +49,8 @@ def evaluate_on_samples(
         all_ref_texts.extend(batch_ref_texts)
         all_prompt_texts.extend(batch_prompt_texts)
         all_meta_infos.extend(batch_meta_infos)
+
+    print(f"In evaluation_utils - split: {split_name}, about to compute metrics for {len(all_generated_texts)} generated texts")
 
     # compute metrics
     corpus_level_metrics = {}

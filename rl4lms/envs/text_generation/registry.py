@@ -184,7 +184,7 @@ class MetricRegistry:
         "chrf": chrFmetric,
         "intent_accuracy": IntentAccuracyDailyDialog,
         "intent_plus_decode_metric": IntentAccuracyDailyDialogPlusDECODEMetric,
-        "diffusion_image_similarity_metric": DiffusionImageGenerationSimilarityMetric
+        "diffusion_image_similarity_metric": DiffusionImageGenerationSimilarityMetric,
         "gpt2_ppl" : GPT2Perplexity
     }
 
