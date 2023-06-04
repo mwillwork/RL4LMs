@@ -61,6 +61,7 @@ def build_datapool(datapool_config: Dict[str, Any]):
         kwargs = datapool_config.get("args", {})
         kwargs["split"] = split
         if "experiment_name" in datapool_config:
+            print(f"Found datapool_config with experiment_name: {datapool_config['experiment_name']}")
             kwargs["experiment_name"] = datapool_config["experiment_name"]
         dp_split = DataPoolRegistry.get(datapool_config["id"], kwargs)
         return dp_split

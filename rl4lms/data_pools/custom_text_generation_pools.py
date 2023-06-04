@@ -583,7 +583,7 @@ class DailyDialog(TextGenPool):
 
 class DiffusionTextPrompts(TextGenPool):
     @classmethod
-    def prepare(cls, split: str, experiment_name: str, arg1: int = 0.0):
+    def _inner_prepare(cls, split: str, experiment_name: str, arg1: int = 0.0):
         split = CommonGen.gen_split_name(split)
         PROMPT_FILE = "/home/ubuntu/RL4LMs/rl4lms/data_pools/captions_cs224r_exp_1.jsonl"
         prompt_samples = []
@@ -593,8 +593,12 @@ class DiffusionTextPrompts(TextGenPool):
                 json_data = json.loads(ln)
                 sm = Sample(id=f"prompt_{idx}",
                             prompt_or_input_text=json_data["caption"],
-                            references=["NOT USED"],
-                            meta_data= {})
+                            references=[json_data["caption"]],
+                            meta_data= {
+                                "split": split, # Labels all samples as {split}, but use only a subset below
+                                "topic": json_data["topic"],
+                                "id": f"prompt_{idx}",
+                                "experiment_name": experiment_name})
                 prompt_samples.append(sm)
 
         # These splits are derived from the small test of 676 prompts
@@ -614,13 +618,96 @@ class DiffusionTextPrompts(TextGenPool):
             raise Exception(f"Unknown split {split}!")
 
         assert experiment_name != "" and experiment_name is not None
-        print(f"Got experiment_name: {experiment_name}")
-        for idx in range(len(final_samples)):
-            final_samples[idx].meta_data = {"split": split, 
-                                            "id": final_samples[idx].id,
-                                            "experiment_name": experiment_name}
+        print(f"Found experiment_name: {experiment_name} with {len(final_samples)} final sample prompts for {split} split.")
+        return final_samples
 
-        print(f"Found {len(final_samples)} final sample prompts for {split} split.")
+    @classmethod
+    def prepare(cls, split: str, experiment_name: str, arg1: int = 0.0):
+        final_samples = DiffusionTextPrompts._inner_prepare(split, experiment_name, arg1)
+        dp_instance = cls(final_samples)
+        return dp_instance
+
+class DiffusionTextPromptsOverfitOne(TextGenPool):
+    @classmethod
+    def prepare(cls, split: str, experiment_name: str, arg1: int = 0.0):
+        # NOTE: we intentionally override the split to be train and return the same 1 example for all splits
+        all_samples = DiffusionTextPrompts._inner_prepare("train", experiment_name)
+        s = all_samples[456]        
+        final_samples = [s]
+        # Need to average over more than one generation
+        if split == "val" or split == "test":
+            final_samples = [s for i in range(0, 10)]
+        dp_instance = cls(final_samples)
+        return dp_instance
+
+PICTIONARY_PROMPT = "Q: You are playing a game where you must help a friend guess a topic that only you are given. \
+You must give a description that does not use the word given in the topic itself.\n \
+Topic: dog\n \
+A: Man's best friend\n \
+\n \
+Q: You are playing a game where you must help a friend guess a topic that only you are given. \
+You must give a description that does not use the word given in the topic itself.\n \
+Topic: chair \n \
+A: something you sit on\n \
+\n \
+Q: You are playing a game where you must help a friend guess a topic that only you are given. \
+You must give a description that does not use the word given in the topic itself.\n \
+Topic: baby\n \
+A: a small human less than one year old\n \
+\n \
+Q: You are playing a game where you must help a friend guess a topic that only you are given. \
+You must give a description that does not use the word given in the topic itself.\n \
+Topic: {topic}\n \
+A:"
+
+
+class PictionaryDataset(TextGenPool):
+    @classmethod
+    def prepare(cls, split: str, experiment_name: str, arg1: int = 0.0):
+        split = CommonGen.gen_split_name(split)
+        CAPTIONS_TOPICS_FILE = "/home/ubuntu/RL4LMs/rl4lms/data_pools/captions_cs224r_exp_1.jsonl"
+        prompt_samples = []
+        with open(CAPTIONS_TOPICS_FILE) as f:
+            lines  = f.readlines()
+            for idx, ln in enumerate(lines):
+                json_data = json.loads(ln)
+                topic = json_data["topic"]
+                print(f"Got topic: {topic}")
+                final_prompt = PICTIONARY_PROMPT.format(topic=topic)
+                sm = Sample(id=f"prompt_{idx}",
+                            prompt_or_input_text = final_prompt,
+                            # references=[json_data["caption"]],
+                            references=[topic],
+                            meta_data= {
+                                "split": split, # Labels all samples {split}, but select subset below
+                                "topic": topic,
+                                "id": f"prompt_{idx}",
+                                "experiment_name": experiment_name})
+                prompt_samples.append(sm)
+
+
+        all_samples = prompt_samples
+        final_samples = []
+
+        # These splits are derived from the small test of 676 prompts
+        # TODO: put in a larger set of prompts!
+        if split == "train":
+            # all but the last 100
+            final_samples = prompt_samples[0:-100]
+        elif split == "validation":     # "val" turns into "validation"
+            # second to last set of 50
+            # TODO: put back to 50!
+            # final_samples = prompt_samples[-100:-90]
+            final_samples = prompt_samples[-100:-50]
+        elif split == "test":
+            # last set of 50
+            final_samples = prompt_samples[-50:]
+        else:
+            raise Exception(f"Unknown split {split}!")
+
+        assert experiment_name != "" and experiment_name is not None
+        print(f"Pictionary dataset: Found experiment_name: {experiment_name} with {len(final_samples)} final sample prompts for {split} split.")
+
         dp_instance = cls(final_samples)
         return dp_instance
 

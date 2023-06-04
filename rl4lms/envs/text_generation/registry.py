@@ -20,7 +20,9 @@ from rl4lms.data_pools.custom_text_generation_pools import (
     WMT14PreprocessedEnDe,
     WMT16NewsOnlyDatasetEnDe,
     DailyDialog,
-    DiffusionTextPrompts
+    DiffusionTextPrompts,
+    DiffusionTextPromptsOverfitOne,
+    PictionaryDataPool
 )
 from rl4lms.data_pools.text_generation_pool import TextGenPool
 from rl4lms.envs.text_generation.alg_wrappers import wrap_onpolicy_alg
@@ -47,6 +49,7 @@ from rl4lms.envs.text_generation.metric import (
     IntentAccuracyDailyDialog,
     IntentAccuracyDailyDialogPlusDECODEMetric,
     DiffusionImageGenerationSimilarityMetric,
+    PictionaryMetric,
     GPT2Perplexity
     )
 
@@ -82,8 +85,10 @@ from rl4lms.envs.text_generation.reward import (
     IntentAccuracyNoisy,
     IntentAccuracyConditional,
     IntentAccuracyPlusDECODEReward,
-    DiffusionImageGenerationSimilarityReward
+    DiffusionImageGenerationSimilarityReward,
+    PictionaryReward
     )
+
 from rl4lms.envs.text_generation.preference_reward import CommonGenPrefRM
 from rl4lms.envs.text_generation.test_datapool import TestTextGenPool
 from rl4lms.envs.text_generation.test_metric import DateInText, IncreasingNumbersinText
@@ -108,7 +113,9 @@ class DataPoolRegistry:
         "iwslt2017en_de": IWSLT2017EnDe,
         "crd3": CRD3DialogueGeneration,
         "daily_dialog": DailyDialog,
-        "diffusion_text_prompts": DiffusionTextPrompts
+        "diffusion_text_prompts": DiffusionTextPrompts,
+        "diffusion_text_prompts_overfit_one": DiffusionTextPromptsOverfitOne
+        "pictionary_datapool": PictionaryDataPool,
         }
 
     @classmethod
@@ -146,7 +153,8 @@ class RewardFunctionRegistry:
         "intent_accuracy_conditional": IntentAccuracyConditional,
         "common_gen_preference_model": CommonGenPrefRM,
         "intent_plus_decode_reward": IntentAccuracyPlusDECODEReward,
-        "diffusion_image_similarity_reward": DiffusionImageGenerationSimilarityReward
+        "diffusion_image_similarity_reward": DiffusionImageGenerationSimilarityReward,
+        "pictionary_reward": PictionaryReward
     }
 
     @classmethod
@@ -185,6 +193,7 @@ class MetricRegistry:
         "intent_accuracy": IntentAccuracyDailyDialog,
         "intent_plus_decode_metric": IntentAccuracyDailyDialogPlusDECODEMetric,
         "diffusion_image_similarity_metric": DiffusionImageGenerationSimilarityMetric,
+        "pictionary_metric": PictionaryMetric,
         "gpt2_ppl" : GPT2Perplexity
     }
 

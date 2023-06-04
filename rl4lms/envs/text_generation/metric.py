@@ -1,4 +1,5 @@
 import os
+from PIL import Image, PngImagePlugin
 import json
 from datetime import datetime as dt
 from typing import List, Tuple, Union
@@ -23,7 +24,10 @@ from rl4lms.data_pools.custom_text_generation_pools import DailyDialog
 from tqdm import tqdm
 import copy
 import rouge
+import logging
 
+logging.getLogger('PIL').setLevel(logging.INFO)
+# PngImagePlugin.DEBUG = False
 
 class BaseMetric:
     @abstractmethod
@@ -1006,12 +1010,72 @@ class IntentAccuracyDailyDialogPlusDECODEMetric(BaseMetric):
         metric_dict = {"intent/intent_plus_decode_metric": (final_matching_scores.tolist(), final_metric)}
         return metric_dict
 
-
-class DiffusionImageGenerationSimilarityMetric(BaseMetric):
+class PictionaryMetric(BaseMetric):
     def __init__(self) -> None:
         super().__init__()
+        print("Creating new PictionaryMetric (and new diffusion models!)")
+        from diffusers import StableDiffusionPipeline
+        from transformers import ViTForImageClassification
+        from transformers import ViTFeatureExtractor
 
+        # create the diffusion model
+        diffusion_model_name = "stabilityai/stable-diffusion-2"
+        self._diffusion_model = StableDiffusionPipeline.from_pretrained(
+            diffusion_model_name, torch_dtype=torch.float16)
+        self._diffusion_model.to("cuda")
+
+        # create the classifier model
+        classifier_model_name = 'google/vit-base-patch16-224-in21k'
+        self._classifier_feature_extractor = ViTFeatureExtractor.from_pretrained(
+            classifier_model_name)
+        # TODO: get the list of classifier labels
+        self._classifier_labels = []
+        model = ViTForImageClassification.from_pretrained(
+            classifier_model_name,
+            num_labels=len(self._classifier_labels),
+            id2label={str(i): c for i, c in enumerate(self._classifier_labels)},
+            label2id={c: str(i) for i, c in enumerate(self._classifier_labels)}
+        )
+
+    def score_image(self, image, label):
+        inputs = feature_extractor(image, return_tensors='pt')
+        outputs = model(**inputs)
+        predictions = torch.nn.functional.softmax(outputs.logits)
+        return nredictions
+
+
+    def compute(
+        self,
+        prompt_texts: List[str],
+        generated_texts: List[str],
+        reference_texts: List[List[str]],
+        meta_infos: List[Dict[str, Any]] = None,
+        model: PreTrainedModel = None,
+        split_name: str = None,
+    ) -> Tuple[List[float], float]:
+
+        METRIC_BS = 24
+        with torch.no_grad():
+            print(f"PictionaryMetric: {len(generated_texts)} images in batches of {METRIC_BS}")
+for i in range(0, len(generated_texts), METRIC_BS):
+            prompt_texts_chunk = prompt_texts[i:i+METRIC_BS]
+            generated_texts_chunk = generated_texts[i:i+METRIC_BS]
+            generated_images = self._worse_diffusion_pipeline(
+                    prompt_texts_worse_chunk).images
+
+        batch_mean_score = float(np.mean(image_similarity_scores))
+        metric_dict = {"pictionary_metric": (image_similarity_scores.tolist(), batch_mean_score)}
+
+        return metric_dict
+
+
+class DiffusionImageGenerationSimilarityMetric(BaseMetric):
+    def __init__(self, use_topic_only_for_worse: bool = False) -> None:
+        super().__init__()
+
+        self._use_topic_only_for_worse = use_topic_only_for_worse
         print("Creating new DiffusionImageGenerationSimilarityMetric (and new diffusion models!)")
+        print(f"Diffusion[..]Metric got use_topic_only_for_worse: {self._use_topic_only_for_worse}")
         from diffusers import StableDiffusionPipeline
         from transformers import CLIPProcessor, CLIPModel
         from torchmetrics.multimodal import CLIPScore
@@ -1020,11 +1084,11 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         self._clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
         self._clip_scorer = CLIPScore(model_name_or_path="openai/clip-vit-base-patch16", kwargs={"truncation": True})
     
-        better_model_name = "stabilityai/stable-diffusion-2"
+        # better_model_name = "stabilityai/stable-diffusion-2"
         worse_model_name = "CompVis/stable-diffusion-v1-4"
 
-        self._better_diffusion_pipeline = StableDiffusionPipeline.from_pretrained(
-            better_model_name, torch_dtype=torch.float16)
+        # self._better_diffusion_pipeline = StableDiffusionPipeline.from_pretrained(
+        #    better_model_name, torch_dtype=torch.float16)
         self._worse_diffusion_pipeline = StableDiffusionPipeline.from_pretrained(
             worse_model_name, torch_dtype=torch.float16)
 
@@ -1033,7 +1097,7 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
 
         self._clip_model.to(self._device)
         
-        self._better_diffusion_pipeline.to(self._device)
+        # self._better_diffusion_pipeline.to(self._device)
         self._worse_diffusion_pipeline.to(self._device)
 
     def _clip_score_image_image(self,
@@ -1059,6 +1123,10 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
 
         return final_scores
 
+    def normalize_rewards(self, r: torch.Tensor) -> torch.Tensor:
+        r_new = torch.nn.functional.relu(r - 0.5) / 0.5
+        return torch.pow(r_new, 1.5)
+
     def compute(
         self,
         prompt_texts: List[str],
@@ -1069,7 +1137,7 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
         split_name: str = None,
     ) -> Tuple[List[float], float]:
 
-        METRIC_BS = 12
+        METRIC_BS = 25
         with torch.no_grad():
             print(f"Diffusion[..]Metric About to generate: {len(generated_texts)} images in batches of {METRIC_BS}")
             image_similarity_scores = torch.zeros((len(generated_texts), )) 
@@ -1088,36 +1156,56 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
                     combined_texts_chunk = [ p + " "  + g.strip() for p, g in zip(
                         prompt_texts_chunk, generated_texts_chunk)]
                     meta_infos_chunk = meta_infos[i:i+METRIC_BS]
-
+                    topics_chunk = [mi["topic"] for mi in meta_infos_chunk]
+                    
+                    actual_chunk_size = min(METRIC_BS, len(prompt_texts_chunk))
+                    # always prompt better model with prompt_texts, worse can be either prompt + gen
+                    # or the topic + gen
+                    prompt_texts_worse_chunk = combined_texts_chunk
+                    if self._use_topic_only_for_worse:
+                        prompt_texts_worse_chunk = [tp + " " + g.strip() for tp, g in  
+                                zip(topics_chunk, generated_texts_chunk)]
                     # generate METRIC_BS group of images
                     # goal is for the worst model + text generations to be similar to 
                     # the better model with the original prommpt
                     # Note: if you pass smaller width and height especially SD-v2.1 is terrible (not usable)
-                    better_generated_images = self._better_diffusion_pipeline(
-                            prompt_texts_chunk).images
+                    # better_generated_images = self._better_diffusion_pipeline(
+                    #        prompt_texts_chunk).images
+
+                    # BETTER_SPLIT_NAME = split_name
+                    # BETTER_SPLIT_NAME = "train"
+                    BETTER_SPLIT_NAME = "track_hack"
+                    better_images_path = f'/home/ubuntu/RL4LMs/rl4lm_exps/image_generations/{BETTER_SPLIT_NAME}/better_images'
+                    better_generated_images = []
+                    for j in range(0, actual_chunk_size):
+                        bi = Image.open(os.path.join(better_images_path, 
+                            f"{meta_infos_chunk[j]['id']}_better.png"))
+                        better_generated_images.append(bi)
                     worse_generated_images = self._worse_diffusion_pipeline(
-                            combined_texts_chunk).images
+                            prompt_texts_worse_chunk).images
                     
                     image_similarity_scores_chunk = self._clip_score_image_image(
                         better_generated_images, worse_generated_images)
+                    image_similarity_scores_chunk = self.normalize_rewards(
+                            image_similarity_scores_chunk)
+
                     image_similarity_scores[i:i+METRIC_BS] = image_similarity_scores_chunk
 
                     if split_name == "val" or split_name == "test":
-                        better_images_path = f"{path_stub}/better_images/"
+                        # better_images_path = f"{path_stub}/better_images/"
                         worse_images_path = f"{path_stub}/worse_images/"
-                        if not os.path.exists(better_images_path):
-                            print(f"Had to create path {better_images_path}")
-                            os.makedirs(better_images_path)
+                        # if not os.path.exists(better_images_path):
+                        #    print(f"Had to create path {better_images_path}")
+                        #    os.makedirs(better_images_path)
                         if not os.path.exists(worse_images_path):
                             print(f"Had to create path: {worse_images_path}")
                             os.makedirs(worse_images_path)
 
-                        chunk_size = min(METRIC_BS, len(prompt_texts_chunk))
-                        for i_chunk in range(chunk_size):
+                        for i_chunk in range(actual_chunk_size):
                             image_id = meta_infos_chunk[i_chunk]["id"]
                             better_path = os.path.join(better_images_path, f"{image_id}_better.png")
                             worse_path = os.path.join(worse_images_path, f"{image_id}_worse.png")
-                            better_generated_images[i_chunk].save(better_path)
+                            # better_generated_images[i_chunk].save(better_path)
                             worse_generated_images[i_chunk].save(worse_path)
                         
                             generation_data = {
@@ -1129,6 +1217,9 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
                                 "text_prompt": prompt_texts_chunk[i_chunk],
                                 "text_generation": generated_texts_chunk[i_chunk],
                                 "text_combined": combined_texts_chunk[i_chunk],
+                                "better_prompt": prompt_texts_chunk[i_chunk],
+                                "worse_prompt" : prompt_texts_worse_chunk[i_chunk],
+                                "topic": topics_chunk[i_chunk],
                                 "image_similarity_score": image_similarity_scores_chunk[i_chunk].item()
                             }
                             generation_data_path = f"{path_stub}/generation_data.jsonl"
@@ -1140,7 +1231,7 @@ class DiffusionImageGenerationSimilarityMetric(BaseMetric):
                 print("WARNING: SKIPPING IMAGE GENERATION!! RESULTS WILL BE GARBAGE!")
                 image_similarity_scores = torch.ones((len(generated_texts), 1))*0.01
 
-            print(f"Metric calculated image_similarity_scores: {image_similarity_scores}, generated_texts: {generated_texts}") 
+            print(f"Normalized (stretched) metric calculated image_similarity_scores: {image_similarity_scores}, generated_texts: {generated_texts}") 
         image_similarity_scores = image_similarity_scores.cpu().numpy()
         batch_mean_score = float(np.mean(image_similarity_scores))
         metric_dict = {"diffusion_image_similarity_score": (image_similarity_scores.tolist(), batch_mean_score)}

@@ -560,15 +560,47 @@ class chrF(RewardFunction):
             return score
         return 0
 
+class PictionaryReward(BatchedRewardFunction):
+    def __init__(self):
+        self._metric = None
+
+    def __call__(
+        self,
+        prompt_texts: List[str],
+        gen_texts: List[str],
+        ref_texts: List[List[str]],
+        dones: List[bool],
+        meta_infos: List[Dict[str, Any]] = None,
+    ) -> List[float]:
+        if self._metric is None:
+            self._metric = PictionaryMetric()
+        
+        scores_dict = self._metric.compute(
+            prompt_texts, gen_texts, ref_texts, meta_infos, split_name="train"
+        )
+        scores = scores_dict["pictionary_metric"]
+        batch_scores = torch.tensor(scores[0]).squeeze()      # all metrics do .tolist()
+        mean_score = scores[1]
+        
+        print(f"Got net rewards: {rewards}, len(rewards): {len(rewards)}, mean: {np.mean(rewards)}")
+        return rewards.tolist()
+
 
 class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
-    def __init__(self, shape: bool = True, arg1: float = 0.0) -> None:
+    def __init__(self, shape: bool = True, use_topic_only_for_worse: bool = False, arg1: float = 0.0) -> None:
         super().__init__()
+        self._use_topic_only_for_worse = use_topic_only_for_worse
         self._metric = None
         self._shape = shape
-        self._ppl_coeff = 0.0
-        # self._ppl_coeff = 0.3
-        # self._shaping_metric = GPT2Perplexity(stride=128)
+        self._ppl_coeff = 0.2
+        self._shaping_metric = Perplexity(stride=32, tokenizer_id="gpt2")
+
+        self._device = "cuda" if torch.cuda.is_available() else "cpu"
+        self._device = f"cuda:{torch.cuda.device_count() - 1}"
+
+        self._gpt2_model = AutoModelForCausalLM.from_pretrained("gpt2")
+        self._gpt2_model.to(self._device)
+
 
     def __call__(
         self,
@@ -580,7 +612,8 @@ class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
     ) -> List[float]:
 
         if self._metric is None:
-            self._metric = DiffusionImageGenerationSimilarityMetric()
+            self._metric = DiffusionImageGenerationSimilarityMetric(
+                    use_topic_only_for_worse=self._use_topic_only_for_worse)
 
         # Example gen_texts (only last trajectory is finished): [' a', ' a small', ' a small courtyard', ' a small courtyard in', ' a small courtyard in the', ' a small courtyard in the center', ' a small courtyard in the center of', ' a small courtyard in the center of a', ' a small courtyard in the center of a house', ' a small courtyard in the center of a house.',
         rewards = np.zeros(len(gen_texts))
@@ -602,20 +635,41 @@ class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
         #         done_ixs.append(ix)
         
                  # This works but the the probability is very near 0, unclear how to map to 0 to 1
-                 # if self._shape:
-                 #    score = self._shaping_metric.compute(
-                 #        done_prompt_texts, done_gen_texts, done_ref_texts,
-                 #        done_meta_infos, model=None
-                 #    )
-                 #    ppl_score = torch.exp(-score["fluency_metrics/gpt2_ppl"][1])
-                 #    print(f"ppl_score: {ppl_score}")
-                 #    rewards[ix] = self._ppl_coeff * ppl_score
+        if self._shape:
+            # it will return nothing if it's train split
+            # calculates it on the generated texts for an untuned gpt2 model
+            # tokenizer = AutoTokenizer.from_pretrained("gpt2")
+            # for gt in range(len(gen_texts)):
+            #    encodings = tokenizer(gen_texts[gt], return_tensors="pt")
+            #    dev_ids = encodings.input_ids.to(self._device)
+            #    outputs = self._gpt2_model(dev_ids)
+            #    seq_len = encodings.input_ids.shape[-1]
+            #    nlls = outputs[0]        # (1, n tokens, vocab)
+            #    nlls = torch.gather(nlls, dim=-1, index=dev_ids.unsqueeze(0))  # (1, n tokens)
+            #    ppl = nlls.sum() / seq_len
+            # score = self._shaping_metric.compute(
+            #    prompt_texts, gen_texts, gen_texts,
+            #    meta_infos, model=self._gpt2_model, split_name="val"
+            #)
+            #ppl_score = torch.exp(-score["fluency_metrics/gpt2_ppl"][1])
+            #rint(f"ppl_score: {ppl_score}")
+            ppl_score = self._shaping_metric.compute(prompt_texts, gen_texts, 
+                gen_texts, None, self._gpt2_model)
+           
+            # it yells at you saying it's too long but still computes a value
+            # and it shouldn't be too long :(; returns a tuple with None is 0th position
+            ppl = ppl_score["fluency_metrics/perplexity"][1]
+            # 10 PPL = 0.13 reward, 20 = 0.0183
+            # scaled_ppl = self._ppl_coeff * np.exp(-0.20*ppl)
+            scaled_ppl = -ppl / 50.
+            print(f"Unscaled batch PPL was: {ppl}, Scaled PPL reward was: {scaled_ppl}")
+            rewards += scaled_ppl
 
         # scores_dict = self._metric.compute(
         #   done_prompt_texts, done_gen_texts, done_ref_texts, done_meta_infos
         #)
         scores_dict = self._metric.compute(
-            prompt_texts, gen_texts, ref_texts, meta_infos
+            prompt_texts, gen_texts, ref_texts, meta_infos, split_name="train"
         )
         scores = scores_dict["diffusion_image_similarity_score"]
         batch_scores = torch.tensor(scores[0]).squeeze()      # for some reason, all metrics do .tolist()
@@ -623,11 +677,13 @@ class  DiffusionImageGenerationSimilarityReward(BatchedRewardFunction):
         try:
             # rewards[done_ixs] +=  (1 - self._ppl_coeff) * np.array(batch_scores)
             # every "trajectory" adds 1 token per step; give rewards for all not just done ones
-            rewards +=  np.array(batch_scores)
+            scaled_scores = (1 - self._ppl_coeff) * np.array(batch_scores)
+            assert scaled_scores.shape == batch_scores.shape
+            rewards +=  scaled_scores
         except Exception as e: 
             print(f"Had error in reward function! {e}")
             import pdb;pdb.set_trace()
-        print(f"Got rewards: {rewards}, len(rewards): {len(rewards)}, mean: {mean_score}")
+        print(f"Got net rewards: {rewards}, len(rewards): {len(rewards)}, mean: {np.mean(rewards)}")
         return rewards.tolist()
 
 
