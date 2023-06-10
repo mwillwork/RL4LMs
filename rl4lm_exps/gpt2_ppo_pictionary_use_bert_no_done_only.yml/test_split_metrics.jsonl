@@ -1,0 +1,5 @@
+{"epoch": 0, "metrics": {"pictionary_metric": 0.7711859345436096, "fluency_metrics/perplexity": 7.488700866699219}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.7359052300453186, "fluency_metrics/perplexity": 7.488700866699219}}
+{"epoch": 9, "metrics": {"pictionary_metric": 0.06803067773580551, "fluency_metrics/perplexity": 1.5315049886703491}}
+{"epoch": 9, "metrics": {"pictionary_metric": 0.7631001472473145, "fluency_metrics/perplexity": 1.5315049886703491}}
+{"epoch": 9, "metrics": {"pictionary_metric": 0.8084158301353455, "fluency_metrics/perplexity": 1.5315049886703491}}

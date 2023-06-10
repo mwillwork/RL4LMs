@@ -1,0 +1,2 @@
+{"epoch": 0, "metrics": {"diffusion_image_similarity_score": 0.8352524638175964, "fluency_metrics/perplexity": 1.090923547744751}}
+{"epoch": 49, "metrics": {"diffusion_image_similarity_score": 0.8176584839820862, "fluency_metrics/perplexity": 1.0948420763015747}}

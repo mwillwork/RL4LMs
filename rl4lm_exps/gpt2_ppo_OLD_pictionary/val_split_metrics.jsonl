@@ -1,0 +1,14 @@
+{"epoch": 0, "metrics": {"pictionary_metric": 0.0014998834813013673, "fluency_metrics/perplexity": 21.60749053955078}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.06627003848552704, "fluency_metrics/perplexity": 15.788643836975098}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.0652896910905838, "fluency_metrics/perplexity": 15.788643836975098}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.06671813875436783, "fluency_metrics/perplexity": 15.788643836975098}}
+{"epoch": 0, "metrics": {"pictionary_metric": 5.391495142248459e-05, "fluency_metrics/perplexity": 22.081268310546875}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.00016539830539841205, "fluency_metrics/perplexity": 22.081268310546875}}
+{"epoch": 0, "metrics": {"pictionary_metric": 6.705030682496727e-05, "fluency_metrics/perplexity": 22.081268310546875}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.0006730731693096459, "fluency_metrics/perplexity": 22.081268310546875}}
+{"epoch": 4, "metrics": {"pictionary_metric": 8.602811431046575e-05, "fluency_metrics/perplexity": 21.875713348388672}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.002082256833091378, "fluency_metrics/perplexity": 22.081268310546875}}
+{"epoch": 0, "metrics": {"pictionary_metric": 5.095109372632578e-05, "fluency_metrics/perplexity": 22.081268310546875}}
+{"epoch": 0, "metrics": {"pictionary_metric": 7.546168490080163e-05, "fluency_metrics/perplexity": 22.081268310546875}}
+{"epoch": 4, "metrics": {"pictionary_metric": 0.0008134288946166635, "fluency_metrics/perplexity": 21.596973419189453}}
+{"epoch": 9, "metrics": {"pictionary_metric": 0.00010204825230175629, "fluency_metrics/perplexity": 22.293643951416016}}

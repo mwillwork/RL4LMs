@@ -1,0 +1,2 @@
+{"epoch": 0, "metrics": {"pictionary_metric": 0.5887231230735779, "fluency_metrics/perplexity": 1.5149264335632324}}
+{"epoch": 49, "metrics": {"pictionary_metric": 0.717475950717926, "fluency_metrics/perplexity": 1.5861012935638428}}

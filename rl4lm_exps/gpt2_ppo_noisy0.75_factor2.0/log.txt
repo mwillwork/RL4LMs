@@ -1,0 +1,11 @@
+2023-06-03 18:34:33,598 [DEBUG] Starting new HTTPS connection (1): huggingface.co:443
+2023-06-03 18:34:33,757 [DEBUG] https://huggingface.co:443 "HEAD /gpt2/resolve/main/tokenizer_config.json HTTP/1.1" 404 0
+2023-06-03 18:34:33,831 [DEBUG] https://huggingface.co:443 "HEAD /gpt2/resolve/main/config.json HTTP/1.1" 200 0
+2023-06-03 18:34:33,923 [DEBUG] https://huggingface.co:443 "HEAD /gpt2/resolve/main/tokenizer_config.json HTTP/1.1" 404 0
+2023-06-03 18:34:33,995 [DEBUG] https://huggingface.co:443 "HEAD /gpt2/resolve/main/vocab.json HTTP/1.1" 200 0
+2023-06-03 18:34:34,132 [DEBUG] Starting new HTTPS connection (1): s3.amazonaws.com:443
+2023-06-03 18:34:34,428 [DEBUG] https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/metrics/meteor/meteor.py HTTP/1.1" 200 0
+2023-06-03 18:34:34,438 [DEBUG] Starting new HTTPS connection (1): raw.githubusercontent.com:443
+2023-06-03 18:34:34,783 [DEBUG] https://raw.githubusercontent.com:443 "HEAD /huggingface/datasets/2.5.1/metrics/meteor/meteor.py HTTP/1.1" 200 0
+2023-06-03 18:34:35,163 [DEBUG] https://huggingface.co:443 "HEAD /rajkumarrrk/roberta-daily-dialog-intent-classifier/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2023-06-03 18:34:35,351 [DEBUG] https://huggingface.co:443 "HEAD /rajkumarrrk/roberta-daily-dialog-intent-classifier/resolve/main/config.json HTTP/1.1" 200 0

@@ -1,0 +1,8 @@
+{"epoch": 0, "metrics": {"pictionary_metric": 0.7438682317733765, "fluency_metrics/perplexity": 7.488700866699219}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.763325572013855, "fluency_metrics/perplexity": 7.488700866699219}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.7329545617103577, "fluency_metrics/perplexity": 7.488700866699219}}
+{"epoch": 0, "metrics": {"pictionary_metric": 0.7448277473449707, "fluency_metrics/perplexity": 7.488700866699219}}
+{"epoch": 49, "metrics": {"pictionary_metric": 0.8088258504867554, "fluency_metrics/perplexity": 7.408956527709961}}
+{"epoch": 9, "metrics": {"pictionary_metric": 0.03074146807193756, "fluency_metrics/perplexity": 1.5166330337524414}}
+{"epoch": 9, "metrics": {"pictionary_metric": 0.7612323760986328, "fluency_metrics/perplexity": 1.5166330337524414}}
+{"epoch": 19, "metrics": {"pictionary_metric": 0.703526496887207, "fluency_metrics/perplexity": 1.515906810760498}}

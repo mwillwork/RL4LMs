@@ -1,0 +1,14 @@
+{"epoch": 0, "metrics": {"diffusion_image_similarity_score": 0.2656136453151703, "fluency_metrics/perplexity": 1.7212852239608765}}
+{"epoch": 4, "metrics": {"diffusion_image_similarity_score": 0.2696327269077301, "fluency_metrics/perplexity": 2.0821475982666016}}
+{"epoch": 9, "metrics": {"diffusion_image_similarity_score": 0.27801713347435, "fluency_metrics/perplexity": 2.866631507873535}}
+{"epoch": 9, "metrics": {"diffusion_image_similarity_score": 0.27981051802635193, "fluency_metrics/perplexity": 2.866631507873535}}
+{"epoch": 9, "metrics": {"diffusion_image_similarity_score": 0.2759324908256531, "fluency_metrics/perplexity": 3.0262019634246826}}
+{"epoch": 14, "metrics": {"diffusion_image_similarity_score": 0.28368112444877625, "fluency_metrics/perplexity": 3.570681571960449}}
+{"epoch": 19, "metrics": {"diffusion_image_similarity_score": 0.2877848148345947, "fluency_metrics/perplexity": 4.577489376068115}}
+{"epoch": 24, "metrics": {"diffusion_image_similarity_score": 0.273684561252594, "fluency_metrics/perplexity": 5.624451637268066}}
+{"epoch": 29, "metrics": {"diffusion_image_similarity_score": 0.2831965982913971, "fluency_metrics/perplexity": 6.068871021270752}}
+{"epoch": 34, "metrics": {"diffusion_image_similarity_score": 0.30037423968315125, "fluency_metrics/perplexity": 6.962827205657959}}
+{"epoch": 39, "metrics": {"diffusion_image_similarity_score": 0.2958487570285797, "fluency_metrics/perplexity": 8.550990104675293}}
+{"epoch": 44, "metrics": {"diffusion_image_similarity_score": 0.2941432297229767, "fluency_metrics/perplexity": 10.356966018676758}}
+{"epoch": 49, "metrics": {"diffusion_image_similarity_score": 0.3098788857460022, "fluency_metrics/perplexity": 11.798043251037598}}
+{"epoch": 49, "metrics": {"diffusion_image_similarity_score": 0.2924250662326813, "fluency_metrics/perplexity": 11.798043251037598}}
