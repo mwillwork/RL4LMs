@@ -1,0 +1,1000 @@
+{"is_esoteric": 1, "topic": "tench", "imagenet_idx": 0, "imagenet_full_label": "tench, Tinca tinca"}
+{"is_esoteric": 0, "topic": "goldfish", "imagenet_idx": 1, "imagenet_full_label": "goldfish, Carassius auratus"}
+{"is_esoteric": 0, "topic": "great white shark", "imagenet_idx": 2, "imagenet_full_label": "great white shark, white shark, man-eater, man-eating shark, Carcharodon carcharias"}
+{"is_esoteric": 1, "topic": "tiger shark", "imagenet_idx": 3, "imagenet_full_label": "tiger shark, Galeocerdo cuvieri"}
+{"is_esoteric": 0, "topic": "hammerhead", "imagenet_idx": 4, "imagenet_full_label": "hammerhead, hammerhead shark"}
+{"is_esoteric": 1, "topic": "electric ray", "imagenet_idx": 5, "imagenet_full_label": "electric ray, crampfish, numbfish, torpedo"}
+{"is_esoteric": 0, "topic": "stingray", "imagenet_idx": 6, "imagenet_full_label": "stingray"}
+{"is_esoteric": 1, "topic": "cock", "imagenet_idx": 7, "imagenet_full_label": "cock"}
+{"is_esoteric": 0, "topic": "hen", "imagenet_idx": 8, "imagenet_full_label": "hen"}
+{"is_esoteric": 0, "topic": "ostrich", "imagenet_idx": 9, "imagenet_full_label": "ostrich, Struthio camelus"}
+{"is_esoteric": 1, "topic": "brambling", "imagenet_idx": 10, "imagenet_full_label": "brambling, Fringilla montifringilla"}
+{"is_esoteric": 1, "topic": "goldfinch", "imagenet_idx": 11, "imagenet_full_label": "goldfinch, Carduelis carduelis"}
+{"is_esoteric": 1, "topic": "house finch", "imagenet_idx": 12, "imagenet_full_label": "house finch, linnet, Carpodacus mexicanus"}
+{"is_esoteric": 1, "topic": "junco", "imagenet_idx": 13, "imagenet_full_label": "junco, snowbird"}
+{"is_esoteric": 1, "topic": "indigo bunting", "imagenet_idx": 14, "imagenet_full_label": "indigo bunting, indigo finch, indigo bird, Passerina cyanea"}
+{"is_esoteric": 0, "topic": "robin", "imagenet_idx": 15, "imagenet_full_label": "robin, American robin, Turdus migratorius"}
+{"is_esoteric": 1, "topic": "bulbul", "imagenet_idx": 16, "imagenet_full_label": "bulbul"}
+{"is_esoteric": 1, "topic": "jay", "imagenet_idx": 17, "imagenet_full_label": "jay"}
+{"is_esoteric": 1, "topic": "magpie", "imagenet_idx": 18, "imagenet_full_label": "magpie"}
+{"is_esoteric": 1, "topic": "chickadee", "imagenet_idx": 19, "imagenet_full_label": "chickadee"}
+{"is_esoteric": 1, "topic": "water ouzel", "imagenet_idx": 20, "imagenet_full_label": "water ouzel, dipper"}
+{"is_esoteric": 1, "topic": "kite", "imagenet_idx": 21, "imagenet_full_label": "kite"}
+{"is_esoteric": 0, "topic": "bald eagle", "imagenet_idx": 22, "imagenet_full_label": "bald eagle, American eagle, Haliaeetus leucocephalus"}
+{"is_esoteric": 0, "topic": "vulture", "imagenet_idx": 23, "imagenet_full_label": "vulture"}
+{"is_esoteric": 1, "topic": "great grey owl", "imagenet_idx": 24, "imagenet_full_label": "great grey owl, great gray owl, Strix nebulosa"}
+{"is_esoteric": 1, "topic": "European fire salamander", "imagenet_idx": 25, "imagenet_full_label": "European fire salamander, Salamandra salamandra"}
+{"is_esoteric": 1, "topic": "common newt", "imagenet_idx": 26, "imagenet_full_label": "common newt, Triturus vulgaris"}
+{"is_esoteric": 1, "topic": "eft", "imagenet_idx": 27, "imagenet_full_label": "eft"}
+{"is_esoteric": 1, "topic": "spotted salamander", "imagenet_idx": 28, "imagenet_full_label": "spotted salamander, Ambystoma maculatum"}
+{"is_esoteric": 1, "topic": "axolotl", "imagenet_idx": 29, "imagenet_full_label": "axolotl, mud puppy, Ambystoma mexicanum"}
+{"is_esoteric": 0, "topic": "bullfrog", "imagenet_idx": 30, "imagenet_full_label": "bullfrog, Rana catesbeiana"}
+{"is_esoteric": 1, "topic": "tree frog", "imagenet_idx": 31, "imagenet_full_label": "tree frog, tree-frog"}
+{"is_esoteric": 1, "topic": "tailed frog", "imagenet_idx": 32, "imagenet_full_label": "tailed frog, bell toad, ribbed toad, tailed toad, Ascaphus trui"}
+{"is_esoteric": 1, "topic": "loggerhead", "imagenet_idx": 33, "imagenet_full_label": "loggerhead, loggerhead turtle, Caretta caretta"}
+{"is_esoteric": 0, "topic": "leatherback turtle", "imagenet_idx": 34, "imagenet_full_label": "leatherback turtle, leatherback, leathery turtle, Dermochelys coriacea"}
+{"is_esoteric": 1, "topic": "mud turtle", "imagenet_idx": 35, "imagenet_full_label": "mud turtle"}
+{"is_esoteric": 1, "topic": "terrapin", "imagenet_idx": 36, "imagenet_full_label": "terrapin"}
+{"is_esoteric": 1, "topic": "box turtle", "imagenet_idx": 37, "imagenet_full_label": "box turtle, box tortoise"}
+{"is_esoteric": 1, "topic": "banded gecko", "imagenet_idx": 38, "imagenet_full_label": "banded gecko"}
+{"is_esoteric": 1, "topic": "common iguana", "imagenet_idx": 39, "imagenet_full_label": "common iguana, iguana, Iguana iguana"}
+{"is_esoteric": 1, "topic": "American chameleon", "imagenet_idx": 40, "imagenet_full_label": "American chameleon, anole, Anolis carolinensis"}
+{"is_esoteric": 1, "topic": "whiptail", "imagenet_idx": 41, "imagenet_full_label": "whiptail, whiptail lizard"}
+{"is_esoteric": 1, "topic": "agama", "imagenet_idx": 42, "imagenet_full_label": "agama"}
+{"is_esoteric": 1, "topic": "frilled lizard", "imagenet_idx": 43, "imagenet_full_label": "frilled lizard, Chlamydosaurus kingi"}
+{"is_esoteric": 1, "topic": "alligator lizard", "imagenet_idx": 44, "imagenet_full_label": "alligator lizard"}
+{"is_esoteric": 0, "topic": "Gila monster", "imagenet_idx": 45, "imagenet_full_label": "Gila monster, Heloderma suspectum"}
+{"is_esoteric": 0, "topic": "green lizard", "imagenet_idx": 46, "imagenet_full_label": "green lizard, Lacerta viridis"}
+{"is_esoteric": 1, "topic": "African chameleon", "imagenet_idx": 47, "imagenet_full_label": "African chameleon, Chamaeleo chamaeleon"}
+{"is_esoteric": 0, "topic": "Komodo dragon", "imagenet_idx": 48, "imagenet_full_label": "Komodo dragon, Komodo lizard, dragon lizard, giant lizard, Varanus komodoensis"}
+{"is_esoteric": 1, "topic": "African crocodile", "imagenet_idx": 49, "imagenet_full_label": "African crocodile, Nile crocodile, Crocodylus niloticus"}
+{"is_esoteric": 0, "topic": "American alligator", "imagenet_idx": 50, "imagenet_full_label": "American alligator, Alligator mississipiensis"}
+{"is_esoteric": 1, "topic": "triceratops", "imagenet_idx": 51, "imagenet_full_label": "triceratops"}
+{"is_esoteric": 1, "topic": "thunder snake", "imagenet_idx": 52, "imagenet_full_label": "thunder snake, worm snake, Carphophis amoenus"}
+{"is_esoteric": 1, "topic": "ringneck snake", "imagenet_idx": 53, "imagenet_full_label": "ringneck snake, ring-necked snake, ring snake"}
+{"is_esoteric": 1, "topic": "hognose snake", "imagenet_idx": 54, "imagenet_full_label": "hognose snake, puff adder, sand viper"}
+{"is_esoteric": 1, "topic": "green snake", "imagenet_idx": 55, "imagenet_full_label": "green snake, grass snake"}
+{"is_esoteric": 1, "topic": "king snake", "imagenet_idx": 56, "imagenet_full_label": "king snake, kingsnake"}
+{"is_esoteric": 1, "topic": "garter snake", "imagenet_idx": 57, "imagenet_full_label": "garter snake, grass snake"}
+{"is_esoteric": 1, "topic": "water snake", "imagenet_idx": 58, "imagenet_full_label": "water snake"}
+{"is_esoteric": 1, "topic": "vine snake", "imagenet_idx": 59, "imagenet_full_label": "vine snake"}
+{"is_esoteric": 1, "topic": "night snake", "imagenet_idx": 60, "imagenet_full_label": "night snake, Hypsiglena torquata"}
+{"is_esoteric": 1, "topic": "boa constrictor", "imagenet_idx": 61, "imagenet_full_label": "boa constrictor, Constrictor constrictor"}
+{"is_esoteric": 1, "topic": "rock python", "imagenet_idx": 62, "imagenet_full_label": "rock python, rock snake, Python sebae"}
+{"is_esoteric": 1, "topic": "Indian cobra", "imagenet_idx": 63, "imagenet_full_label": "Indian cobra, Naja naja"}
+{"is_esoteric": 1, "topic": "green mamba", "imagenet_idx": 64, "imagenet_full_label": "green mamba"}
+{"is_esoteric": 1, "topic": "sea snake", "imagenet_idx": 65, "imagenet_full_label": "sea snake"}
+{"is_esoteric": 1, "topic": "horned viper", "imagenet_idx": 66, "imagenet_full_label": "horned viper, cerastes, sand viper, horned asp, Cerastes cornutus"}
+{"is_esoteric": 1, "topic": "diamondback", "imagenet_idx": 67, "imagenet_full_label": "diamondback, diamondback rattlesnake, Crotalus adamanteus"}
+{"is_esoteric": 1, "topic": "sidewinder", "imagenet_idx": 68, "imagenet_full_label": "sidewinder, horned rattlesnake, Crotalus cerastes"}
+{"is_esoteric": 1, "topic": "trilobite", "imagenet_idx": 69, "imagenet_full_label": "trilobite"}
+{"is_esoteric": 1, "topic": "harvestman", "imagenet_idx": 70, "imagenet_full_label": "harvestman, daddy longlegs, Phalangium opilio"}
+{"is_esoteric": 0, "topic": "scorpion", "imagenet_idx": 71, "imagenet_full_label": "scorpion"}
+{"is_esoteric": 1, "topic": "black and gold garden spider", "imagenet_idx": 72, "imagenet_full_label": "black and gold garden spider, Argiope aurantia"}
+{"is_esoteric": 1, "topic": "barn spider", "imagenet_idx": 73, "imagenet_full_label": "barn spider, Araneus cavaticus"}
+{"is_esoteric": 1, "topic": "garden spider", "imagenet_idx": 74, "imagenet_full_label": "garden spider, Aranea diademata"}
+{"is_esoteric": 1, "topic": "black widow", "imagenet_idx": 75, "imagenet_full_label": "black widow, Latrodectus mactans"}
+{"is_esoteric": 0, "topic": "tarantula", "imagenet_idx": 76, "imagenet_full_label": "tarantula"}
+{"is_esoteric": 1, "topic": "wolf spider", "imagenet_idx": 77, "imagenet_full_label": "wolf spider, hunting spider"}
+{"is_esoteric": 1, "topic": "tick", "imagenet_idx": 78, "imagenet_full_label": "tick"}
+{"is_esoteric": 1, "topic": "centipede", "imagenet_idx": 79, "imagenet_full_label": "centipede"}
+{"is_esoteric": 1, "topic": "black grouse", "imagenet_idx": 80, "imagenet_full_label": "black grouse"}
+{"is_esoteric": 1, "topic": "ptarmigan", "imagenet_idx": 81, "imagenet_full_label": "ptarmigan"}
+{"is_esoteric": 1, "topic": "ruffed grouse", "imagenet_idx": 82, "imagenet_full_label": "ruffed grouse, partridge, Bonasa umbellus"}
+{"is_esoteric": 1, "topic": "prairie chicken", "imagenet_idx": 83, "imagenet_full_label": "prairie chicken, prairie grouse, prairie fowl"}
+{"is_esoteric": 0, "topic": "peacock", "imagenet_idx": 84, "imagenet_full_label": "peacock"}
+{"is_esoteric": 1, "topic": "quail", "imagenet_idx": 85, "imagenet_full_label": "quail"}
+{"is_esoteric": 1, "topic": "partridge", "imagenet_idx": 86, "imagenet_full_label": "partridge"}
+{"is_esoteric": 1, "topic": "African grey", "imagenet_idx": 87, "imagenet_full_label": "African grey, African gray, Psittacus erithacus"}
+{"is_esoteric": 1, "topic": "macaw", "imagenet_idx": 88, "imagenet_full_label": "macaw"}
+{"is_esoteric": 1, "topic": "sulphur-crested cockatoo", "imagenet_idx": 89, "imagenet_full_label": "sulphur-crested cockatoo, Kakatoe galerita, Cacatua galerita"}
+{"is_esoteric": 1, "topic": "lorikeet", "imagenet_idx": 90, "imagenet_full_label": "lorikeet"}
+{"is_esoteric": 1, "topic": "coucal", "imagenet_idx": 91, "imagenet_full_label": "coucal"}
+{"is_esoteric": 1, "topic": "bee eater", "imagenet_idx": 92, "imagenet_full_label": "bee eater"}
+{"is_esoteric": 1, "topic": "hornbill", "imagenet_idx": 93, "imagenet_full_label": "hornbill"}
+{"is_esoteric": 0, "topic": "hummingbird", "imagenet_idx": 94, "imagenet_full_label": "hummingbird"}
+{"is_esoteric": 1, "topic": "jacamar", "imagenet_idx": 95, "imagenet_full_label": "jacamar"}
+{"is_esoteric": 1, "topic": "toucan", "imagenet_idx": 96, "imagenet_full_label": "toucan"}
+{"is_esoteric": 1, "topic": "drake", "imagenet_idx": 97, "imagenet_full_label": "drake"}
+{"is_esoteric": 1, "topic": "red-breasted merganser", "imagenet_idx": 98, "imagenet_full_label": "red-breasted merganser, Mergus serrator"}
+{"is_esoteric": 0, "topic": "goose", "imagenet_idx": 99, "imagenet_full_label": "goose"}
+{"is_esoteric": 1, "topic": "black swan", "imagenet_idx": 100, "imagenet_full_label": "black swan, Cygnus atratus"}
+{"is_esoteric": 1, "topic": "tusker", "imagenet_idx": 101, "imagenet_full_label": "tusker"}
+{"is_esoteric": 1, "topic": "echidna", "imagenet_idx": 102, "imagenet_full_label": "echidna, spiny anteater, anteater"}
+{"is_esoteric": 1, "topic": "platypus", "imagenet_idx": 103, "imagenet_full_label": "platypus, duckbill, duckbilled platypus, duck-billed platypus, Ornithorhynchus anatinus"}
+{"is_esoteric": 1, "topic": "wallaby", "imagenet_idx": 104, "imagenet_full_label": "wallaby, brush kangaroo"}
+{"is_esoteric": 0, "topic": "koala", "imagenet_idx": 105, "imagenet_full_label": "koala, koala bear, kangaroo bear, native bear, Phascolarctos cinereus"}
+{"is_esoteric": 1, "topic": "wombat", "imagenet_idx": 106, "imagenet_full_label": "wombat"}
+{"is_esoteric": 0, "topic": "jellyfish", "imagenet_idx": 107, "imagenet_full_label": "jellyfish"}
+{"is_esoteric": 1, "topic": "sea anemone", "imagenet_idx": 108, "imagenet_full_label": "sea anemone, anemone"}
+{"is_esoteric": 1, "topic": "brain coral", "imagenet_idx": 109, "imagenet_full_label": "brain coral"}
+{"is_esoteric": 1, "topic": "flatworm", "imagenet_idx": 110, "imagenet_full_label": "flatworm, platyhelminth"}
+{"is_esoteric": 1, "topic": "nematode", "imagenet_idx": 111, "imagenet_full_label": "nematode, nematode worm, roundworm"}
+{"is_esoteric": 1, "topic": "conch", "imagenet_idx": 112, "imagenet_full_label": "conch"}
+{"is_esoteric": 0, "topic": "snail", "imagenet_idx": 113, "imagenet_full_label": "snail"}
+{"is_esoteric": 1, "topic": "slug", "imagenet_idx": 114, "imagenet_full_label": "slug"}
+{"is_esoteric": 1, "topic": "sea slug", "imagenet_idx": 115, "imagenet_full_label": "sea slug, nudibranch"}
+{"is_esoteric": 1, "topic": "chiton", "imagenet_idx": 116, "imagenet_full_label": "chiton, coat-of-mail shell, sea cradle, polyplacophore"}
+{"is_esoteric": 1, "topic": "chambered nautilus", "imagenet_idx": 117, "imagenet_full_label": "chambered nautilus, pearly nautilus, nautilus"}
+{"is_esoteric": 1, "topic": "Dungeness crab", "imagenet_idx": 118, "imagenet_full_label": "Dungeness crab, Cancer magister"}
+{"is_esoteric": 1, "topic": "rock crab", "imagenet_idx": 119, "imagenet_full_label": "rock crab, Cancer irroratus"}
+{"is_esoteric": 1, "topic": "fiddler crab", "imagenet_idx": 120, "imagenet_full_label": "fiddler crab"}
+{"is_esoteric": 0, "topic": "king crab", "imagenet_idx": 121, "imagenet_full_label": "king crab, Alaska crab, Alaskan king crab, Alaska king crab, Paralithodes camtschatica"}
+{"is_esoteric": 0, "topic": "American lobster", "imagenet_idx": 122, "imagenet_full_label": "American lobster, Northern lobster, Maine lobster, Homarus americanus"}
+{"is_esoteric": 1, "topic": "spiny lobster", "imagenet_idx": 123, "imagenet_full_label": "spiny lobster, langouste, rock lobster, crawfish, crayfish, sea crawfish"}
+{"is_esoteric": 1, "topic": "crayfish", "imagenet_idx": 124, "imagenet_full_label": "crayfish, crawfish, crawdad, crawdaddy"}
+{"is_esoteric": 1, "topic": "hermit crab", "imagenet_idx": 125, "imagenet_full_label": "hermit crab"}
+{"is_esoteric": 1, "topic": "isopod", "imagenet_idx": 126, "imagenet_full_label": "isopod"}
+{"is_esoteric": 1, "topic": "white stork", "imagenet_idx": 127, "imagenet_full_label": "white stork, Ciconia ciconia"}
+{"is_esoteric": 1, "topic": "black stork", "imagenet_idx": 128, "imagenet_full_label": "black stork, Ciconia nigra"}
+{"is_esoteric": 1, "topic": "spoonbill", "imagenet_idx": 129, "imagenet_full_label": "spoonbill"}
+{"is_esoteric": 0, "topic": "flamingo", "imagenet_idx": 130, "imagenet_full_label": "flamingo"}
+{"is_esoteric": 1, "topic": "little blue heron", "imagenet_idx": 131, "imagenet_full_label": "little blue heron, Egretta caerulea"}
+{"is_esoteric": 1, "topic": "American egret", "imagenet_idx": 132, "imagenet_full_label": "American egret, great white heron, Egretta albus"}
+{"is_esoteric": 1, "topic": "bittern", "imagenet_idx": 133, "imagenet_full_label": "bittern"}
+{"is_esoteric": 1, "topic": "crane", "imagenet_idx": 134, "imagenet_full_label": "crane"}
+{"is_esoteric": 1, "topic": "limpkin", "imagenet_idx": 135, "imagenet_full_label": "limpkin, Aramus pictus"}
+{"is_esoteric": 1, "topic": "European gallinule", "imagenet_idx": 136, "imagenet_full_label": "European gallinule, Porphyrio porphyrio"}
+{"is_esoteric": 1, "topic": "American coot", "imagenet_idx": 137, "imagenet_full_label": "American coot, marsh hen, mud hen, water hen, Fulica americana"}
+{"is_esoteric": 1, "topic": "bustard", "imagenet_idx": 138, "imagenet_full_label": "bustard"}
+{"is_esoteric": 1, "topic": "ruddy turnstone", "imagenet_idx": 139, "imagenet_full_label": "ruddy turnstone, Arenaria interpres"}
+{"is_esoteric": 1, "topic": "red-backed sandpiper", "imagenet_idx": 140, "imagenet_full_label": "red-backed sandpiper, dunlin, Erolia alpina"}
+{"is_esoteric": 1, "topic": "redshank", "imagenet_idx": 141, "imagenet_full_label": "redshank, Tringa totanus"}
+{"is_esoteric": 1, "topic": "dowitcher", "imagenet_idx": 142, "imagenet_full_label": "dowitcher"}
+{"is_esoteric": 1, "topic": "oystercatcher", "imagenet_idx": 143, "imagenet_full_label": "oystercatcher, oyster catcher"}
+{"is_esoteric": 1, "topic": "pelican", "imagenet_idx": 144, "imagenet_full_label": "pelican"}
+{"is_esoteric": 1, "topic": "king penguin", "imagenet_idx": 145, "imagenet_full_label": "king penguin, Aptenodytes patagonica"}
+{"is_esoteric": 1, "topic": "albatross", "imagenet_idx": 146, "imagenet_full_label": "albatross, mollymawk"}
+{"is_esoteric": 1, "topic": "grey whale", "imagenet_idx": 147, "imagenet_full_label": "grey whale, gray whale, devilfish, Eschrichtius gibbosus, Eschrichtius robustus"}
+{"is_esoteric": 0, "topic": "killer whale", "imagenet_idx": 148, "imagenet_full_label": "killer whale, killer, orca, grampus, sea wolf, Orcinus orca"}
+{"is_esoteric": 1, "topic": "dugong", "imagenet_idx": 149, "imagenet_full_label": "dugong, Dugong dugon"}
+{"is_esoteric": 0, "topic": "sea lion", "imagenet_idx": 150, "imagenet_full_label": "sea lion"}
+{"is_esoteric": 1, "topic": "Chihuahua", "imagenet_idx": 151, "imagenet_full_label": "Chihuahua"}
+{"is_esoteric": 1, "topic": "Japanese spaniel", "imagenet_idx": 152, "imagenet_full_label": "Japanese spaniel"}
+{"is_esoteric": 1, "topic": "Maltese dog", "imagenet_idx": 153, "imagenet_full_label": "Maltese dog, Maltese terrier, Maltese"}
+{"is_esoteric": 1, "topic": "Pekinese", "imagenet_idx": 154, "imagenet_full_label": "Pekinese, Pekingese, Peke"}
+{"is_esoteric": 1, "topic": "Shih-Tzu", "imagenet_idx": 155, "imagenet_full_label": "Shih-Tzu"}
+{"is_esoteric": 1, "topic": "Blenheim spaniel", "imagenet_idx": 156, "imagenet_full_label": "Blenheim spaniel"}
+{"is_esoteric": 1, "topic": "papillon", "imagenet_idx": 157, "imagenet_full_label": "papillon"}
+{"is_esoteric": 1, "topic": "toy terrier", "imagenet_idx": 158, "imagenet_full_label": "toy terrier"}
+{"is_esoteric": 1, "topic": "Rhodesian ridgeback", "imagenet_idx": 159, "imagenet_full_label": "Rhodesian ridgeback"}
+{"is_esoteric": 1, "topic": "Afghan hound", "imagenet_idx": 160, "imagenet_full_label": "Afghan hound, Afghan"}
+{"is_esoteric": 1, "topic": "basset", "imagenet_idx": 161, "imagenet_full_label": "basset, basset hound"}
+{"is_esoteric": 1, "topic": "beagle", "imagenet_idx": 162, "imagenet_full_label": "beagle"}
+{"is_esoteric": 1, "topic": "bloodhound", "imagenet_idx": 163, "imagenet_full_label": "bloodhound, sleuthhound"}
+{"is_esoteric": 1, "topic": "bluetick", "imagenet_idx": 164, "imagenet_full_label": "bluetick"}
+{"is_esoteric": 1, "topic": "black-and-tan coonhound", "imagenet_idx": 165, "imagenet_full_label": "black-and-tan coonhound"}
+{"is_esoteric": 1, "topic": "Walker hound", "imagenet_idx": 166, "imagenet_full_label": "Walker hound, Walker foxhound"}
+{"is_esoteric": 1, "topic": "English foxhound", "imagenet_idx": 167, "imagenet_full_label": "English foxhound"}
+{"is_esoteric": 1, "topic": "redbone", "imagenet_idx": 168, "imagenet_full_label": "redbone"}
+{"is_esoteric": 1, "topic": "borzoi", "imagenet_idx": 169, "imagenet_full_label": "borzoi, Russian wolfhound"}
+{"is_esoteric": 1, "topic": "Irish wolfhound", "imagenet_idx": 170, "imagenet_full_label": "Irish wolfhound"}
+{"is_esoteric": 1, "topic": "Italian greyhound", "imagenet_idx": 171, "imagenet_full_label": "Italian greyhound"}
+{"is_esoteric": 1, "topic": "whippet", "imagenet_idx": 172, "imagenet_full_label": "whippet"}
+{"is_esoteric": 1, "topic": "Ibizan hound", "imagenet_idx": 173, "imagenet_full_label": "Ibizan hound, Ibizan Podenco"}
+{"is_esoteric": 1, "topic": "Norwegian elkhound", "imagenet_idx": 174, "imagenet_full_label": "Norwegian elkhound, elkhound"}
+{"is_esoteric": 1, "topic": "otterhound", "imagenet_idx": 175, "imagenet_full_label": "otterhound, otter hound"}
+{"is_esoteric": 1, "topic": "Saluki", "imagenet_idx": 176, "imagenet_full_label": "Saluki, gazelle hound"}
+{"is_esoteric": 1, "topic": "Scottish deerhound", "imagenet_idx": 177, "imagenet_full_label": "Scottish deerhound, deerhound"}
+{"is_esoteric": 1, "topic": "Weimaraner", "imagenet_idx": 178, "imagenet_full_label": "Weimaraner"}
+{"is_esoteric": 1, "topic": "Staffordshire bullterrier", "imagenet_idx": 179, "imagenet_full_label": "Staffordshire bullterrier, Staffordshire bull terrier"}
+{"is_esoteric": 1, "topic": "American Staffordshire terrier", "imagenet_idx": 180, "imagenet_full_label": "American Staffordshire terrier, Staffordshire terrier, American pit bull terrier, pit bull terrier"}
+{"is_esoteric": 1, "topic": "Bedlington terrier", "imagenet_idx": 181, "imagenet_full_label": "Bedlington terrier"}
+{"is_esoteric": 1, "topic": "Border terrier", "imagenet_idx": 182, "imagenet_full_label": "Border terrier"}
+{"is_esoteric": 1, "topic": "Kerry blue terrier", "imagenet_idx": 183, "imagenet_full_label": "Kerry blue terrier"}
+{"is_esoteric": 1, "topic": "Irish terrier", "imagenet_idx": 184, "imagenet_full_label": "Irish terrier"}
+{"is_esoteric": 1, "topic": "Norfolk terrier", "imagenet_idx": 185, "imagenet_full_label": "Norfolk terrier"}
+{"is_esoteric": 1, "topic": "Norwich terrier", "imagenet_idx": 186, "imagenet_full_label": "Norwich terrier"}
+{"is_esoteric": 1, "topic": "Yorkshire terrier", "imagenet_idx": 187, "imagenet_full_label": "Yorkshire terrier"}
+{"is_esoteric": 1, "topic": "wire-haired fox terrier", "imagenet_idx": 188, "imagenet_full_label": "wire-haired fox terrier"}
+{"is_esoteric": 1, "topic": "Lakeland terrier", "imagenet_idx": 189, "imagenet_full_label": "Lakeland terrier"}
+{"is_esoteric": 1, "topic": "Sealyham terrier", "imagenet_idx": 190, "imagenet_full_label": "Sealyham terrier, Sealyham"}
+{"is_esoteric": 1, "topic": "Airedale", "imagenet_idx": 191, "imagenet_full_label": "Airedale, Airedale terrier"}
+{"is_esoteric": 1, "topic": "cairn", "imagenet_idx": 192, "imagenet_full_label": "cairn, cairn terrier"}
+{"is_esoteric": 1, "topic": "Australian terrier", "imagenet_idx": 193, "imagenet_full_label": "Australian terrier"}
+{"is_esoteric": 1, "topic": "Dandie Dinmont", "imagenet_idx": 194, "imagenet_full_label": "Dandie Dinmont, Dandie Dinmont terrier"}
+{"is_esoteric": 1, "topic": "Boston bull", "imagenet_idx": 195, "imagenet_full_label": "Boston bull, Boston terrier"}
+{"is_esoteric": 1, "topic": "miniature schnauzer", "imagenet_idx": 196, "imagenet_full_label": "miniature schnauzer"}
+{"is_esoteric": 1, "topic": "giant schnauzer", "imagenet_idx": 197, "imagenet_full_label": "giant schnauzer"}
+{"is_esoteric": 1, "topic": "standard schnauzer", "imagenet_idx": 198, "imagenet_full_label": "standard schnauzer"}
+{"is_esoteric": 1, "topic": "Scotch terrier", "imagenet_idx": 199, "imagenet_full_label": "Scotch terrier, Scottish terrier, Scottie"}
+{"is_esoteric": 1, "topic": "Tibetan terrier", "imagenet_idx": 200, "imagenet_full_label": "Tibetan terrier, chrysanthemum dog"}
+{"is_esoteric": 1, "topic": "silky terrier", "imagenet_idx": 201, "imagenet_full_label": "silky terrier, Sydney silky"}
+{"is_esoteric": 1, "topic": "soft-coated wheaten terrier", "imagenet_idx": 202, "imagenet_full_label": "soft-coated wheaten terrier"}
+{"is_esoteric": 1, "topic": "West Highland white terrier", "imagenet_idx": 203, "imagenet_full_label": "West Highland white terrier"}
+{"is_esoteric": 1, "topic": "Lhasa", "imagenet_idx": 204, "imagenet_full_label": "Lhasa, Lhasa apso"}
+{"is_esoteric": 1, "topic": "flat-coated retriever", "imagenet_idx": 205, "imagenet_full_label": "flat-coated retriever"}
+{"is_esoteric": 1, "topic": "curly-coated retriever", "imagenet_idx": 206, "imagenet_full_label": "curly-coated retriever"}
+{"is_esoteric": 0, "topic": "golden retriever", "imagenet_idx": 207, "imagenet_full_label": "golden retriever"}
+{"is_esoteric": 1, "topic": "Labrador retriever", "imagenet_idx": 208, "imagenet_full_label": "Labrador retriever"}
+{"is_esoteric": 1, "topic": "Chesapeake Bay retriever", "imagenet_idx": 209, "imagenet_full_label": "Chesapeake Bay retriever"}
+{"is_esoteric": 1, "topic": "German short-haired pointer", "imagenet_idx": 210, "imagenet_full_label": "German short-haired pointer"}
+{"is_esoteric": 1, "topic": "vizsla", "imagenet_idx": 211, "imagenet_full_label": "vizsla, Hungarian pointer"}
+{"is_esoteric": 1, "topic": "English setter", "imagenet_idx": 212, "imagenet_full_label": "English setter"}
+{"is_esoteric": 1, "topic": "Irish setter", "imagenet_idx": 213, "imagenet_full_label": "Irish setter, red setter"}
+{"is_esoteric": 1, "topic": "Gordon setter", "imagenet_idx": 214, "imagenet_full_label": "Gordon setter"}
+{"is_esoteric": 1, "topic": "Brittany spaniel", "imagenet_idx": 215, "imagenet_full_label": "Brittany spaniel"}
+{"is_esoteric": 1, "topic": "clumber", "imagenet_idx": 216, "imagenet_full_label": "clumber, clumber spaniel"}
+{"is_esoteric": 1, "topic": "English springer", "imagenet_idx": 217, "imagenet_full_label": "English springer, English springer spaniel"}
+{"is_esoteric": 1, "topic": "Welsh springer spaniel", "imagenet_idx": 218, "imagenet_full_label": "Welsh springer spaniel"}
+{"is_esoteric": 1, "topic": "cocker spaniel", "imagenet_idx": 219, "imagenet_full_label": "cocker spaniel, English cocker spaniel, cocker"}
+{"is_esoteric": 1, "topic": "Sussex spaniel", "imagenet_idx": 220, "imagenet_full_label": "Sussex spaniel"}
+{"is_esoteric": 1, "topic": "Irish water spaniel", "imagenet_idx": 221, "imagenet_full_label": "Irish water spaniel"}
+{"is_esoteric": 1, "topic": "kuvasz", "imagenet_idx": 222, "imagenet_full_label": "kuvasz"}
+{"is_esoteric": 1, "topic": "schipperke", "imagenet_idx": 223, "imagenet_full_label": "schipperke"}
+{"is_esoteric": 1, "topic": "groenendael", "imagenet_idx": 224, "imagenet_full_label": "groenendael"}
+{"is_esoteric": 1, "topic": "malinois", "imagenet_idx": 225, "imagenet_full_label": "malinois"}
+{"is_esoteric": 1, "topic": "briard", "imagenet_idx": 226, "imagenet_full_label": "briard"}
+{"is_esoteric": 1, "topic": "kelpie", "imagenet_idx": 227, "imagenet_full_label": "kelpie"}
+{"is_esoteric": 1, "topic": "komondor", "imagenet_idx": 228, "imagenet_full_label": "komondor"}
+{"is_esoteric": 1, "topic": "Old English sheepdog", "imagenet_idx": 229, "imagenet_full_label": "Old English sheepdog, bobtail"}
+{"is_esoteric": 1, "topic": "Shetland sheepdog", "imagenet_idx": 230, "imagenet_full_label": "Shetland sheepdog, Shetland sheep dog, Shetland"}
+{"is_esoteric": 0, "topic": "collie", "imagenet_idx": 231, "imagenet_full_label": "collie"}
+{"is_esoteric": 1, "topic": "Border collie", "imagenet_idx": 232, "imagenet_full_label": "Border collie"}
+{"is_esoteric": 1, "topic": "Bouvier des Flandres", "imagenet_idx": 233, "imagenet_full_label": "Bouvier des Flandres, Bouviers des Flandres"}
+{"is_esoteric": 1, "topic": "Rottweiler", "imagenet_idx": 234, "imagenet_full_label": "Rottweiler"}
+{"is_esoteric": 0, "topic": "German shepherd", "imagenet_idx": 235, "imagenet_full_label": "German shepherd, German shepherd dog, German police dog, alsatian"}
+{"is_esoteric": 1, "topic": "Doberman", "imagenet_idx": 236, "imagenet_full_label": "Doberman, Doberman pinscher"}
+{"is_esoteric": 1, "topic": "miniature pinscher", "imagenet_idx": 237, "imagenet_full_label": "miniature pinscher"}
+{"is_esoteric": 1, "topic": "Greater Swiss Mountain dog", "imagenet_idx": 238, "imagenet_full_label": "Greater Swiss Mountain dog"}
+{"is_esoteric": 1, "topic": "Bernese mountain dog", "imagenet_idx": 239, "imagenet_full_label": "Bernese mountain dog"}
+{"is_esoteric": 1, "topic": "Appenzeller", "imagenet_idx": 240, "imagenet_full_label": "Appenzeller"}
+{"is_esoteric": 1, "topic": "EntleBucher", "imagenet_idx": 241, "imagenet_full_label": "EntleBucher"}
+{"is_esoteric": 1, "topic": "boxer", "imagenet_idx": 242, "imagenet_full_label": "boxer"}
+{"is_esoteric": 1, "topic": "bull mastiff", "imagenet_idx": 243, "imagenet_full_label": "bull mastiff"}
+{"is_esoteric": 1, "topic": "Tibetan mastiff", "imagenet_idx": 244, "imagenet_full_label": "Tibetan mastiff"}
+{"is_esoteric": 1, "topic": "French bulldog", "imagenet_idx": 245, "imagenet_full_label": "French bulldog"}
+{"is_esoteric": 1, "topic": "Great Dane", "imagenet_idx": 246, "imagenet_full_label": "Great Dane"}
+{"is_esoteric": 1, "topic": "Saint Bernard", "imagenet_idx": 247, "imagenet_full_label": "Saint Bernard, St Bernard"}
+{"is_esoteric": 1, "topic": "Eskimo dog", "imagenet_idx": 248, "imagenet_full_label": "Eskimo dog, husky"}
+{"is_esoteric": 1, "topic": "malamute", "imagenet_idx": 249, "imagenet_full_label": "malamute, malemute, Alaskan malamute"}
+{"is_esoteric": 0, "topic": "Siberian husky", "imagenet_idx": 250, "imagenet_full_label": "Siberian husky"}
+{"is_esoteric": 1, "topic": "dalmatian", "imagenet_idx": 251, "imagenet_full_label": "dalmatian, coach dog, carriage dog"}
+{"is_esoteric": 1, "topic": "affenpinscher", "imagenet_idx": 252, "imagenet_full_label": "affenpinscher, monkey pinscher, monkey dog"}
+{"is_esoteric": 1, "topic": "basenji", "imagenet_idx": 253, "imagenet_full_label": "basenji"}
+{"is_esoteric": 1, "topic": "pug", "imagenet_idx": 254, "imagenet_full_label": "pug, pug-dog"}
+{"is_esoteric": 1, "topic": "Leonberg", "imagenet_idx": 255, "imagenet_full_label": "Leonberg"}
+{"is_esoteric": 1, "topic": "Newfoundland", "imagenet_idx": 256, "imagenet_full_label": "Newfoundland, Newfoundland dog"}
+{"is_esoteric": 1, "topic": "Great Pyrenees", "imagenet_idx": 257, "imagenet_full_label": "Great Pyrenees"}
+{"is_esoteric": 1, "topic": "Samoyed", "imagenet_idx": 258, "imagenet_full_label": "Samoyed, Samoyede"}
+{"is_esoteric": 1, "topic": "Pomeranian", "imagenet_idx": 259, "imagenet_full_label": "Pomeranian"}
+{"is_esoteric": 1, "topic": "chow", "imagenet_idx": 260, "imagenet_full_label": "chow, chow chow"}
+{"is_esoteric": 1, "topic": "keeshond", "imagenet_idx": 261, "imagenet_full_label": "keeshond"}
+{"is_esoteric": 1, "topic": "Brabancon griffon", "imagenet_idx": 262, "imagenet_full_label": "Brabancon griffon"}
+{"is_esoteric": 1, "topic": "Pembroke", "imagenet_idx": 263, "imagenet_full_label": "Pembroke, Pembroke Welsh corgi"}
+{"is_esoteric": 1, "topic": "Cardigan", "imagenet_idx": 264, "imagenet_full_label": "Cardigan, Cardigan Welsh corgi"}
+{"is_esoteric": 1, "topic": "toy poodle", "imagenet_idx": 265, "imagenet_full_label": "toy poodle"}
+{"is_esoteric": 1, "topic": "miniature poodle", "imagenet_idx": 266, "imagenet_full_label": "miniature poodle"}
+{"is_esoteric": 1, "topic": "standard poodle", "imagenet_idx": 267, "imagenet_full_label": "standard poodle"}
+{"is_esoteric": 1, "topic": "Mexican hairless", "imagenet_idx": 268, "imagenet_full_label": "Mexican hairless"}
+{"is_esoteric": 1, "topic": "timber wolf", "imagenet_idx": 269, "imagenet_full_label": "timber wolf, grey wolf, gray wolf, Canis lupus"}
+{"is_esoteric": 1, "topic": "white wolf", "imagenet_idx": 270, "imagenet_full_label": "white wolf, Arctic wolf, Canis lupus tundrarum"}
+{"is_esoteric": 1, "topic": "red wolf", "imagenet_idx": 271, "imagenet_full_label": "red wolf, maned wolf, Canis rufus, Canis niger"}
+{"is_esoteric": 0, "topic": "coyote", "imagenet_idx": 272, "imagenet_full_label": "coyote, prairie wolf, brush wolf, Canis latrans"}
+{"is_esoteric": 1, "topic": "dingo", "imagenet_idx": 273, "imagenet_full_label": "dingo, warrigal, warragal, Canis dingo"}
+{"is_esoteric": 1, "topic": "dhole", "imagenet_idx": 274, "imagenet_full_label": "dhole, Cuon alpinus"}
+{"is_esoteric": 1, "topic": "African hunting dog", "imagenet_idx": 275, "imagenet_full_label": "African hunting dog, hyena dog, Cape hunting dog, Lycaon pictus"}
+{"is_esoteric": 0, "topic": "hyena", "imagenet_idx": 276, "imagenet_full_label": "hyena, hyaena"}
+{"is_esoteric": 1, "topic": "red fox", "imagenet_idx": 277, "imagenet_full_label": "red fox, Vulpes vulpes"}
+{"is_esoteric": 1, "topic": "kit fox", "imagenet_idx": 278, "imagenet_full_label": "kit fox, Vulpes macrotis"}
+{"is_esoteric": 0, "topic": "Arctic fox", "imagenet_idx": 279, "imagenet_full_label": "Arctic fox, white fox, Alopex lagopus"}
+{"is_esoteric": 1, "topic": "grey fox", "imagenet_idx": 280, "imagenet_full_label": "grey fox, gray fox, Urocyon cinereoargenteus"}
+{"is_esoteric": 1, "topic": "tabby", "imagenet_idx": 281, "imagenet_full_label": "tabby, tabby cat"}
+{"is_esoteric": 1, "topic": "tiger cat", "imagenet_idx": 282, "imagenet_full_label": "tiger cat"}
+{"is_esoteric": 1, "topic": "Persian cat", "imagenet_idx": 283, "imagenet_full_label": "Persian cat"}
+{"is_esoteric": 1, "topic": "Siamese cat", "imagenet_idx": 284, "imagenet_full_label": "Siamese cat, Siamese"}
+{"is_esoteric": 1, "topic": "Egyptian cat", "imagenet_idx": 285, "imagenet_full_label": "Egyptian cat"}
+{"is_esoteric": 1, "topic": "cougar", "imagenet_idx": 286, "imagenet_full_label": "cougar, puma, catamount, mountain lion, painter, panther, Felis concolor"}
+{"is_esoteric": 1, "topic": "lynx", "imagenet_idx": 287, "imagenet_full_label": "lynx, catamount"}
+{"is_esoteric": 1, "topic": "leopard", "imagenet_idx": 288, "imagenet_full_label": "leopard, Panthera pardus"}
+{"is_esoteric": 1, "topic": "snow leopard", "imagenet_idx": 289, "imagenet_full_label": "snow leopard, ounce, Panthera uncia"}
+{"is_esoteric": 0, "topic": "jaguar", "imagenet_idx": 290, "imagenet_full_label": "jaguar, panther, Panthera onca, Felis onca"}
+{"is_esoteric": 0, "topic": "lion", "imagenet_idx": 291, "imagenet_full_label": "lion, king of beasts, Panthera leo"}
+{"is_esoteric": 0, "topic": "tiger", "imagenet_idx": 292, "imagenet_full_label": "tiger, Panthera tigris"}
+{"is_esoteric": 0, "topic": "cheetah", "imagenet_idx": 293, "imagenet_full_label": "cheetah, chetah, Acinonyx jubatus"}
+{"is_esoteric": 0, "topic": "brown bear", "imagenet_idx": 294, "imagenet_full_label": "brown bear, bruin, Ursus arctos"}
+{"is_esoteric": 1, "topic": "American black bear", "imagenet_idx": 295, "imagenet_full_label": "American black bear, black bear, Ursus americanus, Euarctos americanus"}
+{"is_esoteric": 1, "topic": "ice bear", "imagenet_idx": 296, "imagenet_full_label": "ice bear, polar bear, Ursus Maritimus, Thalarctos maritimus"}
+{"is_esoteric": 1, "topic": "sloth bear", "imagenet_idx": 297, "imagenet_full_label": "sloth bear, Melursus ursinus, Ursus ursinus"}
+{"is_esoteric": 1, "topic": "mongoose", "imagenet_idx": 298, "imagenet_full_label": "mongoose"}
+{"is_esoteric": 0, "topic": "meerkat", "imagenet_idx": 299, "imagenet_full_label": "meerkat, mierkat"}
+{"is_esoteric": 1, "topic": "tiger beetle", "imagenet_idx": 300, "imagenet_full_label": "tiger beetle"}
+{"is_esoteric": 1, "topic": "ladybug", "imagenet_idx": 301, "imagenet_full_label": "ladybug, ladybeetle, lady beetle, ladybird, ladybird beetle"}
+{"is_esoteric": 1, "topic": "ground beetle", "imagenet_idx": 302, "imagenet_full_label": "ground beetle, carabid beetle"}
+{"is_esoteric": 1, "topic": "long-horned beetle", "imagenet_idx": 303, "imagenet_full_label": "long-horned beetle, longicorn, longicorn beetle"}
+{"is_esoteric": 1, "topic": "leaf beetle", "imagenet_idx": 304, "imagenet_full_label": "leaf beetle, chrysomelid"}
+{"is_esoteric": 1, "topic": "dung beetle", "imagenet_idx": 305, "imagenet_full_label": "dung beetle"}
+{"is_esoteric": 1, "topic": "rhinoceros beetle", "imagenet_idx": 306, "imagenet_full_label": "rhinoceros beetle"}
+{"is_esoteric": 1, "topic": "weevil", "imagenet_idx": 307, "imagenet_full_label": "weevil"}
+{"is_esoteric": 0, "topic": "fly", "imagenet_idx": 308, "imagenet_full_label": "fly"}
+{"is_esoteric": 0, "topic": "bee", "imagenet_idx": 309, "imagenet_full_label": "bee"}
+{"is_esoteric": 0, "topic": "ant", "imagenet_idx": 310, "imagenet_full_label": "ant, emmet, pismire"}
+{"is_esoteric": 0, "topic": "grasshopper", "imagenet_idx": 311, "imagenet_full_label": "grasshopper, hopper"}
+{"is_esoteric": 1, "topic": "cricket", "imagenet_idx": 312, "imagenet_full_label": "cricket"}
+{"is_esoteric": 1, "topic": "walking stick", "imagenet_idx": 313, "imagenet_full_label": "walking stick, walkingstick, stick insect"}
+{"is_esoteric": 0, "topic": "cockroach", "imagenet_idx": 314, "imagenet_full_label": "cockroach, roach"}
+{"is_esoteric": 1, "topic": "mantis", "imagenet_idx": 315, "imagenet_full_label": "mantis, mantid"}
+{"is_esoteric": 1, "topic": "cicada", "imagenet_idx": 316, "imagenet_full_label": "cicada, cicala"}
+{"is_esoteric": 1, "topic": "leafhopper", "imagenet_idx": 317, "imagenet_full_label": "leafhopper"}
+{"is_esoteric": 1, "topic": "lacewing", "imagenet_idx": 318, "imagenet_full_label": "lacewing, lacewing fly"}
+{"is_esoteric": 0, "topic": "dragonfly", "imagenet_idx": 319, "imagenet_full_label": "dragonfly, darning needle, devil's darning needle, sewing needle, snake feeder, snake doctor, mosquito hawk, skeeter hawk"}
+{"is_esoteric": 1, "topic": "damselfly", "imagenet_idx": 320, "imagenet_full_label": "damselfly"}
+{"is_esoteric": 1, "topic": "admiral", "imagenet_idx": 321, "imagenet_full_label": "admiral"}
+{"is_esoteric": 1, "topic": "ringlet", "imagenet_idx": 322, "imagenet_full_label": "ringlet, ringlet butterfly"}
+{"is_esoteric": 1, "topic": "monarch", "imagenet_idx": 323, "imagenet_full_label": "monarch, monarch butterfly, milkweed butterfly, Danaus plexippus"}
+{"is_esoteric": 1, "topic": "cabbage butterfly", "imagenet_idx": 324, "imagenet_full_label": "cabbage butterfly"}
+{"is_esoteric": 1, "topic": "sulphur butterfly", "imagenet_idx": 325, "imagenet_full_label": "sulphur butterfly, sulfur butterfly"}
+{"is_esoteric": 1, "topic": "lycaenid", "imagenet_idx": 326, "imagenet_full_label": "lycaenid, lycaenid butterfly"}
+{"is_esoteric": 0, "topic": "starfish", "imagenet_idx": 327, "imagenet_full_label": "starfish, sea star"}
+{"is_esoteric": 1, "topic": "sea urchin", "imagenet_idx": 328, "imagenet_full_label": "sea urchin"}
+{"is_esoteric": 1, "topic": "sea cucumber", "imagenet_idx": 329, "imagenet_full_label": "sea cucumber, holothurian"}
+{"is_esoteric": 1, "topic": "wood rabbit", "imagenet_idx": 330, "imagenet_full_label": "wood rabbit, cottontail, cottontail rabbit"}
+{"is_esoteric": 1, "topic": "hare", "imagenet_idx": 331, "imagenet_full_label": "hare"}
+{"is_esoteric": 1, "topic": "Angora", "imagenet_idx": 332, "imagenet_full_label": "Angora, Angora rabbit"}
+{"is_esoteric": 0, "topic": "hamster", "imagenet_idx": 333, "imagenet_full_label": "hamster"}
+{"is_esoteric": 0, "topic": "porcupine", "imagenet_idx": 334, "imagenet_full_label": "porcupine, hedgehog"}
+{"is_esoteric": 1, "topic": "fox squirrel", "imagenet_idx": 335, "imagenet_full_label": "fox squirrel, eastern fox squirrel, Sciurus niger"}
+{"is_esoteric": 1, "topic": "marmot", "imagenet_idx": 336, "imagenet_full_label": "marmot"}
+{"is_esoteric": 0, "topic": "beaver", "imagenet_idx": 337, "imagenet_full_label": "beaver"}
+{"is_esoteric": 1, "topic": "guinea pig", "imagenet_idx": 338, "imagenet_full_label": "guinea pig, Cavia cobaya"}
+{"is_esoteric": 1, "topic": "sorrel", "imagenet_idx": 339, "imagenet_full_label": "sorrel"}
+{"is_esoteric": 0, "topic": "zebra", "imagenet_idx": 340, "imagenet_full_label": "zebra"}
+{"is_esoteric": 1, "topic": "hog", "imagenet_idx": 341, "imagenet_full_label": "hog, pig, grunter, squealer, Sus scrofa"}
+{"is_esoteric": 1, "topic": "wild boar", "imagenet_idx": 342, "imagenet_full_label": "wild boar, boar, Sus scrofa"}
+{"is_esoteric": 1, "topic": "warthog", "imagenet_idx": 343, "imagenet_full_label": "warthog"}
+{"is_esoteric": 0, "topic": "hippopotamus", "imagenet_idx": 344, "imagenet_full_label": "hippopotamus, hippo, river horse, Hippopotamus amphibius"}
+{"is_esoteric": 1, "topic": "ox", "imagenet_idx": 345, "imagenet_full_label": "ox"}
+{"is_esoteric": 1, "topic": "water buffalo", "imagenet_idx": 346, "imagenet_full_label": "water buffalo, water ox, Asiatic buffalo, Bubalus bubalis"}
+{"is_esoteric": 0, "topic": "bison", "imagenet_idx": 347, "imagenet_full_label": "bison"}
+{"is_esoteric": 1, "topic": "ram", "imagenet_idx": 348, "imagenet_full_label": "ram, tup"}
+{"is_esoteric": 1, "topic": "bighorn", "imagenet_idx": 349, "imagenet_full_label": "bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis"}
+{"is_esoteric": 1, "topic": "ibex", "imagenet_idx": 350, "imagenet_full_label": "ibex, Capra ibex"}
+{"is_esoteric": 1, "topic": "hartebeest", "imagenet_idx": 351, "imagenet_full_label": "hartebeest"}
+{"is_esoteric": 1, "topic": "impala", "imagenet_idx": 352, "imagenet_full_label": "impala, Aepyceros melampus"}
+{"is_esoteric": 0, "topic": "gazelle", "imagenet_idx": 353, "imagenet_full_label": "gazelle"}
+{"is_esoteric": 1, "topic": "Arabian camel", "imagenet_idx": 354, "imagenet_full_label": "Arabian camel, dromedary, Camelus dromedarius"}
+{"is_esoteric": 0, "topic": "llama", "imagenet_idx": 355, "imagenet_full_label": "llama"}
+{"is_esoteric": 1, "topic": "weasel", "imagenet_idx": 356, "imagenet_full_label": "weasel"}
+{"is_esoteric": 1, "topic": "mink", "imagenet_idx": 357, "imagenet_full_label": "mink"}
+{"is_esoteric": 1, "topic": "polecat", "imagenet_idx": 358, "imagenet_full_label": "polecat, fitch, foulmart, foumart, Mustela putorius"}
+{"is_esoteric": 1, "topic": "black-footed ferret", "imagenet_idx": 359, "imagenet_full_label": "black-footed ferret, ferret, Mustela nigripes"}
+{"is_esoteric": 0, "topic": "otter", "imagenet_idx": 360, "imagenet_full_label": "otter"}
+{"is_esoteric": 0, "topic": "skunk", "imagenet_idx": 361, "imagenet_full_label": "skunk, polecat, wood pussy"}
+{"is_esoteric": 1, "topic": "badger", "imagenet_idx": 362, "imagenet_full_label": "badger"}
+{"is_esoteric": 0, "topic": "armadillo", "imagenet_idx": 363, "imagenet_full_label": "armadillo"}
+{"is_esoteric": 1, "topic": "three-toed sloth", "imagenet_idx": 364, "imagenet_full_label": "three-toed sloth, ai, Bradypus tridactylus"}
+{"is_esoteric": 0, "topic": "orangutan", "imagenet_idx": 365, "imagenet_full_label": "orangutan, orang, orangutang, Pongo pygmaeus"}
+{"is_esoteric": 0, "topic": "gorilla", "imagenet_idx": 366, "imagenet_full_label": "gorilla, Gorilla gorilla"}
+{"is_esoteric": 1, "topic": "chimpanzee", "imagenet_idx": 367, "imagenet_full_label": "chimpanzee, chimp, Pan troglodytes"}
+{"is_esoteric": 1, "topic": "gibbon", "imagenet_idx": 368, "imagenet_full_label": "gibbon, Hylobates lar"}
+{"is_esoteric": 1, "topic": "siamang", "imagenet_idx": 369, "imagenet_full_label": "siamang, Hylobates syndactylus, Symphalangus syndactylus"}
+{"is_esoteric": 1, "topic": "guenon", "imagenet_idx": 370, "imagenet_full_label": "guenon, guenon monkey"}
+{"is_esoteric": 1, "topic": "patas", "imagenet_idx": 371, "imagenet_full_label": "patas, hussar monkey, Erythrocebus patas"}
+{"is_esoteric": 1, "topic": "baboon", "imagenet_idx": 372, "imagenet_full_label": "baboon"}
+{"is_esoteric": 1, "topic": "macaque", "imagenet_idx": 373, "imagenet_full_label": "macaque"}
+{"is_esoteric": 1, "topic": "langur", "imagenet_idx": 374, "imagenet_full_label": "langur"}
+{"is_esoteric": 1, "topic": "colobus", "imagenet_idx": 375, "imagenet_full_label": "colobus, colobus monkey"}
+{"is_esoteric": 1, "topic": "proboscis monkey", "imagenet_idx": 376, "imagenet_full_label": "proboscis monkey, Nasalis larvatus"}
+{"is_esoteric": 1, "topic": "marmoset", "imagenet_idx": 377, "imagenet_full_label": "marmoset"}
+{"is_esoteric": 1, "topic": "capuchin", "imagenet_idx": 378, "imagenet_full_label": "capuchin, ringtail, Cebus capucinus"}
+{"is_esoteric": 1, "topic": "howler monkey", "imagenet_idx": 379, "imagenet_full_label": "howler monkey, howler"}
+{"is_esoteric": 1, "topic": "titi", "imagenet_idx": 380, "imagenet_full_label": "titi, titi monkey"}
+{"is_esoteric": 1, "topic": "spider monkey", "imagenet_idx": 381, "imagenet_full_label": "spider monkey, Ateles geoffroyi"}
+{"is_esoteric": 1, "topic": "squirrel monkey", "imagenet_idx": 382, "imagenet_full_label": "squirrel monkey, Saimiri sciureus"}
+{"is_esoteric": 1, "topic": "Madagascar cat", "imagenet_idx": 383, "imagenet_full_label": "Madagascar cat, ring-tailed lemur, Lemur catta"}
+{"is_esoteric": 1, "topic": "indri", "imagenet_idx": 384, "imagenet_full_label": "indri, indris, Indri indri, Indri brevicaudatus"}
+{"is_esoteric": 1, "topic": "Indian elephant", "imagenet_idx": 385, "imagenet_full_label": "Indian elephant, Elephas maximus"}
+{"is_esoteric": 0, "topic": "African elephant", "imagenet_idx": 386, "imagenet_full_label": "African elephant, Loxodonta africana"}
+{"is_esoteric": 1, "topic": "lesser panda", "imagenet_idx": 387, "imagenet_full_label": "lesser panda, red panda, panda, bear cat, cat bear, Ailurus fulgens"}
+{"is_esoteric": 0, "topic": "giant panda", "imagenet_idx": 388, "imagenet_full_label": "giant panda, panda, panda bear, coon bear, Ailuropoda melanoleuca"}
+{"is_esoteric": 1, "topic": "barracouta", "imagenet_idx": 389, "imagenet_full_label": "barracouta, snoek"}
+{"is_esoteric": 1, "topic": "eel", "imagenet_idx": 390, "imagenet_full_label": "eel"}
+{"is_esoteric": 1, "topic": "coho", "imagenet_idx": 391, "imagenet_full_label": "coho, cohoe, coho salmon, blue jack, silver salmon, Oncorhynchus kisutch"}
+{"is_esoteric": 1, "topic": "rock beauty", "imagenet_idx": 392, "imagenet_full_label": "rock beauty, Holocanthus tricolor"}
+{"is_esoteric": 1, "topic": "anemone fish", "imagenet_idx": 393, "imagenet_full_label": "anemone fish"}
+{"is_esoteric": 1, "topic": "sturgeon", "imagenet_idx": 394, "imagenet_full_label": "sturgeon"}
+{"is_esoteric": 1, "topic": "gar", "imagenet_idx": 395, "imagenet_full_label": "gar, garfish, garpike, billfish, Lepisosteus osseus"}
+{"is_esoteric": 1, "topic": "lionfish", "imagenet_idx": 396, "imagenet_full_label": "lionfish"}
+{"is_esoteric": 1, "topic": "puffer", "imagenet_idx": 397, "imagenet_full_label": "puffer, pufferfish, blowfish, globefish"}
+{"is_esoteric": 1, "topic": "abacus", "imagenet_idx": 398, "imagenet_full_label": "abacus"}
+{"is_esoteric": 1, "topic": "abaya", "imagenet_idx": 399, "imagenet_full_label": "abaya"}
+{"is_esoteric": 1, "topic": "academic gown", "imagenet_idx": 400, "imagenet_full_label": "academic gown, academic robe, judge's robe"}
+{"is_esoteric": 0, "topic": "accordion", "imagenet_idx": 401, "imagenet_full_label": "accordion, piano accordion, squeeze box"}
+{"is_esoteric": 1, "topic": "acoustic guitar", "imagenet_idx": 402, "imagenet_full_label": "acoustic guitar"}
+{"is_esoteric": 1, "topic": "aircraft carrier", "imagenet_idx": 403, "imagenet_full_label": "aircraft carrier, carrier, flattop, attack aircraft carrier"}
+{"is_esoteric": 0, "topic": "airliner", "imagenet_idx": 404, "imagenet_full_label": "airliner"}
+{"is_esoteric": 1, "topic": "airship", "imagenet_idx": 405, "imagenet_full_label": "airship, dirigible"}
+{"is_esoteric": 1, "topic": "altar", "imagenet_idx": 406, "imagenet_full_label": "altar"}
+{"is_esoteric": 0, "topic": "ambulance", "imagenet_idx": 407, "imagenet_full_label": "ambulance"}
+{"is_esoteric": 1, "topic": "amphibian", "imagenet_idx": 408, "imagenet_full_label": "amphibian, amphibious vehicle"}
+{"is_esoteric": 1, "topic": "analog clock", "imagenet_idx": 409, "imagenet_full_label": "analog clock"}
+{"is_esoteric": 1, "topic": "apiary", "imagenet_idx": 410, "imagenet_full_label": "apiary, bee house"}
+{"is_esoteric": 1, "topic": "apron", "imagenet_idx": 411, "imagenet_full_label": "apron"}
+{"is_esoteric": 1, "topic": "ashcan", "imagenet_idx": 412, "imagenet_full_label": "ashcan, trash can, garbage can, wastebin, ash bin, ash-bin, ashbin, dustbin, trash barrel, trash bin"}
+{"is_esoteric": 1, "topic": "assault rifle", "imagenet_idx": 413, "imagenet_full_label": "assault rifle, assault gun"}
+{"is_esoteric": 0, "topic": "backpack", "imagenet_idx": 414, "imagenet_full_label": "backpack, back pack, knapsack, packsack, rucksack, haversack"}
+{"is_esoteric": 0, "topic": "bakery", "imagenet_idx": 415, "imagenet_full_label": "bakery, bakeshop, bakehouse"}
+{"is_esoteric": 0, "topic": "balance beam", "imagenet_idx": 416, "imagenet_full_label": "balance beam, beam"}
+{"is_esoteric": 0, "topic": "balloon", "imagenet_idx": 417, "imagenet_full_label": "balloon"}
+{"is_esoteric": 1, "topic": "ballpoint", "imagenet_idx": 418, "imagenet_full_label": "ballpoint, ballpoint pen, ballpen, Biro"}
+{"is_esoteric": 0, "topic": "Band Aid", "imagenet_idx": 419, "imagenet_full_label": "Band Aid"}
+{"is_esoteric": 0, "topic": "banjo", "imagenet_idx": 420, "imagenet_full_label": "banjo"}
+{"is_esoteric": 0, "topic": "bannister", "imagenet_idx": 421, "imagenet_full_label": "bannister, banister, balustrade, balusters, handrail"}
+{"is_esoteric": 0, "topic": "barbell", "imagenet_idx": 422, "imagenet_full_label": "barbell"}
+{"is_esoteric": 1, "topic": "barber chair", "imagenet_idx": 423, "imagenet_full_label": "barber chair"}
+{"is_esoteric": 0, "topic": "barbershop", "imagenet_idx": 424, "imagenet_full_label": "barbershop"}
+{"is_esoteric": 0, "topic": "barn", "imagenet_idx": 425, "imagenet_full_label": "barn"}
+{"is_esoteric": 0, "topic": "barometer", "imagenet_idx": 426, "imagenet_full_label": "barometer"}
+{"is_esoteric": 0, "topic": "barrel", "imagenet_idx": 427, "imagenet_full_label": "barrel, cask"}
+{"is_esoteric": 1, "topic": "barrow", "imagenet_idx": 428, "imagenet_full_label": "barrow, garden cart, lawn cart, wheelbarrow"}
+{"is_esoteric": 0, "topic": "baseball", "imagenet_idx": 429, "imagenet_full_label": "baseball"}
+{"is_esoteric": 0, "topic": "basketball", "imagenet_idx": 430, "imagenet_full_label": "basketball"}
+{"is_esoteric": 0, "topic": "bassinet", "imagenet_idx": 431, "imagenet_full_label": "bassinet"}
+{"is_esoteric": 1, "topic": "bassoon", "imagenet_idx": 432, "imagenet_full_label": "bassoon"}
+{"is_esoteric": 0, "topic": "bathing cap", "imagenet_idx": 433, "imagenet_full_label": "bathing cap, swimming cap"}
+{"is_esoteric": 0, "topic": "bath towel", "imagenet_idx": 434, "imagenet_full_label": "bath towel"}
+{"is_esoteric": 0, "topic": "bathtub", "imagenet_idx": 435, "imagenet_full_label": "bathtub, bathing tub, bath, tub"}
+{"is_esoteric": 1, "topic": "beach wagon", "imagenet_idx": 436, "imagenet_full_label": "beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon"}
+{"is_esoteric": 1, "topic": "beacon", "imagenet_idx": 437, "imagenet_full_label": "beacon, lighthouse, beacon light, pharos"}
+{"is_esoteric": 0, "topic": "beaker", "imagenet_idx": 438, "imagenet_full_label": "beaker"}
+{"is_esoteric": 1, "topic": "bearskin", "imagenet_idx": 439, "imagenet_full_label": "bearskin, busby, shako"}
+{"is_esoteric": 0, "topic": "beer bottle", "imagenet_idx": 440, "imagenet_full_label": "beer bottle"}
+{"is_esoteric": 1, "topic": "beer glass", "imagenet_idx": 441, "imagenet_full_label": "beer glass"}
+{"is_esoteric": 1, "topic": "bell cote", "imagenet_idx": 442, "imagenet_full_label": "bell cote, bell cot"}
+{"is_esoteric": 0, "topic": "bib", "imagenet_idx": 443, "imagenet_full_label": "bib"}
+{"is_esoteric": 1, "topic": "bicycle-built-for-two", "imagenet_idx": 444, "imagenet_full_label": "bicycle-built-for-two, tandem bicycle, tandem"}
+{"is_esoteric": 0, "topic": "bikini", "imagenet_idx": 445, "imagenet_full_label": "bikini, two-piece"}
+{"is_esoteric": 1, "topic": "binder", "imagenet_idx": 446, "imagenet_full_label": "binder, ring-binder"}
+{"is_esoteric": 0, "topic": "binoculars", "imagenet_idx": 447, "imagenet_full_label": "binoculars, field glasses, opera glasses"}
+{"is_esoteric": 0, "topic": "birdhouse", "imagenet_idx": 448, "imagenet_full_label": "birdhouse"}
+{"is_esoteric": 1, "topic": "boathouse", "imagenet_idx": 449, "imagenet_full_label": "boathouse"}
+{"is_esoteric": 0, "topic": "bobsled", "imagenet_idx": 450, "imagenet_full_label": "bobsled, bobsleigh, bob"}
+{"is_esoteric": 1, "topic": "bolo tie", "imagenet_idx": 451, "imagenet_full_label": "bolo tie, bolo, bola tie, bola"}
+{"is_esoteric": 1, "topic": "bonnet", "imagenet_idx": 452, "imagenet_full_label": "bonnet, poke bonnet"}
+{"is_esoteric": 0, "topic": "bookcase", "imagenet_idx": 453, "imagenet_full_label": "bookcase"}
+{"is_esoteric": 0, "topic": "bookshop", "imagenet_idx": 454, "imagenet_full_label": "bookshop, bookstore, bookstall"}
+{"is_esoteric": 1, "topic": "bottlecap", "imagenet_idx": 455, "imagenet_full_label": "bottlecap"}
+{"is_esoteric": 0, "topic": "bow", "imagenet_idx": 456, "imagenet_full_label": "bow"}
+{"is_esoteric": 1, "topic": "bow tie", "imagenet_idx": 457, "imagenet_full_label": "bow tie, bow-tie, bowtie"}
+{"is_esoteric": 1, "topic": "brass", "imagenet_idx": 458, "imagenet_full_label": "brass, memorial tablet, plaque"}
+{"is_esoteric": 1, "topic": "brassiere", "imagenet_idx": 459, "imagenet_full_label": "brassiere, bra, bandeau"}
+{"is_esoteric": 1, "topic": "breakwater", "imagenet_idx": 460, "imagenet_full_label": "breakwater, groin, groyne, mole, bulwark, seawall, jetty"}
+{"is_esoteric": 1, "topic": "breastplate", "imagenet_idx": 461, "imagenet_full_label": "breastplate, aegis, egis"}
+{"is_esoteric": 0, "topic": "broom", "imagenet_idx": 462, "imagenet_full_label": "broom"}
+{"is_esoteric": 0, "topic": "bucket", "imagenet_idx": 463, "imagenet_full_label": "bucket, pail"}
+{"is_esoteric": 0, "topic": "buckle", "imagenet_idx": 464, "imagenet_full_label": "buckle"}
+{"is_esoteric": 1, "topic": "bulletproof vest", "imagenet_idx": 465, "imagenet_full_label": "bulletproof vest"}
+{"is_esoteric": 1, "topic": "bullet train", "imagenet_idx": 466, "imagenet_full_label": "bullet train, bullet"}
+{"is_esoteric": 1, "topic": "butcher shop", "imagenet_idx": 467, "imagenet_full_label": "butcher shop, meat market"}
+{"is_esoteric": 0, "topic": "cab", "imagenet_idx": 468, "imagenet_full_label": "cab, hack, taxi, taxicab"}
+{"is_esoteric": 1, "topic": "caldron", "imagenet_idx": 469, "imagenet_full_label": "caldron, cauldron"}
+{"is_esoteric": 0, "topic": "candle", "imagenet_idx": 470, "imagenet_full_label": "candle, taper, wax light"}
+{"is_esoteric": 0, "topic": "cannon", "imagenet_idx": 471, "imagenet_full_label": "cannon"}
+{"is_esoteric": 0, "topic": "canoe", "imagenet_idx": 472, "imagenet_full_label": "canoe"}
+{"is_esoteric": 0, "topic": "can opener", "imagenet_idx": 473, "imagenet_full_label": "can opener, tin opener"}
+{"is_esoteric": 0, "topic": "cardigan", "imagenet_idx": 474, "imagenet_full_label": "cardigan"}
+{"is_esoteric": 1, "topic": "car mirror", "imagenet_idx": 475, "imagenet_full_label": "car mirror"}
+{"is_esoteric": 0, "topic": "carousel", "imagenet_idx": 476, "imagenet_full_label": "carousel, carrousel, merry-go-round, roundabout, whirligig"}
+{"is_esoteric": 1, "topic": "carpenter's kit", "imagenet_idx": 477, "imagenet_full_label": "carpenter's kit, tool kit"}
+{"is_esoteric": 1, "topic": "carton", "imagenet_idx": 478, "imagenet_full_label": "carton"}
+{"is_esoteric": 0, "topic": "car wheel", "imagenet_idx": 479, "imagenet_full_label": "car wheel"}
+{"is_esoteric": 1, "topic": "cash machine", "imagenet_idx": 480, "imagenet_full_label": "cash machine, cash dispenser, automated teller machine, automatic teller machine, automated teller, automatic teller, ATM"}
+{"is_esoteric": 0, "topic": "cassette", "imagenet_idx": 481, "imagenet_full_label": "cassette"}
+{"is_esoteric": 1, "topic": "cassette player", "imagenet_idx": 482, "imagenet_full_label": "cassette player"}
+{"is_esoteric": 0, "topic": "castle", "imagenet_idx": 483, "imagenet_full_label": "castle"}
+{"is_esoteric": 0, "topic": "catamaran", "imagenet_idx": 484, "imagenet_full_label": "catamaran"}
+{"is_esoteric": 1, "topic": "CD player", "imagenet_idx": 485, "imagenet_full_label": "CD player"}
+{"is_esoteric": 0, "topic": "cello", "imagenet_idx": 486, "imagenet_full_label": "cello, violoncello"}
+{"is_esoteric": 0, "topic": "cellular telephone", "imagenet_idx": 487, "imagenet_full_label": "cellular telephone, cellular phone, cellphone, cell, mobile phone"}
+{"is_esoteric": 0, "topic": "chain", "imagenet_idx": 488, "imagenet_full_label": "chain"}
+{"is_esoteric": 1, "topic": "chainlink fence", "imagenet_idx": 489, "imagenet_full_label": "chainlink fence"}
+{"is_esoteric": 1, "topic": "chain mail", "imagenet_idx": 490, "imagenet_full_label": "chain mail, ring mail, mail, chain armor, chain armour, ring armor, ring armour"}
+{"is_esoteric": 0, "topic": "chain saw", "imagenet_idx": 491, "imagenet_full_label": "chain saw, chainsaw"}
+{"is_esoteric": 0, "topic": "chest", "imagenet_idx": 492, "imagenet_full_label": "chest"}
+{"is_esoteric": 1, "topic": "chiffonier", "imagenet_idx": 493, "imagenet_full_label": "chiffonier, commode"}
+{"is_esoteric": 1, "topic": "chime", "imagenet_idx": 494, "imagenet_full_label": "chime, bell, gong"}
+{"is_esoteric": 1, "topic": "china cabinet", "imagenet_idx": 495, "imagenet_full_label": "china cabinet, china closet"}
+{"is_esoteric": 0, "topic": "Christmas stocking", "imagenet_idx": 496, "imagenet_full_label": "Christmas stocking"}
+{"is_esoteric": 0, "topic": "church", "imagenet_idx": 497, "imagenet_full_label": "church, church building"}
+{"is_esoteric": 1, "topic": "cinema", "imagenet_idx": 498, "imagenet_full_label": "cinema, movie theater, movie theatre, movie house, picture palace"}
+{"is_esoteric": 0, "topic": "cleaver", "imagenet_idx": 499, "imagenet_full_label": "cleaver, meat cleaver, chopper"}
+{"is_esoteric": 1, "topic": "cliff dwelling", "imagenet_idx": 500, "imagenet_full_label": "cliff dwelling"}
+{"is_esoteric": 0, "topic": "cloak", "imagenet_idx": 501, "imagenet_full_label": "cloak"}
+{"is_esoteric": 0, "topic": "clog", "imagenet_idx": 502, "imagenet_full_label": "clog, geta, patten, sabot"}
+{"is_esoteric": 1, "topic": "cocktail shaker", "imagenet_idx": 503, "imagenet_full_label": "cocktail shaker"}
+{"is_esoteric": 0, "topic": "coffee mug", "imagenet_idx": 504, "imagenet_full_label": "coffee mug"}
+{"is_esoteric": 0, "topic": "coffeepot", "imagenet_idx": 505, "imagenet_full_label": "coffeepot"}
+{"is_esoteric": 1, "topic": "coil", "imagenet_idx": 506, "imagenet_full_label": "coil, spiral, volute, whorl, helix"}
+{"is_esoteric": 0, "topic": "combination lock", "imagenet_idx": 507, "imagenet_full_label": "combination lock"}
+{"is_esoteric": 0, "topic": "computer keyboard", "imagenet_idx": 508, "imagenet_full_label": "computer keyboard, keypad"}
+{"is_esoteric": 1, "topic": "confectionery", "imagenet_idx": 509, "imagenet_full_label": "confectionery, confectionary, candy store"}
+{"is_esoteric": 0, "topic": "container ship", "imagenet_idx": 510, "imagenet_full_label": "container ship, containership, container vessel"}
+{"is_esoteric": 0, "topic": "convertible", "imagenet_idx": 511, "imagenet_full_label": "convertible"}
+{"is_esoteric": 1, "topic": "corkscrew", "imagenet_idx": 512, "imagenet_full_label": "corkscrew, bottle screw"}
+{"is_esoteric": 1, "topic": "cornet", "imagenet_idx": 513, "imagenet_full_label": "cornet, horn, trumpet, trump"}
+{"is_esoteric": 0, "topic": "cowboy boot", "imagenet_idx": 514, "imagenet_full_label": "cowboy boot"}
+{"is_esoteric": 0, "topic": "cowboy hat", "imagenet_idx": 515, "imagenet_full_label": "cowboy hat, ten-gallon hat"}
+{"is_esoteric": 0, "topic": "cradle", "imagenet_idx": 516, "imagenet_full_label": "cradle"}
+{"is_esoteric": 1, "topic": "crane", "imagenet_idx": 517, "imagenet_full_label": "crane"}
+{"is_esoteric": 1, "topic": "crash helmet", "imagenet_idx": 518, "imagenet_full_label": "crash helmet"}
+{"is_esoteric": 1, "topic": "crate", "imagenet_idx": 519, "imagenet_full_label": "crate"}
+{"is_esoteric": 0, "topic": "crib", "imagenet_idx": 520, "imagenet_full_label": "crib, cot"}
+{"is_esoteric": 1, "topic": "Crock Pot", "imagenet_idx": 521, "imagenet_full_label": "Crock Pot"}
+{"is_esoteric": 1, "topic": "croquet ball", "imagenet_idx": 522, "imagenet_full_label": "croquet ball"}
+{"is_esoteric": 1, "topic": "crutch", "imagenet_idx": 523, "imagenet_full_label": "crutch"}
+{"is_esoteric": 1, "topic": "cuirass", "imagenet_idx": 524, "imagenet_full_label": "cuirass"}
+{"is_esoteric": 0, "topic": "dam", "imagenet_idx": 525, "imagenet_full_label": "dam, dike, dyke"}
+{"is_esoteric": 0, "topic": "desk", "imagenet_idx": 526, "imagenet_full_label": "desk"}
+{"is_esoteric": 0, "topic": "desktop computer", "imagenet_idx": 527, "imagenet_full_label": "desktop computer"}
+{"is_esoteric": 1, "topic": "dial telephone", "imagenet_idx": 528, "imagenet_full_label": "dial telephone, dial phone"}
+{"is_esoteric": 0, "topic": "diaper", "imagenet_idx": 529, "imagenet_full_label": "diaper, nappy, napkin"}
+{"is_esoteric": 0, "topic": "digital clock", "imagenet_idx": 530, "imagenet_full_label": "digital clock"}
+{"is_esoteric": 1, "topic": "digital watch", "imagenet_idx": 531, "imagenet_full_label": "digital watch"}
+{"is_esoteric": 0, "topic": "dining table", "imagenet_idx": 532, "imagenet_full_label": "dining table, board"}
+{"is_esoteric": 1, "topic": "dishrag", "imagenet_idx": 533, "imagenet_full_label": "dishrag, dishcloth"}
+{"is_esoteric": 0, "topic": "dishwasher", "imagenet_idx": 534, "imagenet_full_label": "dishwasher, dish washer, dishwashing machine"}
+{"is_esoteric": 1, "topic": "disk brake", "imagenet_idx": 535, "imagenet_full_label": "disk brake, disc brake"}
+{"is_esoteric": 1, "topic": "dock", "imagenet_idx": 536, "imagenet_full_label": "dock, dockage, docking facility"}
+{"is_esoteric": 1, "topic": "dogsled", "imagenet_idx": 537, "imagenet_full_label": "dogsled, dog sled, dog sleigh"}
+{"is_esoteric": 1, "topic": "dome", "imagenet_idx": 538, "imagenet_full_label": "dome"}
+{"is_esoteric": 0, "topic": "doormat", "imagenet_idx": 539, "imagenet_full_label": "doormat, welcome mat"}
+{"is_esoteric": 1, "topic": "drilling platform", "imagenet_idx": 540, "imagenet_full_label": "drilling platform, offshore rig"}
+{"is_esoteric": 0, "topic": "drum", "imagenet_idx": 541, "imagenet_full_label": "drum, membranophone, tympan"}
+{"is_esoteric": 1, "topic": "drumstick", "imagenet_idx": 542, "imagenet_full_label": "drumstick"}
+{"is_esoteric": 1, "topic": "dumbbell", "imagenet_idx": 543, "imagenet_full_label": "dumbbell"}
+{"is_esoteric": 1, "topic": "Dutch oven", "imagenet_idx": 544, "imagenet_full_label": "Dutch oven"}
+{"is_esoteric": 1, "topic": "electric fan", "imagenet_idx": 545, "imagenet_full_label": "electric fan, blower"}
+{"is_esoteric": 0, "topic": "electric guitar", "imagenet_idx": 546, "imagenet_full_label": "electric guitar"}
+{"is_esoteric": 1, "topic": "electric locomotive", "imagenet_idx": 547, "imagenet_full_label": "electric locomotive"}
+{"is_esoteric": 1, "topic": "entertainment center", "imagenet_idx": 548, "imagenet_full_label": "entertainment center"}
+{"is_esoteric": 0, "topic": "envelope", "imagenet_idx": 549, "imagenet_full_label": "envelope"}
+{"is_esoteric": 1, "topic": "espresso maker", "imagenet_idx": 550, "imagenet_full_label": "espresso maker"}
+{"is_esoteric": 1, "topic": "face powder", "imagenet_idx": 551, "imagenet_full_label": "face powder"}
+{"is_esoteric": 1, "topic": "feather boa", "imagenet_idx": 552, "imagenet_full_label": "feather boa, boa"}
+{"is_esoteric": 1, "topic": "file", "imagenet_idx": 553, "imagenet_full_label": "file, file cabinet, filing cabinet"}
+{"is_esoteric": 1, "topic": "fireboat", "imagenet_idx": 554, "imagenet_full_label": "fireboat"}
+{"is_esoteric": 0, "topic": "fire engine", "imagenet_idx": 555, "imagenet_full_label": "fire engine, fire truck"}
+{"is_esoteric": 1, "topic": "fire screen", "imagenet_idx": 556, "imagenet_full_label": "fire screen, fireguard"}
+{"is_esoteric": 1, "topic": "flagpole", "imagenet_idx": 557, "imagenet_full_label": "flagpole, flagstaff"}
+{"is_esoteric": 0, "topic": "flute", "imagenet_idx": 558, "imagenet_full_label": "flute, transverse flute"}
+{"is_esoteric": 1, "topic": "folding chair", "imagenet_idx": 559, "imagenet_full_label": "folding chair"}
+{"is_esoteric": 1, "topic": "football helmet", "imagenet_idx": 560, "imagenet_full_label": "football helmet"}
+{"is_esoteric": 1, "topic": "forklift", "imagenet_idx": 561, "imagenet_full_label": "forklift"}
+{"is_esoteric": 1, "topic": "fountain", "imagenet_idx": 562, "imagenet_full_label": "fountain"}
+{"is_esoteric": 1, "topic": "fountain pen", "imagenet_idx": 563, "imagenet_full_label": "fountain pen"}
+{"is_esoteric": 1, "topic": "four-poster", "imagenet_idx": 564, "imagenet_full_label": "four-poster"}
+{"is_esoteric": 1, "topic": "freight car", "imagenet_idx": 565, "imagenet_full_label": "freight car"}
+{"is_esoteric": 1, "topic": "French horn", "imagenet_idx": 566, "imagenet_full_label": "French horn, horn"}
+{"is_esoteric": 1, "topic": "frying pan", "imagenet_idx": 567, "imagenet_full_label": "frying pan, frypan, skillet"}
+{"is_esoteric": 1, "topic": "fur coat", "imagenet_idx": 568, "imagenet_full_label": "fur coat"}
+{"is_esoteric": 0, "topic": "garbage truck", "imagenet_idx": 569, "imagenet_full_label": "garbage truck, dustcart"}
+{"is_esoteric": 1, "topic": "gasmask", "imagenet_idx": 570, "imagenet_full_label": "gasmask, respirator, gas helmet"}
+{"is_esoteric": 0, "topic": "gas pump", "imagenet_idx": 571, "imagenet_full_label": "gas pump, gasoline pump, petrol pump, island dispenser"}
+{"is_esoteric": 1, "topic": "goblet", "imagenet_idx": 572, "imagenet_full_label": "goblet"}
+{"is_esoteric": 1, "topic": "go-kart", "imagenet_idx": 573, "imagenet_full_label": "go-kart"}
+{"is_esoteric": 0, "topic": "golf ball", "imagenet_idx": 574, "imagenet_full_label": "golf ball"}
+{"is_esoteric": 0, "topic": "golfcart", "imagenet_idx": 575, "imagenet_full_label": "golfcart, golf cart"}
+{"is_esoteric": 1, "topic": "gondola", "imagenet_idx": 576, "imagenet_full_label": "gondola"}
+{"is_esoteric": 0, "topic": "gong", "imagenet_idx": 577, "imagenet_full_label": "gong, tam-tam"}
+{"is_esoteric": 0, "topic": "gown", "imagenet_idx": 578, "imagenet_full_label": "gown"}
+{"is_esoteric": 0, "topic": "grand piano", "imagenet_idx": 579, "imagenet_full_label": "grand piano, grand"}
+{"is_esoteric": 1, "topic": "greenhouse", "imagenet_idx": 580, "imagenet_full_label": "greenhouse, nursery, glasshouse"}
+{"is_esoteric": 1, "topic": "grille", "imagenet_idx": 581, "imagenet_full_label": "grille, radiator grille"}
+{"is_esoteric": 1, "topic": "grocery store", "imagenet_idx": 582, "imagenet_full_label": "grocery store, grocery, food market, market"}
+{"is_esoteric": 1, "topic": "guillotine", "imagenet_idx": 583, "imagenet_full_label": "guillotine"}
+{"is_esoteric": 1, "topic": "hair slide", "imagenet_idx": 584, "imagenet_full_label": "hair slide"}
+{"is_esoteric": 1, "topic": "hair spray", "imagenet_idx": 585, "imagenet_full_label": "hair spray"}
+{"is_esoteric": 1, "topic": "half track", "imagenet_idx": 586, "imagenet_full_label": "half track"}
+{"is_esoteric": 0, "topic": "hammer", "imagenet_idx": 587, "imagenet_full_label": "hammer"}
+{"is_esoteric": 1, "topic": "hamper", "imagenet_idx": 588, "imagenet_full_label": "hamper"}
+{"is_esoteric": 1, "topic": "hand blower", "imagenet_idx": 589, "imagenet_full_label": "hand blower, blow dryer, blow drier, hair dryer, hair drier"}
+{"is_esoteric": 1, "topic": "hand-held computer", "imagenet_idx": 590, "imagenet_full_label": "hand-held computer, hand-held microcomputer"}
+{"is_esoteric": 1, "topic": "handkerchief", "imagenet_idx": 591, "imagenet_full_label": "handkerchief, hankie, hanky, hankey"}
+{"is_esoteric": 1, "topic": "hard disc", "imagenet_idx": 592, "imagenet_full_label": "hard disc, hard disk, fixed disk"}
+{"is_esoteric": 0, "topic": "harmonica", "imagenet_idx": 593, "imagenet_full_label": "harmonica, mouth organ, harp, mouth harp"}
+{"is_esoteric": 0, "topic": "harp", "imagenet_idx": 594, "imagenet_full_label": "harp"}
+{"is_esoteric": 1, "topic": "harvester", "imagenet_idx": 595, "imagenet_full_label": "harvester, reaper"}
+{"is_esoteric": 1, "topic": "hatchet", "imagenet_idx": 596, "imagenet_full_label": "hatchet"}
+{"is_esoteric": 1, "topic": "holster", "imagenet_idx": 597, "imagenet_full_label": "holster"}
+{"is_esoteric": 1, "topic": "home theater", "imagenet_idx": 598, "imagenet_full_label": "home theater, home theatre"}
+{"is_esoteric": 0, "topic": "honeycomb", "imagenet_idx": 599, "imagenet_full_label": "honeycomb"}
+{"is_esoteric": 1, "topic": "hook", "imagenet_idx": 600, "imagenet_full_label": "hook, claw"}
+{"is_esoteric": 1, "topic": "hoopskirt", "imagenet_idx": 601, "imagenet_full_label": "hoopskirt, crinoline"}
+{"is_esoteric": 1, "topic": "horizontal bar", "imagenet_idx": 602, "imagenet_full_label": "horizontal bar, high bar"}
+{"is_esoteric": 1, "topic": "horse cart", "imagenet_idx": 603, "imagenet_full_label": "horse cart, horse-cart"}
+{"is_esoteric": 1, "topic": "hourglass", "imagenet_idx": 604, "imagenet_full_label": "hourglass"}
+{"is_esoteric": 0, "topic": "iPod", "imagenet_idx": 605, "imagenet_full_label": "iPod"}
+{"is_esoteric": 0, "topic": "iron", "imagenet_idx": 606, "imagenet_full_label": "iron, smoothing iron"}
+{"is_esoteric": 1, "topic": "jack-o'-lantern", "imagenet_idx": 607, "imagenet_full_label": "jack-o'-lantern"}
+{"is_esoteric": 1, "topic": "jean", "imagenet_idx": 608, "imagenet_full_label": "jean, blue jean, denim"}
+{"is_esoteric": 0, "topic": "jeep", "imagenet_idx": 609, "imagenet_full_label": "jeep, landrover"}
+{"is_esoteric": 1, "topic": "jersey", "imagenet_idx": 610, "imagenet_full_label": "jersey, T-shirt, tee shirt"}
+{"is_esoteric": 0, "topic": "jigsaw puzzle", "imagenet_idx": 611, "imagenet_full_label": "jigsaw puzzle"}
+{"is_esoteric": 1, "topic": "jinrikisha", "imagenet_idx": 612, "imagenet_full_label": "jinrikisha, ricksha, rickshaw"}
+{"is_esoteric": 1, "topic": "joystick", "imagenet_idx": 613, "imagenet_full_label": "joystick"}
+{"is_esoteric": 0, "topic": "kimono", "imagenet_idx": 614, "imagenet_full_label": "kimono"}
+{"is_esoteric": 1, "topic": "knee pad", "imagenet_idx": 615, "imagenet_full_label": "knee pad"}
+{"is_esoteric": 1, "topic": "knot", "imagenet_idx": 616, "imagenet_full_label": "knot"}
+{"is_esoteric": 1, "topic": "lab coat", "imagenet_idx": 617, "imagenet_full_label": "lab coat, laboratory coat"}
+{"is_esoteric": 1, "topic": "ladle", "imagenet_idx": 618, "imagenet_full_label": "ladle"}
+{"is_esoteric": 1, "topic": "lampshade", "imagenet_idx": 619, "imagenet_full_label": "lampshade, lamp shade"}
+{"is_esoteric": 0, "topic": "laptop", "imagenet_idx": 620, "imagenet_full_label": "laptop, laptop computer"}
+{"is_esoteric": 0, "topic": "lawn mower", "imagenet_idx": 621, "imagenet_full_label": "lawn mower, mower"}
+{"is_esoteric": 1, "topic": "lens cap", "imagenet_idx": 622, "imagenet_full_label": "lens cap, lens cover"}
+{"is_esoteric": 1, "topic": "letter opener", "imagenet_idx": 623, "imagenet_full_label": "letter opener, paper knife, paperknife"}
+{"is_esoteric": 1, "topic": "library", "imagenet_idx": 624, "imagenet_full_label": "library"}
+{"is_esoteric": 1, "topic": "lifeboat", "imagenet_idx": 625, "imagenet_full_label": "lifeboat"}
+{"is_esoteric": 1, "topic": "lighter", "imagenet_idx": 626, "imagenet_full_label": "lighter, light, igniter, ignitor"}
+{"is_esoteric": 0, "topic": "limousine", "imagenet_idx": 627, "imagenet_full_label": "limousine, limo"}
+{"is_esoteric": 1, "topic": "liner", "imagenet_idx": 628, "imagenet_full_label": "liner, ocean liner"}
+{"is_esoteric": 0, "topic": "lipstick", "imagenet_idx": 629, "imagenet_full_label": "lipstick, lip rouge"}
+{"is_esoteric": 1, "topic": "Loafer", "imagenet_idx": 630, "imagenet_full_label": "Loafer"}
+{"is_esoteric": 1, "topic": "lotion", "imagenet_idx": 631, "imagenet_full_label": "lotion"}
+{"is_esoteric": 1, "topic": "loudspeaker", "imagenet_idx": 632, "imagenet_full_label": "loudspeaker, speaker, speaker unit, loudspeaker system, speaker system"}
+{"is_esoteric": 1, "topic": "loupe", "imagenet_idx": 633, "imagenet_full_label": "loupe, jeweler's loupe"}
+{"is_esoteric": 1, "topic": "lumbermill", "imagenet_idx": 634, "imagenet_full_label": "lumbermill, sawmill"}
+{"is_esoteric": 1, "topic": "magnetic compass", "imagenet_idx": 635, "imagenet_full_label": "magnetic compass"}
+{"is_esoteric": 1, "topic": "mailbag", "imagenet_idx": 636, "imagenet_full_label": "mailbag, postbag"}
+{"is_esoteric": 0, "topic": "mailbox", "imagenet_idx": 637, "imagenet_full_label": "mailbox, letter box"}
+{"is_esoteric": 1, "topic": "maillot", "imagenet_idx": 638, "imagenet_full_label": "maillot"}
+{"is_esoteric": 1, "topic": "maillot", "imagenet_idx": 639, "imagenet_full_label": "maillot, tank suit"}
+{"is_esoteric": 0, "topic": "manhole cover", "imagenet_idx": 640, "imagenet_full_label": "manhole cover"}
+{"is_esoteric": 1, "topic": "maraca", "imagenet_idx": 641, "imagenet_full_label": "maraca"}
+{"is_esoteric": 1, "topic": "marimba", "imagenet_idx": 642, "imagenet_full_label": "marimba, xylophone"}
+{"is_esoteric": 1, "topic": "mask", "imagenet_idx": 643, "imagenet_full_label": "mask"}
+{"is_esoteric": 1, "topic": "matchstick", "imagenet_idx": 644, "imagenet_full_label": "matchstick"}
+{"is_esoteric": 1, "topic": "maypole", "imagenet_idx": 645, "imagenet_full_label": "maypole"}
+{"is_esoteric": 1, "topic": "maze", "imagenet_idx": 646, "imagenet_full_label": "maze, labyrinth"}
+{"is_esoteric": 1, "topic": "measuring cup", "imagenet_idx": 647, "imagenet_full_label": "measuring cup"}
+{"is_esoteric": 1, "topic": "medicine chest", "imagenet_idx": 648, "imagenet_full_label": "medicine chest, medicine cabinet"}
+{"is_esoteric": 1, "topic": "megalith", "imagenet_idx": 649, "imagenet_full_label": "megalith, megalithic structure"}
+{"is_esoteric": 0, "topic": "microphone", "imagenet_idx": 650, "imagenet_full_label": "microphone, mike"}
+{"is_esoteric": 1, "topic": "microwave", "imagenet_idx": 651, "imagenet_full_label": "microwave, microwave oven"}
+{"is_esoteric": 1, "topic": "military uniform", "imagenet_idx": 652, "imagenet_full_label": "military uniform"}
+{"is_esoteric": 1, "topic": "milk can", "imagenet_idx": 653, "imagenet_full_label": "milk can"}
+{"is_esoteric": 0, "topic": "minibus", "imagenet_idx": 654, "imagenet_full_label": "minibus"}
+{"is_esoteric": 1, "topic": "miniskirt", "imagenet_idx": 655, "imagenet_full_label": "miniskirt, mini"}
+{"is_esoteric": 1, "topic": "minivan", "imagenet_idx": 656, "imagenet_full_label": "minivan"}
+{"is_esoteric": 1, "topic": "missile", "imagenet_idx": 657, "imagenet_full_label": "missile"}
+{"is_esoteric": 0, "topic": "mitten", "imagenet_idx": 658, "imagenet_full_label": "mitten"}
+{"is_esoteric": 1, "topic": "mixing bowl", "imagenet_idx": 659, "imagenet_full_label": "mixing bowl"}
+{"is_esoteric": 1, "topic": "mobile home", "imagenet_idx": 660, "imagenet_full_label": "mobile home, manufactured home"}
+{"is_esoteric": 1, "topic": "Model T", "imagenet_idx": 661, "imagenet_full_label": "Model T"}
+{"is_esoteric": 1, "topic": "modem", "imagenet_idx": 662, "imagenet_full_label": "modem"}
+{"is_esoteric": 1, "topic": "monastery", "imagenet_idx": 663, "imagenet_full_label": "monastery"}
+{"is_esoteric": 1, "topic": "monitor", "imagenet_idx": 664, "imagenet_full_label": "monitor"}
+{"is_esoteric": 1, "topic": "moped", "imagenet_idx": 665, "imagenet_full_label": "moped"}
+{"is_esoteric": 1, "topic": "mortar", "imagenet_idx": 666, "imagenet_full_label": "mortar"}
+{"is_esoteric": 1, "topic": "mortarboard", "imagenet_idx": 667, "imagenet_full_label": "mortarboard"}
+{"is_esoteric": 1, "topic": "mosque", "imagenet_idx": 668, "imagenet_full_label": "mosque"}
+{"is_esoteric": 1, "topic": "mosquito net", "imagenet_idx": 669, "imagenet_full_label": "mosquito net"}
+{"is_esoteric": 1, "topic": "motor scooter", "imagenet_idx": 670, "imagenet_full_label": "motor scooter, scooter"}
+{"is_esoteric": 1, "topic": "mountain bike", "imagenet_idx": 671, "imagenet_full_label": "mountain bike, all-terrain bike, off-roader"}
+{"is_esoteric": 1, "topic": "mountain tent", "imagenet_idx": 672, "imagenet_full_label": "mountain tent"}
+{"is_esoteric": 0, "topic": "mouse", "imagenet_idx": 673, "imagenet_full_label": "mouse, computer mouse"}
+{"is_esoteric": 1, "topic": "mousetrap", "imagenet_idx": 674, "imagenet_full_label": "mousetrap"}
+{"is_esoteric": 1, "topic": "moving van", "imagenet_idx": 675, "imagenet_full_label": "moving van"}
+{"is_esoteric": 1, "topic": "muzzle", "imagenet_idx": 676, "imagenet_full_label": "muzzle"}
+{"is_esoteric": 0, "topic": "nail", "imagenet_idx": 677, "imagenet_full_label": "nail"}
+{"is_esoteric": 1, "topic": "neck brace", "imagenet_idx": 678, "imagenet_full_label": "neck brace"}
+{"is_esoteric": 0, "topic": "necklace", "imagenet_idx": 679, "imagenet_full_label": "necklace"}
+{"is_esoteric": 1, "topic": "nipple", "imagenet_idx": 680, "imagenet_full_label": "nipple"}
+{"is_esoteric": 1, "topic": "notebook", "imagenet_idx": 681, "imagenet_full_label": "notebook, notebook computer"}
+{"is_esoteric": 1, "topic": "obelisk", "imagenet_idx": 682, "imagenet_full_label": "obelisk"}
+{"is_esoteric": 1, "topic": "oboe", "imagenet_idx": 683, "imagenet_full_label": "oboe, hautboy, hautbois"}
+{"is_esoteric": 1, "topic": "ocarina", "imagenet_idx": 684, "imagenet_full_label": "ocarina, sweet potato"}
+{"is_esoteric": 1, "topic": "odometer", "imagenet_idx": 685, "imagenet_full_label": "odometer, hodometer, mileometer, milometer"}
+{"is_esoteric": 1, "topic": "oil filter", "imagenet_idx": 686, "imagenet_full_label": "oil filter"}
+{"is_esoteric": 1, "topic": "organ", "imagenet_idx": 687, "imagenet_full_label": "organ, pipe organ"}
+{"is_esoteric": 1, "topic": "oscilloscope", "imagenet_idx": 688, "imagenet_full_label": "oscilloscope, scope, cathode-ray oscilloscope, CRO"}
+{"is_esoteric": 1, "topic": "overskirt", "imagenet_idx": 689, "imagenet_full_label": "overskirt"}
+{"is_esoteric": 1, "topic": "oxcart", "imagenet_idx": 690, "imagenet_full_label": "oxcart"}
+{"is_esoteric": 1, "topic": "oxygen mask", "imagenet_idx": 691, "imagenet_full_label": "oxygen mask"}
+{"is_esoteric": 1, "topic": "packet", "imagenet_idx": 692, "imagenet_full_label": "packet"}
+{"is_esoteric": 0, "topic": "paddle", "imagenet_idx": 693, "imagenet_full_label": "paddle, boat paddle"}
+{"is_esoteric": 1, "topic": "paddlewheel", "imagenet_idx": 694, "imagenet_full_label": "paddlewheel, paddle wheel"}
+{"is_esoteric": 1, "topic": "padlock", "imagenet_idx": 695, "imagenet_full_label": "padlock"}
+{"is_esoteric": 0, "topic": "paintbrush", "imagenet_idx": 696, "imagenet_full_label": "paintbrush"}
+{"is_esoteric": 1, "topic": "pajama", "imagenet_idx": 697, "imagenet_full_label": "pajama, pyjama, pj's, jammies"}
+{"is_esoteric": 1, "topic": "palace", "imagenet_idx": 698, "imagenet_full_label": "palace"}
+{"is_esoteric": 1, "topic": "panpipe", "imagenet_idx": 699, "imagenet_full_label": "panpipe, pandean pipe, syrinx"}
+{"is_esoteric": 1, "topic": "paper towel", "imagenet_idx": 700, "imagenet_full_label": "paper towel"}
+{"is_esoteric": 0, "topic": "parachute", "imagenet_idx": 701, "imagenet_full_label": "parachute, chute"}
+{"is_esoteric": 1, "topic": "parallel bars", "imagenet_idx": 702, "imagenet_full_label": "parallel bars, bars"}
+{"is_esoteric": 0, "topic": "park bench", "imagenet_idx": 703, "imagenet_full_label": "park bench"}
+{"is_esoteric": 1, "topic": "parking meter", "imagenet_idx": 704, "imagenet_full_label": "parking meter"}
+{"is_esoteric": 1, "topic": "passenger car", "imagenet_idx": 705, "imagenet_full_label": "passenger car, coach, carriage"}
+{"is_esoteric": 1, "topic": "patio", "imagenet_idx": 706, "imagenet_full_label": "patio, terrace"}
+{"is_esoteric": 1, "topic": "pay-phone", "imagenet_idx": 707, "imagenet_full_label": "pay-phone, pay-station"}
+{"is_esoteric": 1, "topic": "pedestal", "imagenet_idx": 708, "imagenet_full_label": "pedestal, plinth, footstall"}
+{"is_esoteric": 1, "topic": "pencil box", "imagenet_idx": 709, "imagenet_full_label": "pencil box, pencil case"}
+{"is_esoteric": 1, "topic": "pencil sharpener", "imagenet_idx": 710, "imagenet_full_label": "pencil sharpener"}
+{"is_esoteric": 1, "topic": "perfume", "imagenet_idx": 711, "imagenet_full_label": "perfume, essence"}
+{"is_esoteric": 1, "topic": "Petri dish", "imagenet_idx": 712, "imagenet_full_label": "Petri dish"}
+{"is_esoteric": 1, "topic": "photocopier", "imagenet_idx": 713, "imagenet_full_label": "photocopier"}
+{"is_esoteric": 1, "topic": "pick", "imagenet_idx": 714, "imagenet_full_label": "pick, plectrum, plectron"}
+{"is_esoteric": 1, "topic": "pickelhaube", "imagenet_idx": 715, "imagenet_full_label": "pickelhaube"}
+{"is_esoteric": 1, "topic": "picket fence", "imagenet_idx": 716, "imagenet_full_label": "picket fence, paling"}
+{"is_esoteric": 1, "topic": "pickup", "imagenet_idx": 717, "imagenet_full_label": "pickup, pickup truck"}
+{"is_esoteric": 1, "topic": "pier", "imagenet_idx": 718, "imagenet_full_label": "pier"}
+{"is_esoteric": 1, "topic": "piggy bank", "imagenet_idx": 719, "imagenet_full_label": "piggy bank, penny bank"}
+{"is_esoteric": 1, "topic": "pill bottle", "imagenet_idx": 720, "imagenet_full_label": "pill bottle"}
+{"is_esoteric": 0, "topic": "pillow", "imagenet_idx": 721, "imagenet_full_label": "pillow"}
+{"is_esoteric": 1, "topic": "ping-pong ball", "imagenet_idx": 722, "imagenet_full_label": "ping-pong ball"}
+{"is_esoteric": 1, "topic": "pinwheel", "imagenet_idx": 723, "imagenet_full_label": "pinwheel"}
+{"is_esoteric": 1, "topic": "pirate", "imagenet_idx": 724, "imagenet_full_label": "pirate, pirate ship"}
+{"is_esoteric": 1, "topic": "pitcher", "imagenet_idx": 725, "imagenet_full_label": "pitcher, ewer"}
+{"is_esoteric": 0, "topic": "plane", "imagenet_idx": 726, "imagenet_full_label": "plane, carpenter's plane, woodworking plane"}
+{"is_esoteric": 1, "topic": "planetarium", "imagenet_idx": 727, "imagenet_full_label": "planetarium"}
+{"is_esoteric": 1, "topic": "plastic bag", "imagenet_idx": 728, "imagenet_full_label": "plastic bag"}
+{"is_esoteric": 1, "topic": "plate rack", "imagenet_idx": 729, "imagenet_full_label": "plate rack"}
+{"is_esoteric": 1, "topic": "plow", "imagenet_idx": 730, "imagenet_full_label": "plow, plough"}
+{"is_esoteric": 1, "topic": "plunger", "imagenet_idx": 731, "imagenet_full_label": "plunger, plumber's helper"}
+{"is_esoteric": 1, "topic": "Polaroid camera", "imagenet_idx": 732, "imagenet_full_label": "Polaroid camera, Polaroid Land camera"}
+{"is_esoteric": 1, "topic": "pole", "imagenet_idx": 733, "imagenet_full_label": "pole"}
+{"is_esoteric": 0, "topic": "police van", "imagenet_idx": 734, "imagenet_full_label": "police van, police wagon, paddy wagon, patrol wagon, wagon, black Maria"}
+{"is_esoteric": 1, "topic": "poncho", "imagenet_idx": 735, "imagenet_full_label": "poncho"}
+{"is_esoteric": 1, "topic": "pool table", "imagenet_idx": 736, "imagenet_full_label": "pool table, billiard table, snooker table"}
+{"is_esoteric": 1, "topic": "pop bottle", "imagenet_idx": 737, "imagenet_full_label": "pop bottle, soda bottle"}
+{"is_esoteric": 1, "topic": "pot", "imagenet_idx": 738, "imagenet_full_label": "pot, flowerpot"}
+{"is_esoteric": 1, "topic": "potter's wheel", "imagenet_idx": 739, "imagenet_full_label": "potter's wheel"}
+{"is_esoteric": 1, "topic": "power drill", "imagenet_idx": 740, "imagenet_full_label": "power drill"}
+{"is_esoteric": 1, "topic": "prayer rug", "imagenet_idx": 741, "imagenet_full_label": "prayer rug, prayer mat"}
+{"is_esoteric": 1, "topic": "printer", "imagenet_idx": 742, "imagenet_full_label": "printer"}
+{"is_esoteric": 1, "topic": "prison", "imagenet_idx": 743, "imagenet_full_label": "prison, prison house"}
+{"is_esoteric": 1, "topic": "projectile", "imagenet_idx": 744, "imagenet_full_label": "projectile, missile"}
+{"is_esoteric": 1, "topic": "projector", "imagenet_idx": 745, "imagenet_full_label": "projector"}
+{"is_esoteric": 1, "topic": "puck", "imagenet_idx": 746, "imagenet_full_label": "puck, hockey puck"}
+{"is_esoteric": 1, "topic": "punching bag", "imagenet_idx": 747, "imagenet_full_label": "punching bag, punch bag, punching ball, punchball"}
+{"is_esoteric": 0, "topic": "purse", "imagenet_idx": 748, "imagenet_full_label": "purse"}
+{"is_esoteric": 1, "topic": "quill", "imagenet_idx": 749, "imagenet_full_label": "quill, quill pen"}
+{"is_esoteric": 1, "topic": "quilt", "imagenet_idx": 750, "imagenet_full_label": "quilt, comforter, comfort, puff"}
+{"is_esoteric": 1, "topic": "racer", "imagenet_idx": 751, "imagenet_full_label": "racer, race car, racing car"}
+{"is_esoteric": 1, "topic": "racket", "imagenet_idx": 752, "imagenet_full_label": "racket, racquet"}
+{"is_esoteric": 1, "topic": "radiator", "imagenet_idx": 753, "imagenet_full_label": "radiator"}
+{"is_esoteric": 1, "topic": "radio", "imagenet_idx": 754, "imagenet_full_label": "radio, wireless"}
+{"is_esoteric": 1, "topic": "radio telescope", "imagenet_idx": 755, "imagenet_full_label": "radio telescope, radio reflector"}
+{"is_esoteric": 1, "topic": "rain barrel", "imagenet_idx": 756, "imagenet_full_label": "rain barrel"}
+{"is_esoteric": 1, "topic": "recreational vehicle", "imagenet_idx": 757, "imagenet_full_label": "recreational vehicle, RV, R.V."}
+{"is_esoteric": 1, "topic": "reel", "imagenet_idx": 758, "imagenet_full_label": "reel"}
+{"is_esoteric": 1, "topic": "reflex camera", "imagenet_idx": 759, "imagenet_full_label": "reflex camera"}
+{"is_esoteric": 0, "topic": "refrigerator", "imagenet_idx": 760, "imagenet_full_label": "refrigerator, icebox"}
+{"is_esoteric": 0, "topic": "remote control", "imagenet_idx": 761, "imagenet_full_label": "remote control, remote"}
+{"is_esoteric": 1, "topic": "restaurant", "imagenet_idx": 762, "imagenet_full_label": "restaurant, eating house, eating place, eatery"}
+{"is_esoteric": 1, "topic": "revolver", "imagenet_idx": 763, "imagenet_full_label": "revolver, six-gun, six-shooter"}
+{"is_esoteric": 1, "topic": "rifle", "imagenet_idx": 764, "imagenet_full_label": "rifle"}
+{"is_esoteric": 1, "topic": "rocking chair", "imagenet_idx": 765, "imagenet_full_label": "rocking chair, rocker"}
+{"is_esoteric": 1, "topic": "rotisserie", "imagenet_idx": 766, "imagenet_full_label": "rotisserie"}
+{"is_esoteric": 1, "topic": "rubber eraser", "imagenet_idx": 767, "imagenet_full_label": "rubber eraser, rubber, pencil eraser"}
+{"is_esoteric": 1, "topic": "rugby ball", "imagenet_idx": 768, "imagenet_full_label": "rugby ball"}
+{"is_esoteric": 1, "topic": "rule", "imagenet_idx": 769, "imagenet_full_label": "rule, ruler"}
+{"is_esoteric": 1, "topic": "running shoe", "imagenet_idx": 770, "imagenet_full_label": "running shoe"}
+{"is_esoteric": 1, "topic": "safe", "imagenet_idx": 771, "imagenet_full_label": "safe"}
+{"is_esoteric": 0, "topic": "safety pin", "imagenet_idx": 772, "imagenet_full_label": "safety pin"}
+{"is_esoteric": 0, "topic": "saltshaker", "imagenet_idx": 773, "imagenet_full_label": "saltshaker, salt shaker"}
+{"is_esoteric": 0, "topic": "sandal", "imagenet_idx": 774, "imagenet_full_label": "sandal"}
+{"is_esoteric": 1, "topic": "sarong", "imagenet_idx": 775, "imagenet_full_label": "sarong"}
+{"is_esoteric": 1, "topic": "sax", "imagenet_idx": 776, "imagenet_full_label": "sax, saxophone"}
+{"is_esoteric": 1, "topic": "scabbard", "imagenet_idx": 777, "imagenet_full_label": "scabbard"}
+{"is_esoteric": 1, "topic": "scale", "imagenet_idx": 778, "imagenet_full_label": "scale, weighing machine"}
+{"is_esoteric": 0, "topic": "school bus", "imagenet_idx": 779, "imagenet_full_label": "school bus"}
+{"is_esoteric": 1, "topic": "schooner", "imagenet_idx": 780, "imagenet_full_label": "schooner"}
+{"is_esoteric": 1, "topic": "scoreboard", "imagenet_idx": 781, "imagenet_full_label": "scoreboard"}
+{"is_esoteric": 1, "topic": "screen", "imagenet_idx": 782, "imagenet_full_label": "screen, CRT screen"}
+{"is_esoteric": 0, "topic": "screw", "imagenet_idx": 783, "imagenet_full_label": "screw"}
+{"is_esoteric": 0, "topic": "screwdriver", "imagenet_idx": 784, "imagenet_full_label": "screwdriver"}
+{"is_esoteric": 0, "topic": "seat belt", "imagenet_idx": 785, "imagenet_full_label": "seat belt, seatbelt"}
+{"is_esoteric": 0, "topic": "sewing machine", "imagenet_idx": 786, "imagenet_full_label": "sewing machine"}
+{"is_esoteric": 1, "topic": "shield", "imagenet_idx": 787, "imagenet_full_label": "shield, buckler"}
+{"is_esoteric": 1, "topic": "shoe shop", "imagenet_idx": 788, "imagenet_full_label": "shoe shop, shoe-shop, shoe store"}
+{"is_esoteric": 1, "topic": "shoji", "imagenet_idx": 789, "imagenet_full_label": "shoji"}
+{"is_esoteric": 1, "topic": "shopping basket", "imagenet_idx": 790, "imagenet_full_label": "shopping basket"}
+{"is_esoteric": 1, "topic": "shopping cart", "imagenet_idx": 791, "imagenet_full_label": "shopping cart"}
+{"is_esoteric": 0, "topic": "shovel", "imagenet_idx": 792, "imagenet_full_label": "shovel"}
+{"is_esoteric": 1, "topic": "shower cap", "imagenet_idx": 793, "imagenet_full_label": "shower cap"}
+{"is_esoteric": 0, "topic": "shower curtain", "imagenet_idx": 794, "imagenet_full_label": "shower curtain"}
+{"is_esoteric": 1, "topic": "ski", "imagenet_idx": 795, "imagenet_full_label": "ski"}
+{"is_esoteric": 1, "topic": "ski mask", "imagenet_idx": 796, "imagenet_full_label": "ski mask"}
+{"is_esoteric": 0, "topic": "sleeping bag", "imagenet_idx": 797, "imagenet_full_label": "sleeping bag"}
+{"is_esoteric": 1, "topic": "slide rule", "imagenet_idx": 798, "imagenet_full_label": "slide rule, slipstick"}
+{"is_esoteric": 1, "topic": "sliding door", "imagenet_idx": 799, "imagenet_full_label": "sliding door"}
+{"is_esoteric": 1, "topic": "slot", "imagenet_idx": 800, "imagenet_full_label": "slot, one-armed bandit"}
+{"is_esoteric": 0, "topic": "snorkel", "imagenet_idx": 801, "imagenet_full_label": "snorkel"}
+{"is_esoteric": 0, "topic": "snowmobile", "imagenet_idx": 802, "imagenet_full_label": "snowmobile"}
+{"is_esoteric": 0, "topic": "snowplow", "imagenet_idx": 803, "imagenet_full_label": "snowplow, snowplough"}
+{"is_esoteric": 1, "topic": "soap dispenser", "imagenet_idx": 804, "imagenet_full_label": "soap dispenser"}
+{"is_esoteric": 0, "topic": "soccer ball", "imagenet_idx": 805, "imagenet_full_label": "soccer ball"}
+{"is_esoteric": 1, "topic": "sock", "imagenet_idx": 806, "imagenet_full_label": "sock"}
+{"is_esoteric": 1, "topic": "solar dish", "imagenet_idx": 807, "imagenet_full_label": "solar dish, solar collector, solar furnace"}
+{"is_esoteric": 0, "topic": "sombrero", "imagenet_idx": 808, "imagenet_full_label": "sombrero"}
+{"is_esoteric": 1, "topic": "soup bowl", "imagenet_idx": 809, "imagenet_full_label": "soup bowl"}
+{"is_esoteric": 1, "topic": "space bar", "imagenet_idx": 810, "imagenet_full_label": "space bar"}
+{"is_esoteric": 1, "topic": "space heater", "imagenet_idx": 811, "imagenet_full_label": "space heater"}
+{"is_esoteric": 1, "topic": "space shuttle", "imagenet_idx": 812, "imagenet_full_label": "space shuttle"}
+{"is_esoteric": 0, "topic": "spatula", "imagenet_idx": 813, "imagenet_full_label": "spatula"}
+{"is_esoteric": 0, "topic": "speedboat", "imagenet_idx": 814, "imagenet_full_label": "speedboat"}
+{"is_esoteric": 0, "topic": "spider web", "imagenet_idx": 815, "imagenet_full_label": "spider web, spider's web"}
+{"is_esoteric": 1, "topic": "spindle", "imagenet_idx": 816, "imagenet_full_label": "spindle"}
+{"is_esoteric": 0, "topic": "sports car", "imagenet_idx": 817, "imagenet_full_label": "sports car, sport car"}
+{"is_esoteric": 1, "topic": "spotlight", "imagenet_idx": 818, "imagenet_full_label": "spotlight, spot"}
+{"is_esoteric": 1, "topic": "stage", "imagenet_idx": 819, "imagenet_full_label": "stage"}
+{"is_esoteric": 0, "topic": "steam locomotive", "imagenet_idx": 820, "imagenet_full_label": "steam locomotive"}
+{"is_esoteric": 1, "topic": "steel arch bridge", "imagenet_idx": 821, "imagenet_full_label": "steel arch bridge"}
+{"is_esoteric": 1, "topic": "steel drum", "imagenet_idx": 822, "imagenet_full_label": "steel drum"}
+{"is_esoteric": 1, "topic": "stethoscope", "imagenet_idx": 823, "imagenet_full_label": "stethoscope"}
+{"is_esoteric": 1, "topic": "stole", "imagenet_idx": 824, "imagenet_full_label": "stole"}
+{"is_esoteric": 0, "topic": "stone wall", "imagenet_idx": 825, "imagenet_full_label": "stone wall"}
+{"is_esoteric": 1, "topic": "stopwatch", "imagenet_idx": 826, "imagenet_full_label": "stopwatch, stop watch"}
+{"is_esoteric": 0, "topic": "stove", "imagenet_idx": 827, "imagenet_full_label": "stove"}
+{"is_esoteric": 1, "topic": "strainer", "imagenet_idx": 828, "imagenet_full_label": "strainer"}
+{"is_esoteric": 0, "topic": "streetcar", "imagenet_idx": 829, "imagenet_full_label": "streetcar, tram, tramcar, trolley, trolley car"}
+{"is_esoteric": 1, "topic": "stretcher", "imagenet_idx": 830, "imagenet_full_label": "stretcher"}
+{"is_esoteric": 1, "topic": "studio couch", "imagenet_idx": 831, "imagenet_full_label": "studio couch, day bed"}
+{"is_esoteric": 1, "topic": "stupa", "imagenet_idx": 832, "imagenet_full_label": "stupa, tope"}
+{"is_esoteric": 0, "topic": "submarine", "imagenet_idx": 833, "imagenet_full_label": "submarine, pigboat, sub, U-boat"}
+{"is_esoteric": 1, "topic": "suit", "imagenet_idx": 834, "imagenet_full_label": "suit, suit of clothes"}
+{"is_esoteric": 1, "topic": "sundial", "imagenet_idx": 835, "imagenet_full_label": "sundial"}
+{"is_esoteric": 1, "topic": "sunglass", "imagenet_idx": 836, "imagenet_full_label": "sunglass"}
+{"is_esoteric": 0, "topic": "sunglasses", "imagenet_idx": 837, "imagenet_full_label": "sunglasses, dark glasses, shades"}
+{"is_esoteric": 1, "topic": "sunscreen", "imagenet_idx": 838, "imagenet_full_label": "sunscreen, sunblock, sun blocker"}
+{"is_esoteric": 0, "topic": "suspension bridge", "imagenet_idx": 839, "imagenet_full_label": "suspension bridge"}
+{"is_esoteric": 1, "topic": "swab", "imagenet_idx": 840, "imagenet_full_label": "swab, swob, mop"}
+{"is_esoteric": 1, "topic": "sweatshirt", "imagenet_idx": 841, "imagenet_full_label": "sweatshirt"}
+{"is_esoteric": 1, "topic": "swimming trunks", "imagenet_idx": 842, "imagenet_full_label": "swimming trunks, bathing trunks"}
+{"is_esoteric": 0, "topic": "swing", "imagenet_idx": 843, "imagenet_full_label": "swing"}
+{"is_esoteric": 1, "topic": "switch", "imagenet_idx": 844, "imagenet_full_label": "switch, electric switch, electrical switch"}
+{"is_esoteric": 0, "topic": "syringe", "imagenet_idx": 845, "imagenet_full_label": "syringe"}
+{"is_esoteric": 0, "topic": "table lamp", "imagenet_idx": 846, "imagenet_full_label": "table lamp"}
+{"is_esoteric": 1, "topic": "tank", "imagenet_idx": 847, "imagenet_full_label": "tank, army tank, armored combat vehicle, armoured combat vehicle"}
+{"is_esoteric": 1, "topic": "tape player", "imagenet_idx": 848, "imagenet_full_label": "tape player"}
+{"is_esoteric": 0, "topic": "teapot", "imagenet_idx": 849, "imagenet_full_label": "teapot"}
+{"is_esoteric": 0, "topic": "teddy", "imagenet_idx": 850, "imagenet_full_label": "teddy, teddy bear"}
+{"is_esoteric": 0, "topic": "television", "imagenet_idx": 851, "imagenet_full_label": "television, television system"}
+{"is_esoteric": 0, "topic": "tennis ball", "imagenet_idx": 852, "imagenet_full_label": "tennis ball"}
+{"is_esoteric": 1, "topic": "thatch", "imagenet_idx": 853, "imagenet_full_label": "thatch, thatched roof"}
+{"is_esoteric": 1, "topic": "theater curtain", "imagenet_idx": 854, "imagenet_full_label": "theater curtain, theatre curtain"}
+{"is_esoteric": 1, "topic": "thimble", "imagenet_idx": 855, "imagenet_full_label": "thimble"}
+{"is_esoteric": 1, "topic": "thresher", "imagenet_idx": 856, "imagenet_full_label": "thresher, thrasher, threshing machine"}
+{"is_esoteric": 1, "topic": "throne", "imagenet_idx": 857, "imagenet_full_label": "throne"}
+{"is_esoteric": 1, "topic": "tile roof", "imagenet_idx": 858, "imagenet_full_label": "tile roof"}
+{"is_esoteric": 0, "topic": "toaster", "imagenet_idx": 859, "imagenet_full_label": "toaster"}
+{"is_esoteric": 1, "topic": "tobacco shop", "imagenet_idx": 860, "imagenet_full_label": "tobacco shop, tobacconist shop, tobacconist"}
+{"is_esoteric": 0, "topic": "toilet seat", "imagenet_idx": 861, "imagenet_full_label": "toilet seat"}
+{"is_esoteric": 1, "topic": "torch", "imagenet_idx": 862, "imagenet_full_label": "torch"}
+{"is_esoteric": 1, "topic": "totem pole", "imagenet_idx": 863, "imagenet_full_label": "totem pole"}
+{"is_esoteric": 1, "topic": "tow truck", "imagenet_idx": 864, "imagenet_full_label": "tow truck, tow car, wrecker"}
+{"is_esoteric": 1, "topic": "toyshop", "imagenet_idx": 865, "imagenet_full_label": "toyshop"}
+{"is_esoteric": 0, "topic": "tractor", "imagenet_idx": 866, "imagenet_full_label": "tractor"}
+{"is_esoteric": 1, "topic": "trailer truck", "imagenet_idx": 867, "imagenet_full_label": "trailer truck, tractor trailer, trucking rig, rig, articulated lorry, semi"}
+{"is_esoteric": 1, "topic": "tray", "imagenet_idx": 868, "imagenet_full_label": "tray"}
+{"is_esoteric": 1, "topic": "trench coat", "imagenet_idx": 869, "imagenet_full_label": "trench coat"}
+{"is_esoteric": 0, "topic": "tricycle", "imagenet_idx": 870, "imagenet_full_label": "tricycle, trike, velocipede"}
+{"is_esoteric": 1, "topic": "trimaran", "imagenet_idx": 871, "imagenet_full_label": "trimaran"}
+{"is_esoteric": 1, "topic": "tripod", "imagenet_idx": 872, "imagenet_full_label": "tripod"}
+{"is_esoteric": 1, "topic": "triumphal arch", "imagenet_idx": 873, "imagenet_full_label": "triumphal arch"}
+{"is_esoteric": 1, "topic": "trolleybus", "imagenet_idx": 874, "imagenet_full_label": "trolleybus, trolley coach, trackless trolley"}
+{"is_esoteric": 1, "topic": "trombone", "imagenet_idx": 875, "imagenet_full_label": "trombone"}
+{"is_esoteric": 0, "topic": "tub", "imagenet_idx": 876, "imagenet_full_label": "tub, vat"}
+{"is_esoteric": 1, "topic": "turnstile", "imagenet_idx": 877, "imagenet_full_label": "turnstile"}
+{"is_esoteric": 1, "topic": "typewriter keyboard", "imagenet_idx": 878, "imagenet_full_label": "typewriter keyboard"}
+{"is_esoteric": 0, "topic": "umbrella", "imagenet_idx": 879, "imagenet_full_label": "umbrella"}
+{"is_esoteric": 1, "topic": "unicycle", "imagenet_idx": 880, "imagenet_full_label": "unicycle, monocycle"}
+{"is_esoteric": 1, "topic": "upright", "imagenet_idx": 881, "imagenet_full_label": "upright, upright piano"}
+{"is_esoteric": 0, "topic": "vacuum", "imagenet_idx": 882, "imagenet_full_label": "vacuum, vacuum cleaner"}
+{"is_esoteric": 0, "topic": "vase", "imagenet_idx": 883, "imagenet_full_label": "vase"}
+{"is_esoteric": 0, "topic": "vault", "imagenet_idx": 884, "imagenet_full_label": "vault"}
+{"is_esoteric": 1, "topic": "velvet", "imagenet_idx": 885, "imagenet_full_label": "velvet"}
+{"is_esoteric": 1, "topic": "vending machine", "imagenet_idx": 886, "imagenet_full_label": "vending machine"}
+{"is_esoteric": 1, "topic": "vestment", "imagenet_idx": 887, "imagenet_full_label": "vestment"}
+{"is_esoteric": 1, "topic": "viaduct", "imagenet_idx": 888, "imagenet_full_label": "viaduct"}
+{"is_esoteric": 0, "topic": "violin", "imagenet_idx": 889, "imagenet_full_label": "violin, fiddle"}
+{"is_esoteric": 0, "topic": "volleyball", "imagenet_idx": 890, "imagenet_full_label": "volleyball"}
+{"is_esoteric": 1, "topic": "waffle iron", "imagenet_idx": 891, "imagenet_full_label": "waffle iron"}
+{"is_esoteric": 1, "topic": "wall clock", "imagenet_idx": 892, "imagenet_full_label": "wall clock"}
+{"is_esoteric": 1, "topic": "wallet", "imagenet_idx": 893, "imagenet_full_label": "wallet, billfold, notecase, pocketbook"}
+{"is_esoteric": 1, "topic": "wardrobe", "imagenet_idx": 894, "imagenet_full_label": "wardrobe, closet, press"}
+{"is_esoteric": 1, "topic": "warplane", "imagenet_idx": 895, "imagenet_full_label": "warplane, military plane"}
+{"is_esoteric": 1, "topic": "washbasin", "imagenet_idx": 896, "imagenet_full_label": "washbasin, handbasin, washbowl, lavabo, wash-hand basin"}
+{"is_esoteric": 1, "topic": "washer", "imagenet_idx": 897, "imagenet_full_label": "washer, automatic washer, washing machine"}
+{"is_esoteric": 0, "topic": "water bottle", "imagenet_idx": 898, "imagenet_full_label": "water bottle"}
+{"is_esoteric": 1, "topic": "water jug", "imagenet_idx": 899, "imagenet_full_label": "water jug"}
+{"is_esoteric": 1, "topic": "water tower", "imagenet_idx": 900, "imagenet_full_label": "water tower"}
+{"is_esoteric": 1, "topic": "whiskey jug", "imagenet_idx": 901, "imagenet_full_label": "whiskey jug"}
+{"is_esoteric": 0, "topic": "whistle", "imagenet_idx": 902, "imagenet_full_label": "whistle"}
+{"is_esoteric": 1, "topic": "wig", "imagenet_idx": 903, "imagenet_full_label": "wig"}
+{"is_esoteric": 1, "topic": "window screen", "imagenet_idx": 904, "imagenet_full_label": "window screen"}
+{"is_esoteric": 1, "topic": "window shade", "imagenet_idx": 905, "imagenet_full_label": "window shade"}
+{"is_esoteric": 1, "topic": "Windsor tie", "imagenet_idx": 906, "imagenet_full_label": "Windsor tie"}
+{"is_esoteric": 1, "topic": "wine bottle", "imagenet_idx": 907, "imagenet_full_label": "wine bottle"}
+{"is_esoteric": 0, "topic": "wing", "imagenet_idx": 908, "imagenet_full_label": "wing"}
+{"is_esoteric": 1, "topic": "wok", "imagenet_idx": 909, "imagenet_full_label": "wok"}
+{"is_esoteric": 0, "topic": "wooden spoon", "imagenet_idx": 910, "imagenet_full_label": "wooden spoon"}
+{"is_esoteric": 1, "topic": "wool", "imagenet_idx": 911, "imagenet_full_label": "wool, woolen, woollen"}
+{"is_esoteric": 1, "topic": "worm fence", "imagenet_idx": 912, "imagenet_full_label": "worm fence, snake fence, snake-rail fence, Virginia fence"}
+{"is_esoteric": 1, "topic": "wreck", "imagenet_idx": 913, "imagenet_full_label": "wreck"}
+{"is_esoteric": 1, "topic": "yawl", "imagenet_idx": 914, "imagenet_full_label": "yawl"}
+{"is_esoteric": 1, "topic": "yurt", "imagenet_idx": 915, "imagenet_full_label": "yurt"}
+{"is_esoteric": 1, "topic": "web site", "imagenet_idx": 916, "imagenet_full_label": "web site, website, internet site, site"}
+{"is_esoteric": 1, "topic": "comic book", "imagenet_idx": 917, "imagenet_full_label": "comic book"}
+{"is_esoteric": 1, "topic": "crossword puzzle", "imagenet_idx": 918, "imagenet_full_label": "crossword puzzle, crossword"}
+{"is_esoteric": 1, "topic": "street sign", "imagenet_idx": 919, "imagenet_full_label": "street sign"}
+{"is_esoteric": 0, "topic": "traffic light", "imagenet_idx": 920, "imagenet_full_label": "traffic light, traffic signal, stoplight"}
+{"is_esoteric": 1, "topic": "book jacket", "imagenet_idx": 921, "imagenet_full_label": "book jacket, dust cover, dust jacket, dust wrapper"}
+{"is_esoteric": 1, "topic": "menu", "imagenet_idx": 922, "imagenet_full_label": "menu"}
+{"is_esoteric": 0, "topic": "plate", "imagenet_idx": 923, "imagenet_full_label": "plate"}
+{"is_esoteric": 1, "topic": "guacamole", "imagenet_idx": 924, "imagenet_full_label": "guacamole"}
+{"is_esoteric": 1, "topic": "consomme", "imagenet_idx": 925, "imagenet_full_label": "consomme"}
+{"is_esoteric": 1, "topic": "hot pot", "imagenet_idx": 926, "imagenet_full_label": "hot pot, hotpot"}
+{"is_esoteric": 1, "topic": "trifle", "imagenet_idx": 927, "imagenet_full_label": "trifle"}
+{"is_esoteric": 0, "topic": "ice cream", "imagenet_idx": 928, "imagenet_full_label": "ice cream, icecream"}
+{"is_esoteric": 1, "topic": "ice lolly", "imagenet_idx": 929, "imagenet_full_label": "ice lolly, lolly, lollipop, popsicle"}
+{"is_esoteric": 1, "topic": "French loaf", "imagenet_idx": 930, "imagenet_full_label": "French loaf"}
+{"is_esoteric": 0, "topic": "bagel", "imagenet_idx": 931, "imagenet_full_label": "bagel, beigel"}
+{"is_esoteric": 0, "topic": "pretzel", "imagenet_idx": 932, "imagenet_full_label": "pretzel"}
+{"is_esoteric": 0, "topic": "cheeseburger", "imagenet_idx": 933, "imagenet_full_label": "cheeseburger"}
+{"is_esoteric": 0, "topic": "hotdog", "imagenet_idx": 934, "imagenet_full_label": "hotdog, hot dog, red hot"}
+{"is_esoteric": 1, "topic": "mashed potato", "imagenet_idx": 935, "imagenet_full_label": "mashed potato"}
+{"is_esoteric": 1, "topic": "head cabbage", "imagenet_idx": 936, "imagenet_full_label": "head cabbage"}
+{"is_esoteric": 0, "topic": "broccoli", "imagenet_idx": 937, "imagenet_full_label": "broccoli"}
+{"is_esoteric": 1, "topic": "cauliflower", "imagenet_idx": 938, "imagenet_full_label": "cauliflower"}
+{"is_esoteric": 0, "topic": "zucchini", "imagenet_idx": 939, "imagenet_full_label": "zucchini, courgette"}
+{"is_esoteric": 1, "topic": "spaghetti squash", "imagenet_idx": 940, "imagenet_full_label": "spaghetti squash"}
+{"is_esoteric": 1, "topic": "acorn squash", "imagenet_idx": 941, "imagenet_full_label": "acorn squash"}
+{"is_esoteric": 1, "topic": "butternut squash", "imagenet_idx": 942, "imagenet_full_label": "butternut squash"}
+{"is_esoteric": 1, "topic": "cucumber", "imagenet_idx": 943, "imagenet_full_label": "cucumber, cuke"}
+{"is_esoteric": 1, "topic": "artichoke", "imagenet_idx": 944, "imagenet_full_label": "artichoke, globe artichoke"}
+{"is_esoteric": 0, "topic": "bell pepper", "imagenet_idx": 945, "imagenet_full_label": "bell pepper"}
+{"is_esoteric": 1, "topic": "cardoon", "imagenet_idx": 946, "imagenet_full_label": "cardoon"}
+{"is_esoteric": 0, "topic": "mushroom", "imagenet_idx": 947, "imagenet_full_label": "mushroom"}
+{"is_esoteric": 1, "topic": "Granny Smith", "imagenet_idx": 948, "imagenet_full_label": "Granny Smith"}
+{"is_esoteric": 0, "topic": "strawberry", "imagenet_idx": 949, "imagenet_full_label": "strawberry"}
+{"is_esoteric": 0, "topic": "orange", "imagenet_idx": 950, "imagenet_full_label": "orange"}
+{"is_esoteric": 0, "topic": "lemon", "imagenet_idx": 951, "imagenet_full_label": "lemon"}
+{"is_esoteric": 1, "topic": "fig", "imagenet_idx": 952, "imagenet_full_label": "fig"}
+{"is_esoteric": 0, "topic": "pineapple", "imagenet_idx": 953, "imagenet_full_label": "pineapple, ananas"}
+{"is_esoteric": 0, "topic": "banana", "imagenet_idx": 954, "imagenet_full_label": "banana"}
+{"is_esoteric": 1, "topic": "jackfruit", "imagenet_idx": 955, "imagenet_full_label": "jackfruit, jak, jack"}
+{"is_esoteric": 1, "topic": "custard apple", "imagenet_idx": 956, "imagenet_full_label": "custard apple"}
+{"is_esoteric": 1, "topic": "pomegranate", "imagenet_idx": 957, "imagenet_full_label": "pomegranate"}
+{"is_esoteric": 1, "topic": "hay", "imagenet_idx": 958, "imagenet_full_label": "hay"}
+{"is_esoteric": 1, "topic": "carbonara", "imagenet_idx": 959, "imagenet_full_label": "carbonara"}
+{"is_esoteric": 1, "topic": "chocolate sauce", "imagenet_idx": 960, "imagenet_full_label": "chocolate sauce, chocolate syrup"}
+{"is_esoteric": 1, "topic": "dough", "imagenet_idx": 961, "imagenet_full_label": "dough"}
+{"is_esoteric": 1, "topic": "meat loaf", "imagenet_idx": 962, "imagenet_full_label": "meat loaf, meatloaf"}
+{"is_esoteric": 0, "topic": "pizza", "imagenet_idx": 963, "imagenet_full_label": "pizza, pizza pie"}
+{"is_esoteric": 1, "topic": "potpie", "imagenet_idx": 964, "imagenet_full_label": "potpie"}
+{"is_esoteric": 1, "topic": "burrito", "imagenet_idx": 965, "imagenet_full_label": "burrito"}
+{"is_esoteric": 1, "topic": "red wine", "imagenet_idx": 966, "imagenet_full_label": "red wine"}
+{"is_esoteric": 1, "topic": "espresso", "imagenet_idx": 967, "imagenet_full_label": "espresso"}
+{"is_esoteric": 0, "topic": "cup", "imagenet_idx": 968, "imagenet_full_label": "cup"}
+{"is_esoteric": 1, "topic": "eggnog", "imagenet_idx": 969, "imagenet_full_label": "eggnog"}
+{"is_esoteric": 1, "topic": "alp", "imagenet_idx": 970, "imagenet_full_label": "alp"}
+{"is_esoteric": 0, "topic": "bubble", "imagenet_idx": 971, "imagenet_full_label": "bubble"}
+{"is_esoteric": 1, "topic": "cliff", "imagenet_idx": 972, "imagenet_full_label": "cliff, drop, drop-off"}
+{"is_esoteric": 0, "topic": "coral reef", "imagenet_idx": 973, "imagenet_full_label": "coral reef"}
+{"is_esoteric": 1, "topic": "geyser", "imagenet_idx": 974, "imagenet_full_label": "geyser"}
+{"is_esoteric": 1, "topic": "lakeside", "imagenet_idx": 975, "imagenet_full_label": "lakeside, lakeshore"}
+{"is_esoteric": 1, "topic": "promontory", "imagenet_idx": 976, "imagenet_full_label": "promontory, headland, head, foreland"}
+{"is_esoteric": 1, "topic": "sandbar", "imagenet_idx": 977, "imagenet_full_label": "sandbar, sand bar"}
+{"is_esoteric": 1, "topic": "seashore", "imagenet_idx": 978, "imagenet_full_label": "seashore, coast, seacoast, sea-coast"}
+{"is_esoteric": 1, "topic": "valley", "imagenet_idx": 979, "imagenet_full_label": "valley, vale"}
+{"is_esoteric": 0, "topic": "volcano", "imagenet_idx": 980, "imagenet_full_label": "volcano"}
+{"is_esoteric": 1, "topic": "ballplayer", "imagenet_idx": 981, "imagenet_full_label": "ballplayer, baseball player"}
+{"is_esoteric": 1, "topic": "groom", "imagenet_idx": 982, "imagenet_full_label": "groom, bridegroom"}
+{"is_esoteric": 0, "topic": "scuba diver", "imagenet_idx": 983, "imagenet_full_label": "scuba diver"}
+{"is_esoteric": 1, "topic": "rapeseed", "imagenet_idx": 984, "imagenet_full_label": "rapeseed"}
+{"is_esoteric": 1, "topic": "daisy", "imagenet_idx": 985, "imagenet_full_label": "daisy"}
+{"is_esoteric": 1, "topic": "yellow lady's slipper", "imagenet_idx": 986, "imagenet_full_label": "yellow lady's slipper, yellow lady-slipper, Cypripedium calceolus, Cypripedium parviflorum"}
+{"is_esoteric": 0, "topic": "corn", "imagenet_idx": 987, "imagenet_full_label": "corn"}
+{"is_esoteric": 1, "topic": "acorn", "imagenet_idx": 988, "imagenet_full_label": "acorn"}
+{"is_esoteric": 1, "topic": "hip", "imagenet_idx": 989, "imagenet_full_label": "hip, rose hip, rosehip"}
+{"is_esoteric": 1, "topic": "buckeye", "imagenet_idx": 990, "imagenet_full_label": "buckeye, horse chestnut, conker"}
+{"is_esoteric": 1, "topic": "coral fungus", "imagenet_idx": 991, "imagenet_full_label": "coral fungus"}
+{"is_esoteric": 1, "topic": "agaric", "imagenet_idx": 992, "imagenet_full_label": "agaric"}
+{"is_esoteric": 1, "topic": "gyromitra", "imagenet_idx": 993, "imagenet_full_label": "gyromitra"}
+{"is_esoteric": 1, "topic": "stinkhorn", "imagenet_idx": 994, "imagenet_full_label": "stinkhorn, carrion fungus"}
+{"is_esoteric": 1, "topic": "earthstar", "imagenet_idx": 995, "imagenet_full_label": "earthstar"}
+{"is_esoteric": 1, "topic": "hen-of-the-woods", "imagenet_idx": 996, "imagenet_full_label": "hen-of-the-woods, hen of the woods, Polyporus frondosus, Grifola frondosa"}
+{"is_esoteric": 1, "topic": "bolete", "imagenet_idx": 997, "imagenet_full_label": "bolete"}
+{"is_esoteric": 0, "topic": "ear", "imagenet_idx": 998, "imagenet_full_label": "ear, spike, capitulum"}
+{"is_esoteric": 1, "topic": "toilet tissue", "imagenet_idx": 999, "imagenet_full_label": "toilet tissue, toilet paper, bathroom tissue"}

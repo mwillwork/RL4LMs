@@ -114,7 +114,7 @@ class DataPoolRegistry:
         "crd3": CRD3DialogueGeneration,
         "daily_dialog": DailyDialog,
         "diffusion_text_prompts": DiffusionTextPrompts,
-        "diffusion_text_prompts_overfit_one": DiffusionTextPromptsOverfitOne
+        "diffusion_text_prompts_overfit_one": DiffusionTextPromptsOverfitOne,
         "pictionary_datapool": PictionaryDataPool,
         }
 

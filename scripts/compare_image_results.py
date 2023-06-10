@@ -1,6 +1,8 @@
 import json
 import os
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 def load_json_data(path):
     print(f"Loading jsond data from: {path}")
@@ -54,6 +56,12 @@ if __name__ == "__main__":
     df = pd.DataFrame.from_dict(similarities_dict, orient="index")
     df["diff"] = df[last_ts] - df[first_ts]
     df = df.sort_values(by=["diff"])
+
+    # plot histogram of scores
+    # counts, bins = np.histogram(df[first_ts].values)
+    # obj = plt.stairs(counts, bins, fill=True)
+    # obj.figure.axes[0].set_xlabel(r"$CLIP_{img}(I_N, I_E)$")
+    # obj.figure.savefig("histogram_scores.png")
 
     import pdb;pdb.set_trace()
 

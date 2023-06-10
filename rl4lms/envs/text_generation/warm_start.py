@@ -106,6 +106,7 @@ class TrainerWarmStartMixin:
         recent_ckpt = sorted_ckpts[0]
         recent_ckpt_id = int(recent_ckpt.split("_")[1])
 
+        recent_ckpt_id = 1  # TODO: hardcoded!! Should be epoch 9
         recent_ckpt_path = os.path.join(
             tracker.checkpoint_base_path, f"checkpoint_{recent_ckpt_id}")
         return recent_ckpt_path, recent_ckpt_id
@@ -117,7 +118,8 @@ class TrainerWarmStartMixin:
             if recent_ckpt_path is not None:
                 state_dict = torch.load(
                     recent_ckpt_path, map_location=torch.device("cuda"))
-                tracker.log_info("Model checkpoint found - Warm starting")
+                print(f"Warm starting from {recent_ckpt_path}")
+                tracker.log_info(f"Model checkpoint found - Warm starting from {recent_ckpt_path}")
                 self._policy_state_dict = state_dict["policy_state"]
                 self._alg_state_dict = state_dict["alg_state"]
                 self._trainer_state = state_dict["trainer_state"]

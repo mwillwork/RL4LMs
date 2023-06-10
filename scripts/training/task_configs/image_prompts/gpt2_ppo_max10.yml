@@ -7,8 +7,7 @@ tokenizer:
 reward_fn:
   id: "diffusion_image_similarity_reward"
   args:
-     use_topic_only_for_worse: True
-     arg1: 0.0
+    arg1: 0.0
 
 datapool:
   id: "diffusion_text_prompts"
@@ -16,16 +15,16 @@ datapool:
     arg1: 0.0
 
 env:
-  n_envs: 1    # TODO: put this back to 10 envs
+  n_envs: 10    # TODO: put this back to 10 envs
   args:
     max_prompt_length: 128
-    max_episode_length: 20
+    max_episode_length: 10
     terminate_on_eos: True
 
 alg:
   id: ppo
   args: 
-    n_steps: 128                # rollout buffer is n_steps * n_envs
+    n_steps: 128                # was 128; rollout buffer is n_steps * n_envs
     batch_size: 16              # was 64; inner loop: n_epochs times, sample this size from the buffer
     verbose: 1
     learning_rate: 0.000001
@@ -43,8 +42,8 @@ alg:
       generation_kwargs:
         do_sample: True
         top_k: 20
-        min_length: 2
-        max_new_tokens: 20
+        min_length: 5
+        max_new_tokens: 10
       
 train_evaluation:
   eval_batch_size: 16   # was 32
@@ -53,8 +52,6 @@ train_evaluation:
   save_every: 10
   metrics:
     - id: diffusion_image_similarity_metric
-      args:
-        use_topic_only_for_worse: True
     - id: causal_perplexity
       args:
         tokenizer_id: gpt2
@@ -63,5 +60,5 @@ train_evaluation:
   generation_kwargs:
     do_sample: True
     top_k: 20
-    min_length: 2
-    max_new_tokens: 20
+    min_length: 5
+    max_new_tokens: 10

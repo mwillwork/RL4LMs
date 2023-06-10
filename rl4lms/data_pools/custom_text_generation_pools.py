@@ -640,39 +640,54 @@ class DiffusionTextPromptsOverfitOne(TextGenPool):
         dp_instance = cls(final_samples)
         return dp_instance
 
-PICTIONARY_PROMPT = "Q: You are playing a game where you must help a friend guess a topic that only you are given. \
-You must give a description that does not use the word given in the topic itself.\n \
+PICTIONARY_PROMPT = "Context: You are playing a game where you must help a friend guess a topic that only you are given. \
+You must give a description of the topic that does not use the word given as the topic itself.\n \
 Topic: dog\n \
-A: Man's best friend\n \
+A: Man's best friend that lives in our houses and eats kibble. They can be furry with floppy ears.\n \
 \n \
-Q: You are playing a game where you must help a friend guess a topic that only you are given. \
-You must give a description that does not use the word given in the topic itself.\n \
 Topic: chair \n \
-A: something you sit on\n \
+A: something you sit on and is often found around the dining table\n \
 \n \
-Q: You are playing a game where you must help a friend guess a topic that only you are given. \
-You must give a description that does not use the word given in the topic itself.\n \
 Topic: baby\n \
-A: a small human less than one year old\n \
+A: a small human less than one year old who cries and drinks mother's milk\n \
 \n \
-Q: You are playing a game where you must help a friend guess a topic that only you are given. \
-You must give a description that does not use the word given in the topic itself.\n \
 Topic: {topic}\n \
 A:"
 
 
-class PictionaryDataset(TextGenPool):
+class PictionaryDataPool(TextGenPool):
     @classmethod
     def prepare(cls, split: str, experiment_name: str, arg1: int = 0.0):
         split = CommonGen.gen_split_name(split)
         CAPTIONS_TOPICS_FILE = "/home/ubuntu/RL4LMs/rl4lms/data_pools/captions_cs224r_exp_1.jsonl"
         prompt_samples = []
-        with open(CAPTIONS_TOPICS_FILE) as f:
+
+        # ImageNet 1K labels
+        # from transformers import ConvNextForImageClassification
+        # __classifier_model = ConvNextForImageClassification.from_pretrained("facebook/convnext-base-224")
+        # Only keep the ones with one word to avoid esoteric classes
+        # all_labels = []
+        # for k, v in __classifier_model.config.id2label.items():
+            # f = v.split(",")
+            # sp = f[0].split(" ")
+            # if len(f) == 1 and len(sp) == 1:
+            #     all_labels.append(v)
+        # print(f"Got {len(all_labels)} labels from ImageNet1K. Kept one word labels only.")
+        
+        FILTERED_IMAGENET_FILE  = "/home/ubuntu/RL4LMs/imagenet_filtered.jsonl"
+        with open(FILTERED_IMAGENET_FILE) as f:
             lines  = f.readlines()
             for idx, ln in enumerate(lines):
                 json_data = json.loads(ln)
                 topic = json_data["topic"]
-                print(f"Got topic: {topic}")
+                is_esoteric = json_data["is_esoteric"] == 1
+                if is_esoteric:
+                    continue
+                # all_labels = ["dog", "tree", "house", "lightning", "chair", "strawberry", "sunglasses", "stroller", "lizard", "hat", "garden", "dolphin", "hot air balloon", "moon", "boat"]
+                # for idx, ln in enumerate(all_labels):
+                # topic = ln
+                if idx % 25 == 0:
+                    print(f"Got {idx}th topic: {topic}")
                 final_prompt = PICTIONARY_PROMPT.format(topic=topic)
                 sm = Sample(id=f"prompt_{idx}",
                             prompt_or_input_text = final_prompt,
@@ -681,32 +696,36 @@ class PictionaryDataset(TextGenPool):
                             meta_data= {
                                 "split": split, # Labels all samples {split}, but select subset below
                                 "topic": topic,
+                                "imagenet_full_label": json_data["imagenet_full_label"],
+                                "imagenet_idx": json_data["imagenet_idx"],
                                 "id": f"prompt_{idx}",
                                 "experiment_name": experiment_name})
                 prompt_samples.append(sm)
 
 
         all_samples = prompt_samples
-        final_samples = []
 
-        # These splits are derived from the small test of 676 prompts
-        # TODO: put in a larger set of prompts!
+        final_samples = []
         if split == "train":
-            # all but the last 100
-            final_samples = prompt_samples[0:-100]
+            # all but the last 50
+            final_samples = prompt_samples[0:-50]
         elif split == "validation":     # "val" turns into "validation"
-            # second to last set of 50
-            # TODO: put back to 50!
-            # final_samples = prompt_samples[-100:-90]
-            final_samples = prompt_samples[-100:-50]
+            # second to last set of 25
+            # add the same samples 5 times to mitigate the variance from generating the topic
+            batch_samples = prompt_samples[-50:-25]
+            for i in range(5):
+                final_samples.extend(batch_samples)
         elif split == "test":
-            # last set of 50
-            final_samples = prompt_samples[-50:]
+            # last set of 25
+            batch_samples = prompt_samples[-25:]
+            # final_samples = prompt_samples[-50:]
+            for i in range(5):
+                final_samples.extend(batch_samples)
         else:
             raise Exception(f"Unknown split {split}!")
 
         assert experiment_name != "" and experiment_name is not None
-        print(f"Pictionary dataset: Found experiment_name: {experiment_name} with {len(final_samples)} final sample prompts for {split} split.")
+        print(f"Pictionary dataset: Found experiment_name: {experiment_name} with {len(final_samples)} final sample prompts for {split} split. topics: {[fs.meta_data['topic'] for fs in final_samples]}")
 
         dp_instance = cls(final_samples)
         return dp_instance

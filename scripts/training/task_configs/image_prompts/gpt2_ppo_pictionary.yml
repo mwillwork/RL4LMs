@@ -1,31 +1,26 @@
 tokenizer:
-  model_name: gpt2
+  model_name: gpt2-large
   padding_side: left
   truncation_side: left
   pad_token_as_eos_token: True
 
 reward_fn:
-  id: "diffusion_image_similarity_reward"
-  args:
-     use_topic_only_for_worse: True
-     arg1: 0.0
+  id: "pictionary_reward"
 
 datapool:
-  id: "diffusion_text_prompts"
-  args:
-    arg1: 0.0
+  id: "pictionary_datapool"
 
 env:
-  n_envs: 1    # TODO: put this back to 10 envs
+  n_envs: 8    # TODO: put this back to 10 envs
   args:
     max_prompt_length: 128
-    max_episode_length: 20
+    max_episode_length: 24
     terminate_on_eos: True
 
 alg:
   id: ppo
   args: 
-    n_steps: 128                # rollout buffer is n_steps * n_envs
+    n_steps: 128                # was 128; rollout buffer is n_steps * n_envs
     batch_size: 16              # was 64; inner loop: n_epochs times, sample this size from the buffer
     verbose: 1
     learning_rate: 0.000001
@@ -38,13 +33,13 @@ alg:
   policy:
     id: causal_lm_actor_critic_policy
     args:
-      model_name: gpt2
+      model_name: gpt2-large
       apply_model_parallel: True
       generation_kwargs:
         do_sample: True
-        top_k: 20
+        top_k: 100
         min_length: 2
-        max_new_tokens: 20
+        max_new_tokens: 24
       
 train_evaluation:
   eval_batch_size: 16   # was 32
@@ -52,16 +47,14 @@ train_evaluation:
   eval_every: 5         # eval_every 5 *iters* where each iter has five collections of rollouts (n_epochs)
   save_every: 10
   metrics:
-    - id: diffusion_image_similarity_metric
-      args:
-        use_topic_only_for_worse: True
+    - id: pictionary_metric
     - id: causal_perplexity
       args:
-        tokenizer_id: gpt2
+        tokenizer_id: gpt2-large
         stride: 128
         model_type: causal
   generation_kwargs:
     do_sample: True
-    top_k: 20
+    top_k: 100
     min_length: 2
-    max_new_tokens: 20
+    max_new_tokens: 24

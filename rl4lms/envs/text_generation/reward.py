@@ -22,7 +22,8 @@ from rl4lms.envs.text_generation.metric import (
     IntentAccuracyDailyDialogNoisy,
     IntentAccuracyDailyDialogConditional,
     IntentAccuracyDailyDialogPlusDECODEMetric,
-    DiffusionImageGenerationSimilarityMetric
+    DiffusionImageGenerationSimilarityMetric,
+    PictionaryMetric
     )
 import numpy as np
 from typing import List, Dict, Any
@@ -561,8 +562,9 @@ class chrF(RewardFunction):
         return 0
 
 class PictionaryReward(BatchedRewardFunction):
-    def __init__(self):
+    def __init__(self, done_only: bool = True):
         self._metric = None
+        self._done_only = done_only
 
     def __call__(
         self,
@@ -574,15 +576,36 @@ class PictionaryReward(BatchedRewardFunction):
     ) -> List[float]:
         if self._metric is None:
             self._metric = PictionaryMetric()
-        
+
+        # compute rewards for finished episodes only
+        rewards = np.zeros(len(gen_texts))
+
+        final_prompt_texts = []
+        final_gen_texts = []
+        final_ref_texts = []
+        final_meta_infos = []
+        final_ixs = []
+        for ix, (prompt, gen, ref, meta_info, done) in enumerate(
+            zip(prompt_texts, gen_texts, ref_texts, meta_infos, dones)
+        ):
+            if (done and self._done_only) or not self._done_only:
+                final_prompt_texts.append(prompt)
+                final_gen_texts.append(gen)
+                final_ref_texts.append(ref)
+                final_meta_infos.append(meta_info)
+                final_ixs.append(ix)
+        print(f"Will compute metrics for {len(final_ixs)}. Doing done_only? {self._done_only}")
+
         scores_dict = self._metric.compute(
-            prompt_texts, gen_texts, ref_texts, meta_infos, split_name="train"
+            final_prompt_texts, final_gen_texts, final_ref_texts, final_meta_infos, split_name="train"
         )
         scores = scores_dict["pictionary_metric"]
-        batch_scores = torch.tensor(scores[0]).squeeze()      # all metrics do .tolist()
+        # batch_scores = torch.tensor(scores[0]).squeeze()      # all metrics do .tolist()
+        batch_scores = scores[0]
         mean_score = scores[1]
-        
-        print(f"Got net rewards: {rewards}, len(rewards): {len(rewards)}, mean: {np.mean(rewards)}")
+        mean_reward = mean_score
+        rewards[final_ixs] += batch_scores 
+        print(f"Got net rewards: {rewards}, len(rewards): {len(rewards)}, mean: {mean_reward}")
         return rewards.tolist()
 
 

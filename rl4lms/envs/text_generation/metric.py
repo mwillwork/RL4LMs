@@ -1011,12 +1011,21 @@ class IntentAccuracyDailyDialogPlusDECODEMetric(BaseMetric):
         return metric_dict
 
 class PictionaryMetric(BaseMetric):
-    def __init__(self) -> None:
+    def __init__(self, use_bert : bool = True) -> None:
         super().__init__()
         print("Creating new PictionaryMetric (and new diffusion models!)")
         from diffusers import StableDiffusionPipeline
-        from transformers import ViTForImageClassification
-        from transformers import ViTFeatureExtractor
+        from transformers import ConvNextFeatureExtractor
+        from transformers import ConvNextForImageClassification
+
+        from transformers import BertTokenizer, BertModel
+        # self._use_bert = use_bert
+        self._use_bert = True # TODO: HACKCKCKCKC!!
+        self._penalize_repetition = False
+        print(f"PENALIZE REPETITION IS: {self._penalize_repetition}")
+
+        self.bert_model = BertModel.from_pretrained("bert-base-uncased")
+        self.bert_tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
         # create the diffusion model
         diffusion_model_name = "stabilityai/stable-diffusion-2"
@@ -1025,24 +1034,41 @@ class PictionaryMetric(BaseMetric):
         self._diffusion_model.to("cuda")
 
         # create the classifier model
-        classifier_model_name = 'google/vit-base-patch16-224-in21k'
-        self._classifier_feature_extractor = ViTFeatureExtractor.from_pretrained(
+        classifier_model_name = "facebook/convnext-base-224"
+        self._classifier_feature_extractor = ConvNextFeatureExtractor.from_pretrained(
             classifier_model_name)
         # TODO: get the list of classifier labels
-        self._classifier_labels = []
-        model = ViTForImageClassification.from_pretrained(
-            classifier_model_name,
-            num_labels=len(self._classifier_labels),
-            id2label={str(i): c for i, c in enumerate(self._classifier_labels)},
-            label2id={c: str(i) for i, c in enumerate(self._classifier_labels)}
-        )
+        self._classifier_model = ConvNextForImageClassification.from_pretrained(
+            classifier_model_name)
 
-    def score_image(self, image, label):
-        inputs = feature_extractor(image, return_tensors='pt')
-        outputs = model(**inputs)
+    # def __get_labels(self):
+        # CAPTIONS_TOPICS_FILE = "/home/ubuntu/RL4LMs/rl4lms/data_pools/captions_cs224r_exp_1.jsonl"
+        # all_labels = []
+        # with open(CAPTIONS_TOPICS_FILE) as f:
+        #    lines  = f.readlines()
+        #    for idx, ln in enumerate(lines):
+        #        json_data = json.loads(ln)
+        #        topic = json_data["topic"]
+        #        all_labels.append(topic)
+        #print(f"Found {len(all_labels)} labels.")
+        # all_labels = ["dog", "tree", "house", "lightning", "chair", "strawberry", "sunglasses", "stroller", "lizard", "hat", "garden", "dolphin", "hot air balloon", "moon", "boat"]
+        # return all_labels
+
+    def score_images(self, images, labels):
+        """
+        images:
+        labels: single text label for each image
+        """
+        assert len(images) == len(labels)
+        # for l in labels:
+        #    assert l in self._classifier_labels, f"{l} was not in classifier labels"
+
+        inputs = self._classifier_feature_extractor(images, return_tensors='pt')
+        outputs = self._classifier_model(**inputs)
         predictions = torch.nn.functional.softmax(outputs.logits)
-        return nredictions
-
+        label_indices = torch.tensor([int(self._classifier_model.config.label2id[l]) for l in labels])
+        predictions = torch.gather(predictions, index=label_indices.unsqueeze(0), dim=-1)
+        return predictions
 
     def compute(
         self,
@@ -1054,19 +1080,65 @@ class PictionaryMetric(BaseMetric):
         split_name: str = None,
     ) -> Tuple[List[float], float]:
 
-        METRIC_BS = 24
+        if self._use_bert:
+            print(f"PictionaryMetric: using BERT! Gen texts: {len(generated_texts)}")
+            with torch.no_grad():
+                gen_encodings = self.bert_tokenizer(generated_texts, return_tensors="pt", padding=True)
+                bert_gen_embeddings = self.bert_model(gen_encodings.input_ids)
+
+                topics = [mi["topic"] for mi in meta_infos]
+                topic_encodings = self.bert_tokenizer(topics, return_tensors="pt", padding=True)
+                bert_topic_embeddings = self.bert_model(topic_encodings.input_ids)
+
+                # https://github.com/huggingface/transformers/issues/7540
+                # Suggests using the last_hidden_state of the [CLS] token for each item of the batch
+                # Or average all the last_hidden_state across the sequence (not using the pooler)
+                # last_hidden_state.shape = (bs, sequence_length, embed_size)
+                cls_embeddings_gen =  bert_gen_embeddings.last_hidden_state[:, 0, :]
+                cls_embeddings_topic =  bert_topic_embeddings.last_hidden_state[:, 0, :]
+                sscores = F.cosine_similarity(cls_embeddings_gen, cls_embeddings_topic)
+
+                N = len(topics)
+                generated_topics = [topics[i] in generated_texts[i] for i in range(N)]
+                if np.sum(generated_topics) > 0 and self._penalize_repetition:
+                    print(f"GENERATED TOPIC! Setting reward to 0: {sscores}")
+                    sscores = np.where(generated_topics, 0, sscores.detach().numpy())
+                    sscores = torch.tensor(sscores)
+
+                mean_sscore = torch.mean(sscores)
+                print(f"generated_texts: {generated_texts}, topics: {topics}, sscores: {sscores}, mean: {mean_sscore}")
+
+                metric_dict = {"pictionary_metric": (sscores.tolist(), mean_sscore.item())}
+                return metric_dict
+
+
+        METRIC_BS = 6
         with torch.no_grad():
             print(f"PictionaryMetric: {len(generated_texts)} images in batches of {METRIC_BS}")
-for i in range(0, len(generated_texts), METRIC_BS):
-            prompt_texts_chunk = prompt_texts[i:i+METRIC_BS]
-            generated_texts_chunk = generated_texts[i:i+METRIC_BS]
-            generated_images = self._worse_diffusion_pipeline(
-                    prompt_texts_worse_chunk).images
-
-        batch_mean_score = float(np.mean(image_similarity_scores))
-        metric_dict = {"pictionary_metric": (image_similarity_scores.tolist(), batch_mean_score)}
-
-        return metric_dict
+            all_class_scores = []
+            for i in range(0, len(generated_texts), METRIC_BS):
+                prompt_texts_chunk = prompt_texts[i:i+METRIC_BS]
+                generated_texts_chunk = generated_texts[i:i+METRIC_BS]
+                meta_infos_chunk = meta_infos[i:i+METRIC_BS]
+                actual_bs = min(METRIC_BS, len(prompt_texts_chunk))
+                topics_chunk = [mi["topic"] for mi in meta_infos_chunk]
+                imagenet_labels_chunk = [mi["imagenet_full_label"] for mi in meta_infos_chunk]
+                generated_images = self._diffusion_model(generated_texts_chunk).images
+                batch_class_scores = self.score_images(generated_images, imagenet_labels_chunk)
+                generated_topics = [topics_chunk[i] in generated_texts_chunk[i] for i in range(actual_bs)]
+                if np.sum(generated_topics) > 0 and self._penalize_repetition:
+                    batch_class_scores = np.where(generated_topics, 0, 
+                            batch_class_scores.detach().numpy())
+                    batch_class_scores = torch.tensor(batch_class_scores)
+                    print(f"GENERATED TOPIC! Setting reward to 0: {batch_class_scores}")
+                
+                all_class_scores.append(batch_class_scores)
+                print(f"generated_texts_chunk: {generated_texts_chunk}, topics_chunk: {topics_chunk}, class_scores: {batch_class_scores}")
+            all_class_scores = torch.concat(all_class_scores, dim=-1)
+            mean_score = torch.mean(all_class_scores)
+            metric_dict = {"pictionary_metric": (all_class_scores.squeeze().tolist(), 
+                mean_score.item())}
+            return metric_dict
 
 
 class DiffusionImageGenerationSimilarityMetric(BaseMetric):

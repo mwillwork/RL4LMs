@@ -112,7 +112,12 @@ def generate_text(
     prompt_texts = [
         dt_control_token + sample.prompt_or_input_text for sample in samples
     ]
-    generated_texts = policy.generate(
-        tokenizer, prompt_texts, max_prompt_length, gen_kwargs=gen_kwargs
-    ).gen_texts
+   
+    topics = [s.meta_data["topic"] for s in samples]
+    # list of lists of varying lengths with tokens
+    # I add the bad_words_tokenizers only to CausalLMActorCriticPolicy
+    bad_words_input_ids = policy.bad_words_tokenizer(topics).input_ids
+    bad_words_args = bad_words_input_ids
+    gen_kwargs["bad_words_ids"] = bad_words_args
+    generated_texts = policy.generate(tokenizer, prompt_texts, max_prompt_length, gen_kwargs=gen_kwargs).gen_texts
     return generated_texts

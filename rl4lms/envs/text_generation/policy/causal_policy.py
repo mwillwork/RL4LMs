@@ -64,6 +64,8 @@ class CausalLMActorCriticPolicy(LMActorCriticPolicy, ActorCriticWarmStartMixin):
             prompt_truncation_side,
         )
         self.load_from_dict(state_dict)
+        self.bad_words_tokenizer = AutoTokenizer.from_pretrained(model_name, add_prefix_space=True)
+        print(f"Created bad_words_tokenizier for model: {model_name}")
 
     def _build_model_heads(self, model_name: str):
         self._policy_model = AutoModelForCausalLM.from_pretrained(model_name)
@@ -121,6 +123,8 @@ class CausalLMActorCriticPolicy(LMActorCriticPolicy, ActorCriticWarmStartMixin):
     ) -> PolicyOutput:
         input_ids = obs["input_encoded_pt"].int()
         attention_mask = obs["input_attention_mask_pt"]
+        
+        # import pdb;pdb.set_trace()
 
         # prepare inputs
         if not past_model_kwargs:
@@ -209,6 +213,7 @@ class CausalLMActorCriticPolicy(LMActorCriticPolicy, ActorCriticWarmStartMixin):
         self, obs: torch.Tensor, actions: torch.Tensor
     ) -> EvaluateActionsOutput:
 
+        # print(f"evaluate_actions - obs: {obs}")
         policy_outputs = self.forward_policy(obs=obs, actions=actions)
         value_outputs = self.forward_value(obs)
 
